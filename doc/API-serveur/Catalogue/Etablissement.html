@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Etablissement</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Etablissement</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Classe pour gérer la table etablissement et sa relation avec la table faculte-etablissement.</p>
+<p class="description"><p>Elle est utilisée pour l'ajout, la modification, la suppression, et la lecture d'éléments à partir  de la table etablissement. Elle est aussi utilisée aussi pour l'ajout et la suppression à partir de la table  faculte-etablissement, ainsi que la lecture d'éléments de la table faculte par l'intérmediaire de la table faculte-etablissement.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../Catalogue/Faculte.html">Faculte</a></li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_core---etablissement.php.html">/core/etablissement.php</a> (line <span class="field">45</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																								<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$abrv" title="details" class="var-name">$abrv</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">Faculte[]</span>
+					<a href="#$facultes" title="details" class="var-name">$facultes</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">integer</span>
+					<a href="#$id" title="details" class="var-name">$id</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$nom" title="details" class="var-name">$nom</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">integer</span>
+					<a href="#$timeStampAjout" title="details" class="var-name">$timeStampAjout</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+												<div class="method-definition">
+					static 						<span class="method-result">integer</span>
+										<a href="#ajouterEtablissement" title="details" class="method-name">ajouterEtablissement</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$nom</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$abrv</span>)
+									</div>
+																								<div class="method-definition">
+					static 						<span class="method-result"><a href="../Catalogue/Etablissement.html">Etablissement</a>|NULL</span>
+										<a href="#chargerEtablissement" title="details" class="method-name">chargerEtablissement</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+									</div>
+																								<div class="method-definition">
+					static 						<span class="method-result">Etablissement[]|integer</span>
+										<a href="#listerEtablissement" title="details" class="method-name">listerEtablissement</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$champsEtablissement</span> = <span class="var-default">&quot;id,nom,abrv,timestampajout&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$bornes</span> = <span class="var-default">&quot;0,30&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$ordreEtablissement</span> = <span class="var-default">&quot;nom&quot;</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFaculte</span> = <span class="var-default">&quot;0&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$champsFaculte</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$ordreFaculte</span> = <span class="var-default">&quot;&quot;</span>])
+									</div>
+																																<div class="method-definition">
+					static 						<span class="method-result">integer</span>
+										<a href="#supprimerEtablissement" title="details" class="method-name">supprimerEtablissement</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+									</div>
+								
+																				<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#ajouterFac" title="details" class="method-name">ajouterFac</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFac</span>)
+									</div>
+																								<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#enleverFac" title="details" class="method-name">enleverFac</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFac</span>)
+									</div>
+																								<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#modifierEtablissement" title="details" class="method-name">modifierEtablissement</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#remplirFaculte" title="details" class="method-name">remplirFaculte</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$ordreFaculte</span> = <span class="var-default">&quot;nom&quot;</span>])
+									</div>
+																</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$abrv" id="$abrv"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$abrv</span>
+						(line <span class="line-number">56</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> L'abréviation de l'établissement.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$facultes" id="$facultes"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">Faculte[]</span>
+			<span class="var-name">$facultes</span>
+						(line <span class="line-number">62</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> La liste des facultés de l'établissement.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$id" id="$id"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$id</span>
+						(line <span class="line-number">50</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> L'identifiant de l'établissement.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$nom" id="$nom"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$nom</span>
+						(line <span class="line-number">53</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> Le nom de l'établissement.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$timeStampAjout" id="$timeStampAjout"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$timeStampAjout</span>
+						(line <span class="line-number">59</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> La date d'ajout de l'établissement.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodajouterEtablissement" id="ajouterEtablissement"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method ajouterEtablissement</span> (line <span class="line-number">105</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ajouter un nouveau établissement dans la base de données.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> L'identifiant du nouveau établissement s'il a été ajouté avec succés. Sinon, -1 si le format de l'abréviation n'est pas respecté ou 0 si un établissement de même nom ou d'abréviation existe déjà.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			ajouterEtablissement
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$nom</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$abrv</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$nom</span><span class="var-description">: Le nom de l'établissement à ajouter.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$abrv</span><span class="var-description">: L'abréviation de l'établissement à ajouter. Seules les caractéres alphanumériques et les caractéres spéciaux &quot;. _ + -&quot; sont autorisés. Ceci car l'abréviation est prévu pour être utilisé dans des noms de fichiers, comme ceux des contenus pédagogiques.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodchargerEtablissement" id="chargerEtablissement"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method chargerEtablissement</span> (line <span class="line-number">74</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Créer à partir de la base de données un objet Etablissement dont l'identifiant est $id.</p>
+<p class="description"><p>Remarque: l'attribut $facultes n'est pas initialisé. Il doit être manuellement initialisé avec la méthode remplirFaculte.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> L'objet Etablissement identifié par $id. NULL si un tel identifiant n'existe pas.</li>
+				<li><span class="field">see:</span> <a href="../Catalogue/Etablissement.html#methodremplirFaculte">Etablissement::remplirFaculte()</a></li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result"><a href="../Catalogue/Etablissement.html">Etablissement</a>|NULL</span>
+		<span class="method-name">
+			chargerEtablissement
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$id</span><span class="var-description">: L'identifiant de l'établissement à charger.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodlisterEtablissement" id="listerEtablissement"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method listerEtablissement</span> (line <span class="line-number">155</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Lister les établissements contenus dans la base de données et les mettre dans un tableau d'objets de type Etablissement.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Un tableau contenant la liste des établissements si la requête n'a pas échoué. -1 dans le cas contraire.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Etablissement[]|integer</span>
+		<span class="method-name">
+			listerEtablissement
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$champsEtablissement</span> = <span class="var-default">&quot;id,nom,abrv,timestampajout&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$bornes</span> = <span class="var-default">&quot;0,30&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$ordreEtablissement</span> = <span class="var-default">&quot;nom&quot;</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFaculte</span> = <span class="var-default">&quot;0&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$champsFaculte</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$ordreFaculte</span> = <span class="var-default">&quot;&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$champsEtablissement</span><span class="var-description">: Format:&quot;{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans chaque objet du tableau retourné. Les autres attributs (sauf l'attribut $facultes) seront mises à NULL. Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;id et $c-&gt;nom contiendront les informations correspondantes, mais $c-&gt;abrv et $c-&gt;timestampajout seront mises à NULL.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$bornes</span><span class="var-description">: Format:&quot;[{entier1},{entier2}]&quot;. Si le paramètre est spécifié, la fonction retournera les {entier2} premiers éléments a partir du {entier1}iéme résultat de la requête SQL. C'est le paramétre &quot;LIMIT&quot; de la requête SQL. Exemple: &quot;1,15&quot;. On retourne le 2éme, 3éme,......, 16éme résulat de la requête.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$ordreEtablissement</span><span class="var-description">: Format:&quot;[{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]]&quot;. Ce paramètre décrit l'ordre des champs à respecter lors du tri du résultat. Exemple: &quot;abrv,nom&quot;. Le tri se fait par abréviation d'établissement, puis par nom d'établissement.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$idFaculte</span><span class="var-description">: Une valeure O ou &quot;&quot; est équivalente à lister tous les établissements. Pour les autres valeurs entières, seules les établissements contenant la faculté identifiée par ce paramètre ($idfaculté)seront listés.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$champsFaculte</span><span class="var-description">: Format:&quot;{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans chaque élément de l'attribut tableau $facultes. Les autres attributs seront mises à NULL. Exemple: &quot;id,nom&quot;, si $c est un élément du tableau $facultes, $c-&gt;id et $c-&gt;nom contiendront les informations correspondantes, mais $c-&gt;abrv, $c-&gt;timestampajout et $c-&gt;etablissements seront mises à NULL.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$ordreFaculte</span><span class="var-description">: Format:&quot;[{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]]&quot;. Ce paramètre décrit l'ordre des champs à respecter lors du tri de l'attribut tableau $facultes. Exemple: &quot;abrv,nom&quot;. Le tri se fait par abréviation de faculté, puis par nom de faculté.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsupprimerEtablissement" id="supprimerEtablissement"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method supprimerEtablissement</span> (line <span class="line-number">312</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Supprimer l'établissement identifié par $id de la base de données.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 1 si l'établissement a été supprimé avec succés. 0 dans le cas contraire.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			supprimerEtablissement
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$id</span><span class="var-description">: L'identifiant de l'établissement à supprimer.</span>			</li>
+				</ul>
+		
+			
+	</div>
+
+<a name="methodajouterFac" id="ajouterFac"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">ajouterFac</span> (line <span class="line-number">326</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ajouter une faculté à l'établissement.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 1 si la faculté a été ajouté avec succés. -1 dans le cas où la faculté existe déjà dans l'établissement.</li>
+				<li><span class="field">see:</span> <a href="../Catalogue/Etablissement.html#methodenleverFac">Etablissement::enleverFac()</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			ajouterFac
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFac</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$idFac</span><span class="var-description">: l'identifiant de la faculté à ajouter.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodenleverFac" id="enleverFac"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">enleverFac</span> (line <span class="line-number">344</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Enlever une faculté de l'établissement.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 1 si la faculté a été enlevé avec succés. 0 dans le cas où la faculté n'existe pas dans l'établissement.</li>
+				<li><span class="field">see:</span> <a href="../Catalogue/Etablissement.html#methodajouterFac">Etablissement::ajouterFac()</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			enleverFac
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFac</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$idFac</span><span class="var-description">: l'identifiant de la faculté à enlever.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmodifierEtablissement" id="modifierEtablissement"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">modifierEtablissement</span> (line <span class="line-number">288</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Modifier les informations d'un établissement dans la base de données.</p>
+<p class="description"><p>L'attribut $id contient l'identifiant de l'établissement à modifier. Les attributs $nom, $abrv et $timestampajout contiennent les modifications à apporter. Il faut passer par la méthode ajouterFac ou enleverFac pour modifier les informations dans la table faculte-etablissement.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 1 si l'établissement a été modifié avec succés. 0 dans le cas où les nouvelles et anciennes valeurs sont identiques. -1 si le format de la nouvelle abréviation n'est pas respecté(Seules les caractéres alphanumériques et les caractéres spéciaux  &quot;. _ + -&quot; sont autorisés pour l'abréviation).</li>
+				<li><span class="field">see:</span> <a href="../Catalogue/Etablissement.html#methodajouterFac">Etablissement::ajouterFac()</a>, <a href="../Catalogue/Etablissement.html#methodenleverFac">Etablissement::enleverFac()</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			modifierEtablissement
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodremplirFaculte" id="remplirFaculte"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">remplirFaculte</span> (line <span class="line-number">362</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Remplir le tableau $facultes avec les facultés appartenant à cet etablissement.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			remplirFaculte
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$ordreFaculte</span> = <span class="var-default">&quot;nom&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$ordreFaculte</span><span class="var-description">: Format:&quot;[{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]]&quot;. Ce paramètre décrit l'ordre des champs de la table faculte à repecter lors du tri du résultat.</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Wed, 21 Oct 2009 23:16:54 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>
