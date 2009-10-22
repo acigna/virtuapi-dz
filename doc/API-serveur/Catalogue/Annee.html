@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Annee</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Annee</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Classe pour gérer la table annee.</p>
+<p class="description"><p>Elle est utilisée pour l'ajout, la modification, la suppression, et la lecture d'éléments à partir  de la table annee.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../Catalogue/Cycle.html">Cycle</a>, <a href="../Catalogue/Module.html">Module</a>, <a href="../Catalogue/Faculte.html">Faculte</a>, <a href="../Catalogue/Etablissement.html">Etablissement</a></li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_core---annee.php.html">/core/annee.php</a> (line <span class="field">43</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																																								<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$branche" title="details" class="var-name">$branche</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type"><a href="../Catalogue/Cycle.html">Cycle</a></span>
+					<a href="#$cycle" title="details" class="var-name">$cycle</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type"><a href="../Catalogue/Etablissement.html">Etablissement</a></span>
+					<a href="#$etablissement" title="details" class="var-name">$etablissement</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type"><a href="../Catalogue/Faculte.html">Faculte</a></span>
+					<a href="#$faculte" title="details" class="var-name">$faculte</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">integer</span>
+					<a href="#$id" title="details" class="var-name">$id</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">integer</span>
+					<a href="#$numAnnee" title="details" class="var-name">$numAnnee</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">integer</span>
+					<a href="#$timeStampAjout" title="details" class="var-name">$timeStampAjout</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+												<div class="method-definition">
+					static 						<span class="method-result">integer</span>
+										<a href="#ajouterAnnee" title="details" class="method-name">ajouterAnnee</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFacEtab</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$numAnnee</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$idCycle</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$branche</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result"><a href="../Catalogue/Annee.html">Annee</a>|NULL</span>
+										<a href="#chargerAnnee" title="details" class="method-name">chargerAnnee</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">Annee[]|integer</span>
+										<a href="#listerAnnee" title="details" class="method-name">listerAnnee</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$champsAnnee</span> = <span class="var-default">&quot;id,numannee,branche,timestampajout&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$bornes</span> = <span class="var-default">&quot;0,30&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$ordre</span> = <span class="var-default">&quot;c.code,numannee&quot;</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFaculte</span> = <span class="var-default">&quot;0&quot;</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$idEtablissement</span> = <span class="var-default">&quot;0&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$champsFaculte</span> = <span class="var-default">&quot;nom&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$champsEtablissement</span> = <span class="var-default">&quot;abrv&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$champsCycle</span> = <span class="var-default">&quot;nom&quot;</span>])
+									</div>
+																																								<div class="method-definition">
+					static 						<span class="method-result">integer</span>
+										<a href="#supprimerAnnee" title="details" class="method-name">supprimerAnnee</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+									</div>
+								
+																																				<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#mettreDansFacEtab" title="details" class="method-name">mettreDansFacEtab</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFacEtab</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#modifierAnnee" title="details" class="method-name">modifierAnnee</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#retournerNomComplet" title="details" class="method-name">retournerNomComplet</a>
+										()
+									</div>
+																</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$branche" id="$branche"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$branche</span>
+						(line <span class="line-number">63</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> La branche à laquelle l'année.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$cycle" id="$cycle"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type"><a href="../Catalogue/Cycle.html">Cycle</a></span>
+			<span class="var-name">$cycle</span>
+						(line <span class="line-number">60</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> Le cycle auquel l'année appartient.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$etablissement" id="$etablissement"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type"><a href="../Catalogue/Etablissement.html">Etablissement</a></span>
+			<span class="var-name">$etablissement</span>
+						(line <span class="line-number">54</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> L'établissement auquel l'année appartient.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$faculte" id="$faculte"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type"><a href="../Catalogue/Faculte.html">Faculte</a></span>
+			<span class="var-name">$faculte</span>
+						(line <span class="line-number">51</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> La faculté à laquelle l'année appartient.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$id" id="$id"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$id</span>
+						(line <span class="line-number">48</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> L'identifiant de l'année.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$numAnnee" id="$numAnnee"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$numAnnee</span>
+						(line <span class="line-number">57</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> Le numéro de l'année.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$timeStampAjout" id="$timeStampAjout"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$timeStampAjout</span>
+						(line <span class="line-number">66</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> La date d'ajout de l'année.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodajouterAnnee" id="ajouterAnnee"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method ajouterAnnee</span> (line <span class="line-number">148</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ajouter une nouvelle année dans la base de données.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> L'identifiant de la nouvelle année si elle a été ajouté avec succés. 0 dans le cas contraire.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			ajouterAnnee
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFacEtab</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$numAnnee</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$idCycle</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$branche</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$idFacEtab</span><span class="var-description">: l'identifiant de la faculté-établissement à laquel l'année appartient.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$numAnnee</span><span class="var-description">: Le numéro de l'année.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$idCycle</span><span class="var-description">: L'identifiant du cycle auquel l'année appartient.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$branche</span><span class="var-description">: La branche à laquelle l'année appartient.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodchargerAnnee" id="chargerAnnee"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method chargerAnnee</span> (line <span class="line-number">76</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Créer à partir de la base de données un objet Annee dont l'identifiant est $id.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> L'objet Annee identifié par $id. NULL si un tel identifiant n'existe pas.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result"><a href="../Catalogue/Annee.html">Annee</a>|NULL</span>
+		<span class="method-name">
+			chargerAnnee
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$id</span><span class="var-description">: L'identifiant de l'année à charger.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodlisterAnnee" id="listerAnnee"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method listerAnnee</span> (line <span class="line-number">219</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Lister les années contenus dans la base de données et les mettre dans un tableau d'objets de type Annee.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Un tableau contenant la liste des années. si la requête n'a pas échoué. -1 dans le cas contraire.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Annee[]|integer</span>
+		<span class="method-name">
+			listerAnnee
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$champsAnnee</span> = <span class="var-default">&quot;id,numannee,branche,timestampajout&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$bornes</span> = <span class="var-default">&quot;0,30&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$ordre</span> = <span class="var-default">&quot;c.code,numannee&quot;</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFaculte</span> = <span class="var-default">&quot;0&quot;</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$idEtablissement</span> = <span class="var-default">&quot;0&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$champsFaculte</span> = <span class="var-default">&quot;nom&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$champsEtablissement</span> = <span class="var-default">&quot;abrv&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$champsCycle</span> = <span class="var-default">&quot;nom&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$champsAnnee</span><span class="var-description">: Format:&quot;{id|numannee|branche|timestampajout}[,{id|numannee|branche|timestampajout}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans chaque objet du tableau retourné. Les autres attributs(sauf l'attribut $etablissement,$faculte et $annee) seront mises à NULL. Exemple: &quot;id,numannee&quot;, si $c est un élément du tableau retourné, $c-&gt;id et $c-&gt;numAnnee contiendront les informations correspondantes, mais $c-&gt;branche et $c-&gt;timeStampAjout seront mises à NULL.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$bornes</span><span class="var-description">: Format:&quot;[{entier1},{entier2}]&quot;. Si le paramètre est spécifié, la fonction retournera les {entier2} premiers éléments a partir du {entier1}iéme résultat de la requête SQL. C'est le paramétre &quot;LIMIT&quot; de la requête SQL. Exemple: &quot;1,15&quot;. On retourne le 2éme, 3éme,......, 16éme résulat de la requête.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$idEtablissement</span><span class="var-description">: Une valeure O ou &quot;&quot; est équivalente à lister les années sans se restreindre à un établissement particulièr. Pour les autres valeurs entières, seules les années appartenant à l'établissement identifié par ce paramètre ($idEtablissement)seront listés.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$idFaculte</span><span class="var-description">: Une valeure O ou &quot;&quot; est équivalente à lister les années sans se restreindre à une faculté particulière. Pour les autres valeurs entières, seules les années appartenant à la faculté identifiée par ce paramètre ($idFaculte)seront listés.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$champsFaculte</span><span class="var-description">: Format:&quot;{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans l'attribut $faculte. Les autres attributs seront mises à NULL. Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;faculte-&gt;id et $c-&gt;faculte-&gt;nom contiendront les informations correspondantes, mais $c-&gt;faculte-&gt;abrv, $c-&gt;faculte-&gt;timeStampAjout et $c-&gt;faculte-&gt;etablissements seront mises à NULL.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$champsEtablissement</span><span class="var-description">: Format:&quot;{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans l'attribut $faculte. Les autres attributs seront mises à NULL. Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;etablissement-&gt;id et $c-&gt;etablissement-&gt;nom contiendront les informations correspondantes, mais $c-&gt;etablissement-&gt;abrv, $c-&gt;etablissement-&gt;timeStampAjout et $c-&gt;etablissement-&gt;facultes seront mises à NULL.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$ordre</span><span class="var-description">: Format: &quot;[{id|numannee|branche|timestampajout|c.{id|code|nom}|e.{id|nom|abrv|timestampajout}|f.{id|nom|abrv|timestampajout}} [,{id|numannee|branche|timestampajout|c.{id|code|nom}|e.{id|nom|abrv|timestampajout}|f.{id|nom|abrv|timestampajout}}[,..]]]&quot;.Ce paramètre décrit l'ordre des champs à respecter lors du tri du résultat. Les préfixes &quot;c.&quot; (cycle), &quot;e.&quot; (etablissement), &quot;f.&quot; (faculte) peuvent être utilisés pour spécifier la table à laquelle appartient ce champs. Exemple: &quot;numannee,e.nom&quot;. Le tri se fait par numéro d'année, puis par nom d'établissement.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$champsCycle</span><span class="var-description">: Format:&quot;{id|code|nom}[,{id|code|nom}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans l'attribut $cycle. Les autres attributs seront mises à NULL. Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;cycle-&gt;id et $c-&gt;cycle-&gt;nom contiendront les informations correspondantes, mais $c-&gt;cycle-&gt;code sera mise à NULL.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsupprimerAnnee" id="supprimerAnnee"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method supprimerAnnee</span> (line <span class="line-number">445</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Supprimer l'année identifiée par $id de la base de données.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 1 si l'année a été supprimé avec succés. 0 dans le cas contraire.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			supprimerAnnee
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$id</span><span class="var-description">: L'identifiant de l'année à supprimer.</span>			</li>
+				</ul>
+		
+			
+	</div>
+
+<a name="methodmettreDansFacEtab" id="mettreDansFacEtab"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">mettreDansFacEtab</span> (line <span class="line-number">466</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Modifier le champs idfac-etab de l'année dans la base de données.</p>
+<p class="description"><p>A la suite de l'appel de cette méthtode, les attributs $faculte-&gt;id et $etablissement-&gt;id seront changés pour refléter le changement. Néaumoins, les attributs $faculte et $etablissement ne seront pas rechargés intégralement. Ceci doit être fait manuellement en utilisant les méthodes Faculte::chargerFaculte et Etablissement::chargerFaculte avec paramètre l'identifiant de $faculte et $etablissement respectivement.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 1 si l'année a été supprimé avec succés. 0 dans le cas contraire.</li>
+				<li><span class="field">see:</span> <a href="../Catalogue/Faculte.html#methodchargerFaculte">Faculte::chargerFaculte()</a>, <a href="../Catalogue/Etablissement.html#methodchargerEtablissement">Etablissement::chargerEtablissement()</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			mettreDansFacEtab
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$idFacEtab</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$idFacEtab</span><span class="var-description">: L'identifiant de la nouvelle faculté-établissement.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmodifierAnnee" id="modifierAnnee"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">modifierAnnee</span> (line <span class="line-number">423</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Modifier les informations d'une année dans la base de données.</p>
+<p class="description"><p>L'attribut $id contient l'identifiant de l'année à modifier. Les attributs $num et $nom ainsi que l'attribut $cycle-&gt;id contiennent les modifications à apporter. Il faut passer par la méthode mettreDansFacEtab pour modifier l'identifiant de la faculté-établissement de l'année.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 1 si l'année a été modifié avec succés. 0 dans le cas contraire.  -1 dans le cas d'échec de la requête (Ex: identifiant du cycle inexistant).</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			modifierAnnee
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodretournerNomComplet" id="retournerNomComplet"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">retournerNomComplet</span> (line <span class="line-number">398</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Extraire le nom complet de l'année sous forme d'une chaîne de caractères.</p>
+<p class="description"><p>Cette chaîne de caractères est composée du numéro de l'année suivi de son suffixe (&quot;ére ou éme&quot;), du nom du cycle, du nom de la faculté,  de la branche, et de l'abréviation de l'établissement mis entre crochet. Exemple: 3éme année ingéniorat éléctronique instrumentation [USTHB],  1ére année Licence LMD informatique MI [USTHB].</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Le nom complet de l'année.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			retournerNomComplet
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Wed, 21 Oct 2009 23:16:53 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Chapitre</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Chapitre</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Classe pour gérer la table chapitre.</p>
+<p class="description"><p>Elle est utilisée pour l'ajout, la modification, la suppression, et la lecture d'éléments à partir  de la table chapitre.</p></p>
+	<ul class="tags">
+				<li><span class="field">see:</span> <a href="../Catalogue/Module.html">Module</a></li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_core---chapitre.php.html">/core/chapitre.php</a> (line <span class="field">44</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																								<div class="var-title">
+					<span class="var-type">integer</span>
+					<a href="#$id" title="details" class="var-name">$id</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type"><a href="../Catalogue/Module.html">Module</a></span>
+					<a href="#$module" title="details" class="var-name">$module</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$nom" title="details" class="var-name">$nom</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">integer</span>
+					<a href="#$num" title="details" class="var-name">$num</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">integer</span>
+					<a href="#$timeStampAjout" title="details" class="var-name">$timeStampAjout</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+												<div class="method-definition">
+					static 						<span class="method-result">integer</span>
+										<a href="#ajouterChapitre" title="details" class="method-name">ajouterChapitre</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$num</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$nom</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$idModule</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result"><a href="../Catalogue/Chapitre.html">Chapitre</a>|NULL</span>
+										<a href="#chargerChapitre" title="details" class="method-name">chargerChapitre</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">Chapitre[]|integer</span>
+										<a href="#listerChapitre" title="details" class="method-name">listerChapitre</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$champs</span> = <span class="var-default">&quot;id,num,nom,timestampajout&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$bornes</span> = <span class="var-default">&quot;0,30&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$ordre</span> = <span class="var-default">&quot;nom&quot;</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$idModule</span> = <span class="var-default">&quot;0&quot;</span>])
+									</div>
+																								<div class="method-definition">
+					static 						<span class="method-result">integer</span>
+										<a href="#supprimerChapitre" title="details" class="method-name">supprimerChapitre</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+									</div>
+								
+																																				<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#modifierChapitre" title="details" class="method-name">modifierChapitre</a>
+										()
+									</div>
+																</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$id" id="$id"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$id</span>
+						(line <span class="line-number">49</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> L'identifiant du chapitre.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$module" id="$module"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type"><a href="../Catalogue/Module.html">Module</a></span>
+			<span class="var-name">$module</span>
+						(line <span class="line-number">58</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> Le module auquel le chapitre appartient.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$nom" id="$nom"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$nom</span>
+						(line <span class="line-number">55</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> Le nom du chapitre.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$num" id="$num"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$num</span>
+						(line <span class="line-number">52</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> Le numéro du chapitre.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$timeStampAjout" id="$timeStampAjout"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">integer</span>
+			<span class="var-name">$timeStampAjout</span>
+						(line <span class="line-number">61</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> La date d'ajout du chapitre.</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodajouterChapitre" id="ajouterChapitre"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method ajouterChapitre</span> (line <span class="line-number">105</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Ajouter un nouveau chapitre dans la base de données.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> L'identifiant du nouveau chapitre s'il a été ajouté avec succés. 0 dans le cas contraire.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			ajouterChapitre
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$num</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$nom</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$idModule</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$num</span><span class="var-description">: Le numéro du chapitre à ajouter.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$nom</span><span class="var-description">: Le nom du chapitre à ajouter.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$idModule</span><span class="var-description">: L'identifiant du module auquel le chapitre à ajouter appartient.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodchargerChapitre" id="chargerChapitre"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method chargerChapitre</span> (line <span class="line-number">72</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Créer à partir de la base de données un objet Chapitre dont l'identifiant est $id.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> L'objet Chapitre identifié par $id. NULL si un tel identifiant n'existe pas.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result"><a href="../Catalogue/Chapitre.html">Chapitre</a>|NULL</span>
+		<span class="method-name">
+			chargerChapitre
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$id</span><span class="var-description">: L'identifiant du chapitre à charger.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodlisterChapitre" id="listerChapitre"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method listerChapitre</span> (line <span class="line-number">145</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Lister les chapitres contenus dans la base de données et les mettre dans un tableau d'objets de type Chapitre.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Un tableau contenant la liste des chapitres si la requête n'a pas échoué. -1 dans le cas contraire.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Chapitre[]|integer</span>
+		<span class="method-name">
+			listerChapitre
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$champs</span> = <span class="var-default">&quot;id,num,nom,timestampajout&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$bornes</span> = <span class="var-default">&quot;0,30&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$ordre</span> = <span class="var-default">&quot;nom&quot;</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$idModule</span> = <span class="var-default">&quot;0&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$champs</span><span class="var-description">: Format:&quot;{id|num|nom|timestampajout}[,{id|num|nom|timestampajout}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans chaque objet du tableau retourné. Les autres attributs(sauf l'attribut $module) seront mises à NULL. Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;id et $c-&gt;nom contiendront les informations correspondantes, mais $c-&gt;num et $c-&gt;timeStampAjout seront mises à NULL.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$bornes</span><span class="var-description">: Format:&quot;[{entier1},{entier2}]&quot;. Si le paramètre est spécifié, la fonction retournera les {entier2} premiers éléments a partir du {entier1}iéme résultat de la requête SQL. C'est le paramétre &quot;LIMIT&quot; de la requête SQL. Exemple: &quot;1,15&quot;. On retourne le 2éme, 3éme,......, 16éme résulat de la requête.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$ordre</span><span class="var-description">: Format:&quot;[{id|num|nom|timestampajout|idmodule}[,{id|num|nom|timestampajout|idmodule}[,...]]]&quot;. Ce paramètre décrit l'ordre des champs à respecter lors du tri du résultat. Exemple: &quot;num,nom&quot;. Le tri se fait par numéro de chapitre, puis par nom de chapitre.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$idModule</span><span class="var-description">: Une valeure O ou &quot;&quot; est équivalente à lister tous les chapitres. Pour les autres valeurs entières, seules les chapitres appartenant au module identifié par ce paramètre ($idModule)seront listés.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsupprimerChapitre" id="supprimerChapitre"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method supprimerChapitre</span> (line <span class="line-number">217</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Supprimer le chapitre identifié par $id de la base de données.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 1 si le chapitre a été supprimé avec succés. 0 dans le cas d'échec de la requête ou dans le cas d'inexistance de l'identifiant dans la base de données.</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			supprimerChapitre
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$id</span><span class="var-description">: L'identifiant du chapitre à supprimer.</span>			</li>
+				</ul>
+		
+			
+	</div>
+
+<a name="methodmodifierChapitre" id="modifierChapitre"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">modifierChapitre</span> (line <span class="line-number">195</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Modifier les informations d'un chapitre dans la base de données.</p>
+<p class="description"><p>L'attribut $id contient l'identifiant du chapitre à modifier. Les attributs $num et $nom ainsi que l'attribut $module-&gt;id contiennent les modifications à apporter.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 1 si le chapitre a été modifié avec succés. 0 dans le cas où les nouvelles et anciennes valeurs sont identiques. -1 dans le cas d'échec de la requête (Ex: identifiant du module inexistant).</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			modifierChapitre
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Wed, 21 Oct 2009 23:16:54 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>
