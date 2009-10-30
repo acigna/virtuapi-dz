@@ -23,12 +23,12 @@
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Classe pour gérer la table annee.</p>
-<p class="description"><p>Elle est utilisée pour l'ajout, la modification, la suppression, et la lecture d'éléments à partir  de la table annee.</p></p>
+<p class="description"><p>Classe pour gérer la table annee. Elle est utilisée pour l'ajout, la modification, la suppression, et la lecture d'éléments à partir de la table annee.</p></p>
 	<ul class="tags">
 				<li><span class="field">see:</span> <a href="../Catalogue/Cycle.html">Cycle</a>, <a href="../Catalogue/Module.html">Module</a>, <a href="../Catalogue/Faculte.html">Faculte</a>, <a href="../Catalogue/Etablissement.html">Etablissement</a></li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_core---annee.php.html">/core/annee.php</a> (line <span class="field">43</span>)
+			Located in <a class="field" href="_src---catalogue---core---annee.php.html">/src/catalogue/core/annee.php</a> (line <span class="field">43</span>)
 		</p>
 		
 				
@@ -319,6 +319,7 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Ajouter une nouvelle année dans la base de données.</p>
+<p class="description"><p>Ajouter une nouvelle année dans la base de données.</p></p>
 	<ul class="tags">
 				<li><span class="field">return:</span> L'identifiant de la nouvelle année si elle a été ajouté avec succés. 0 dans le cas contraire.</li>
 			</ul>
@@ -358,6 +359,7 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Créer à partir de la base de données un objet Annee dont l'identifiant est $id.</p>
+<p class="description"><p>Créer à partir de la base de données un objet Annee dont l'identifiant est $id.</p></p>
 	<ul class="tags">
 				<li><span class="field">return:</span> L'objet Annee identifié par $id. NULL si un tel identifiant n'existe pas.</li>
 			</ul>
@@ -388,6 +390,7 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Lister les années contenus dans la base de données et les mettre dans un tableau d'objets de type Annee.</p>
+<p class="description"><p>Lister les années contenus dans la base de données et les mettre dans un tableau d'objets de type Annee.</p></p>
 	<ul class="tags">
 				<li><span class="field">return:</span> Un tableau contenant la liste des années. si la requête n'a pas échoué. -1 dans le cas contraire.</li>
 			</ul>
@@ -404,28 +407,28 @@
 			<ul class="parameters">
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$champsAnnee</span><span class="var-description">: Format:&quot;{id|numannee|branche|timestampajout}[,{id|numannee|branche|timestampajout}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans chaque objet du tableau retourné. Les autres attributs(sauf l'attribut $etablissement,$faculte et $annee) seront mises à NULL. Exemple: &quot;id,numannee&quot;, si $c est un élément du tableau retourné, $c-&gt;id et $c-&gt;numAnnee contiendront les informations correspondantes, mais $c-&gt;branche et $c-&gt;timeStampAjout seront mises à NULL.</span>			</li>
+				<span class="var-name">$champsAnnee</span><span class="var-description">: Format:&quot;{id|numannee|branche|timestampajout}[,{id|numannee|branche|timestampajout}[,...]]&quot;.Ce paramétre contient le nom des attributs qui seront initialisés dans chaque objet du tableau retourné.Les autres attributs(sauf l'attribut $etablissement,$faculte et $annee) seront mises à NULL.Exemple: &quot;id,numannee&quot;, si $c est un élément du tableau retourné, $c-&gt;id et $c-&gt;numAnnee contiendrontles informations correspondantes, mais $c-&gt;branche et $c-&gt;timeStampAjout seront mises à NULL.</span>			</li>
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$bornes</span><span class="var-description">: Format:&quot;[{entier1},{entier2}]&quot;. Si le paramètre est spécifié, la fonction retournera les {entier2} premiers éléments a partir du {entier1}iéme résultat de la requête SQL. C'est le paramétre &quot;LIMIT&quot; de la requête SQL. Exemple: &quot;1,15&quot;. On retourne le 2éme, 3éme,......, 16éme résulat de la requête.</span>			</li>
+				<span class="var-name">$bornes</span><span class="var-description">: Format:&quot;[{entier1},{entier2}]&quot;. Si le paramètre est spécifié, la fonction retournera les {entier2}premiers éléments a partir du {entier1}iéme résultat de la requête SQL. C'est le paramétre &quot;LIMIT&quot; de la requête SQL.Exemple: &quot;1,15&quot;. On retourne le 2éme, 3éme,......, 16éme résulat de la requête.</span>			</li>
 					<li>
 				<span class="var-type">integer</span>
-				<span class="var-name">$idEtablissement</span><span class="var-description">: Une valeure O ou &quot;&quot; est équivalente à lister les années sans se restreindre à un établissement particulièr. Pour les autres valeurs entières, seules les années appartenant à l'établissement identifié par ce paramètre ($idEtablissement)seront listés.</span>			</li>
+				<span class="var-name">$idEtablissement</span><span class="var-description">: Une valeure O ou &quot;&quot; est équivalente à lister les années sans se restreindre à un établissement particulièr.Pour les autres valeurs entières, seules les années appartenant à l'établissement identifié par ce paramètre($idEtablissement)seront listés.</span>			</li>
 					<li>
 				<span class="var-type">integer</span>
-				<span class="var-name">$idFaculte</span><span class="var-description">: Une valeure O ou &quot;&quot; est équivalente à lister les années sans se restreindre à une faculté particulière. Pour les autres valeurs entières, seules les années appartenant à la faculté identifiée par ce paramètre ($idFaculte)seront listés.</span>			</li>
+				<span class="var-name">$idFaculte</span><span class="var-description">: Une valeure O ou &quot;&quot; est équivalente à lister les années sans se restreindre à une faculté particulière.Pour les autres valeurs entières, seules les années appartenant à la faculté identifiée par ce paramètre($idFaculte)seront listés.</span>			</li>
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$champsFaculte</span><span class="var-description">: Format:&quot;{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans l'attribut $faculte. Les autres attributs seront mises à NULL. Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;faculte-&gt;id et $c-&gt;faculte-&gt;nom contiendront les informations correspondantes, mais $c-&gt;faculte-&gt;abrv, $c-&gt;faculte-&gt;timeStampAjout et $c-&gt;faculte-&gt;etablissements seront mises à NULL.</span>			</li>
+				<span class="var-name">$champsFaculte</span><span class="var-description">: Format:&quot;{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]&quot;.Ce paramétre contient le nom des attributs qui seront initialisés dans l'attribut $faculte.Les autres attributs seront mises à NULL.Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;faculte-&gt;id et $c-&gt;faculte-&gt;nom contiendrontles informations correspondantes, mais $c-&gt;faculte-&gt;abrv, $c-&gt;faculte-&gt;timeStampAjout et $c-&gt;faculte-&gt;etablissements seront mises à NULL.</span>			</li>
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$champsEtablissement</span><span class="var-description">: Format:&quot;{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans l'attribut $faculte. Les autres attributs seront mises à NULL. Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;etablissement-&gt;id et $c-&gt;etablissement-&gt;nom contiendront les informations correspondantes, mais $c-&gt;etablissement-&gt;abrv, $c-&gt;etablissement-&gt;timeStampAjout et $c-&gt;etablissement-&gt;facultes seront mises à NULL.</span>			</li>
+				<span class="var-name">$champsEtablissement</span><span class="var-description">: Format:&quot;{id|nom|abrv|timestampajout}[,{id|nom|abrv|timestampajout}[,...]]&quot;.Ce paramétre contient le nom des attributs qui seront initialisés dans l'attribut $faculte.Les autres attributs seront mises à NULL.Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;etablissement-&gt;id et $c-&gt;etablissement-&gt;nom contiendrontles informations correspondantes, mais $c-&gt;etablissement-&gt;abrv, $c-&gt;etablissement-&gt;timeStampAjoutet $c-&gt;etablissement-&gt;facultes seront mises à NULL.</span>			</li>
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$ordre</span><span class="var-description">: Format: &quot;[{id|numannee|branche|timestampajout|c.{id|code|nom}|e.{id|nom|abrv|timestampajout}|f.{id|nom|abrv|timestampajout}} [,{id|numannee|branche|timestampajout|c.{id|code|nom}|e.{id|nom|abrv|timestampajout}|f.{id|nom|abrv|timestampajout}}[,..]]]&quot;.Ce paramètre décrit l'ordre des champs à respecter lors du tri du résultat. Les préfixes &quot;c.&quot; (cycle), &quot;e.&quot; (etablissement), &quot;f.&quot; (faculte) peuvent être utilisés pour spécifier la table à laquelle appartient ce champs. Exemple: &quot;numannee,e.nom&quot;. Le tri se fait par numéro d'année, puis par nom d'établissement.</span>			</li>
+				<span class="var-name">$ordre</span><span class="var-description">: Format: &quot;[{id|numannee|branche|timestampajout|c.{id|code|nom}|e.{id|nom|abrv|timestampajout}|f.{id|nom|abrv|timestampajout}}[,{id|numannee|branche|timestampajout|c.{id|code|nom}|e.{id|nom|abrv|timestampajout}|f.{id|nom|abrv|timestampajout}}[,..]]]&quot;.Ce paramètre décritl'ordre des champs à respecter lors du tri du résultat. Les préfixes &quot;c.&quot; (cycle), &quot;e.&quot; (etablissement), &quot;f.&quot; (faculte) peuvent êtreutilisés pour spécifier la table à laquelle appartient ce champs. Exemple: &quot;numannee,e.nom&quot;. Le tri se fait par numéro d'année, puis par nomd'établissement.</span>			</li>
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$champsCycle</span><span class="var-description">: Format:&quot;{id|code|nom}[,{id|code|nom}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans l'attribut $cycle. Les autres attributs seront mises à NULL. Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;cycle-&gt;id et $c-&gt;cycle-&gt;nom contiendront les informations correspondantes, mais $c-&gt;cycle-&gt;code sera mise à NULL.</span>			</li>
+				<span class="var-name">$champsCycle</span><span class="var-description">: Format:&quot;{id|code|nom}[,{id|code|nom}[,...]]&quot;.Ce paramétre contient le nom des attributs qui seront initialisés dans l'attribut $cycle.Les autres attributs seront mises à NULL.Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;cycle-&gt;id et $c-&gt;cycle-&gt;nom contiendrontles informations correspondantes, mais $c-&gt;cycle-&gt;code sera mise à NULL.</span>			</li>
 				</ul>
 		
 			
@@ -439,6 +442,7 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Supprimer l'année identifiée par $id de la base de données.</p>
+<p class="description"><p>Supprimer l'année identifiée par $id de la base de données.</p></p>
 	<ul class="tags">
 				<li><span class="field">return:</span> 1 si l'année a été supprimé avec succés. 0 dans le cas contraire.</li>
 			</ul>
@@ -470,7 +474,7 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Modifier le champs idfac-etab de l'année dans la base de données.</p>
-<p class="description"><p>A la suite de l'appel de cette méthtode, les attributs $faculte-&gt;id et $etablissement-&gt;id seront changés pour refléter le changement. Néaumoins, les attributs $faculte et $etablissement ne seront pas rechargés intégralement. Ceci doit être fait manuellement en utilisant les méthodes Faculte::chargerFaculte et Etablissement::chargerFaculte avec paramètre l'identifiant de $faculte et $etablissement respectivement.</p></p>
+<p class="description"><p>Modifier le champs idfac-etab de l'année dans la base de données.A la suite de l'appel de cette méthtode, les attributs $faculte-&gt;id et $etablissement-&gt;id seront changés pour refléter le changement.Néaumoins, les attributs $faculte et $etablissement ne seront pas rechargés intégralement.Ceci doit être fait manuellement en utilisant les méthodes Faculte::chargerFaculte et Etablissement::chargerFaculte avec paramètre l'identifiantde $faculte et $etablissement respectivement.</p></p>
 	<ul class="tags">
 				<li><span class="field">return:</span> 1 si l'année a été supprimé avec succés. 0 dans le cas contraire.</li>
 				<li><span class="field">see:</span> <a href="../Catalogue/Faculte.html#methodchargerFaculte">Faculte::chargerFaculte()</a>, <a href="../Catalogue/Etablissement.html#methodchargerEtablissement">Etablissement::chargerEtablissement()</a></li>
@@ -501,9 +505,9 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Modifier les informations d'une année dans la base de données.</p>
-<p class="description"><p>L'attribut $id contient l'identifiant de l'année à modifier. Les attributs $num et $nom ainsi que l'attribut $cycle-&gt;id contiennent les modifications à apporter. Il faut passer par la méthode mettreDansFacEtab pour modifier l'identifiant de la faculté-établissement de l'année.</p></p>
+<p class="description"><p>Modifier les informations d'une année dans la base de données.L'attribut $id contient l'identifiant de l'année à modifier.Les attributs $num et $nom ainsi que l'attribut $cycle-&gt;id contiennent les modifications à apporter.Il faut passer par la méthode mettreDansFacEtab pour modifier l'identifiant de la faculté-établissement de l'année.</p></p>
 	<ul class="tags">
-				<li><span class="field">return:</span> 1 si l'année a été modifié avec succés. 0 dans le cas contraire.  -1 dans le cas d'échec de la requête (Ex: identifiant du cycle inexistant).</li>
+				<li><span class="field">return:</span> 1 si l'année a été modifié avec succés. 0 dans le cas contraire.  -1 dans le cas d'échec de la requête (Ex: identifiant du cycleinexistant).</li>
 			</ul>
 	
 	<div class="method-signature">
@@ -526,7 +530,7 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Extraire le nom complet de l'année sous forme d'une chaîne de caractères.</p>
-<p class="description"><p>Cette chaîne de caractères est composée du numéro de l'année suivi de son suffixe (&quot;ére ou éme&quot;), du nom du cycle, du nom de la faculté,  de la branche, et de l'abréviation de l'établissement mis entre crochet. Exemple: 3éme année ingéniorat éléctronique instrumentation [USTHB],  1ére année Licence LMD informatique MI [USTHB].</p></p>
+<p class="description"><p>Extraire le nom complet de l'année sous forme d'une chaîne de caractères. Cette chaîne de caractères est composée du numéro de l'année suivi de son suffixe (&quot;ére ou éme&quot;), du nom du cycle, du nom de la faculté, de la branche, et de l'abréviation de l'établissement mis entre crochet. Exemple: 3éme année ingéniorat éléctronique instrumentation [USTHB], 1ére année Licence LMD informatique MI [USTHB].</p></p>
 	<ul class="tags">
 				<li><span class="field">return:</span> Le nom complet de l'année.</li>
 			</ul>
@@ -548,7 +552,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 21 Oct 2009 23:16:53 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Wed, 28 Oct 2009 16:31:33 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>

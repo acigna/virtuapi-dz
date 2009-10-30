@@ -23,12 +23,12 @@
 	<div class="info-box-body">
         		<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Classe pour gérer la table chapitre.</p>
-<p class="description"><p>Elle est utilisée pour l'ajout, la modification, la suppression, et la lecture d'éléments à partir  de la table chapitre.</p></p>
+<p class="description"><p>Classe pour gérer la table chapitre. Elle est utilisée pour l'ajout, la modification, la suppression, et la lecture d'éléments à partir de la table chapitre.</p></p>
 	<ul class="tags">
 				<li><span class="field">see:</span> <a href="../Catalogue/Module.html">Module</a></li>
 			</ul>
 		<p class="notes">
-			Located in <a class="field" href="_core---chapitre.php.html">/core/chapitre.php</a> (line <span class="field">44</span>)
+			Located in <a class="field" href="_src---catalogue---core---chapitre.php.html">/src/catalogue/core/chapitre.php</a> (line <span class="field">44</span>)
 		</p>
 		
 				
@@ -259,6 +259,7 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Ajouter un nouveau chapitre dans la base de données.</p>
+<p class="description"><p>Ajouter un nouveau chapitre dans la base de données.</p></p>
 	<ul class="tags">
 				<li><span class="field">return:</span> L'identifiant du nouveau chapitre s'il a été ajouté avec succés. 0 dans le cas contraire.</li>
 			</ul>
@@ -295,6 +296,7 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Créer à partir de la base de données un objet Chapitre dont l'identifiant est $id.</p>
+<p class="description"><p>Créer à partir de la base de données un objet Chapitre dont l'identifiant est $id.</p></p>
 	<ul class="tags">
 				<li><span class="field">return:</span> L'objet Chapitre identifié par $id. NULL si un tel identifiant n'existe pas.</li>
 			</ul>
@@ -325,6 +327,7 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Lister les chapitres contenus dans la base de données et les mettre dans un tableau d'objets de type Chapitre.</p>
+<p class="description"><p>Lister les chapitres contenus dans la base de données et les mettre dans un tableau d'objets de type Chapitre.</p></p>
 	<ul class="tags">
 				<li><span class="field">return:</span> Un tableau contenant la liste des chapitres si la requête n'a pas échoué. -1 dans le cas contraire.</li>
 			</ul>
@@ -341,16 +344,16 @@
 			<ul class="parameters">
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$champs</span><span class="var-description">: Format:&quot;{id|num|nom|timestampajout}[,{id|num|nom|timestampajout}[,...]]&quot;. Ce paramétre contient le nom des attributs qui seront initialisés dans chaque objet du tableau retourné. Les autres attributs(sauf l'attribut $module) seront mises à NULL. Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;id et $c-&gt;nom contiendront les informations correspondantes, mais $c-&gt;num et $c-&gt;timeStampAjout seront mises à NULL.</span>			</li>
+				<span class="var-name">$champs</span><span class="var-description">: Format:&quot;{id|num|nom|timestampajout}[,{id|num|nom|timestampajout}[,...]]&quot;.Ce paramétre contient le nom des attributs qui seront initialisés dans chaque objet du tableau retourné.Les autres attributs(sauf l'attribut $module) seront mises à NULL.Exemple: &quot;id,nom&quot;, si $c est un élément du tableau retourné, $c-&gt;id et $c-&gt;nom contiendrontles informations correspondantes, mais $c-&gt;num et $c-&gt;timeStampAjout seront mises à NULL.</span>			</li>
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$bornes</span><span class="var-description">: Format:&quot;[{entier1},{entier2}]&quot;. Si le paramètre est spécifié, la fonction retournera les {entier2} premiers éléments a partir du {entier1}iéme résultat de la requête SQL. C'est le paramétre &quot;LIMIT&quot; de la requête SQL. Exemple: &quot;1,15&quot;. On retourne le 2éme, 3éme,......, 16éme résulat de la requête.</span>			</li>
+				<span class="var-name">$bornes</span><span class="var-description">: Format:&quot;[{entier1},{entier2}]&quot;. Si le paramètre est spécifié, la fonction retournera les {entier2}premiers éléments a partir du {entier1}iéme résultat de la requête SQL. C'est le paramétre &quot;LIMIT&quot; de la requête SQL.Exemple: &quot;1,15&quot;. On retourne le 2éme, 3éme,......, 16éme résulat de la requête.</span>			</li>
 					<li>
 				<span class="var-type">string</span>
-				<span class="var-name">$ordre</span><span class="var-description">: Format:&quot;[{id|num|nom|timestampajout|idmodule}[,{id|num|nom|timestampajout|idmodule}[,...]]]&quot;. Ce paramètre décrit l'ordre des champs à respecter lors du tri du résultat. Exemple: &quot;num,nom&quot;. Le tri se fait par numéro de chapitre, puis par nom de chapitre.</span>			</li>
+				<span class="var-name">$ordre</span><span class="var-description">: Format:&quot;[{id|num|nom|timestampajout|idmodule}[,{id|num|nom|timestampajout|idmodule}[,...]]]&quot;.Ce paramètre décrit l'ordre des champs à respecter lors du tri du résultat.Exemple: &quot;num,nom&quot;. Le tri se fait par numéro de chapitre, puis par nom de chapitre.</span>			</li>
 					<li>
 				<span class="var-type">integer</span>
-				<span class="var-name">$idModule</span><span class="var-description">: Une valeure O ou &quot;&quot; est équivalente à lister tous les chapitres. Pour les autres valeurs entières, seules les chapitres appartenant au module identifié par ce paramètre ($idModule)seront listés.</span>			</li>
+				<span class="var-name">$idModule</span><span class="var-description">: Une valeure O ou &quot;&quot; est équivalente à lister tous les chapitres.Pour les autres valeurs entières, seules les chapitres appartenant au module identifié par ce paramètre($idModule)seront listés.</span>			</li>
 				</ul>
 		
 			
@@ -364,8 +367,9 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Supprimer le chapitre identifié par $id de la base de données.</p>
+<p class="description"><p>Supprimer le chapitre identifié par $id de la base de données.</p></p>
 	<ul class="tags">
-				<li><span class="field">return:</span> 1 si le chapitre a été supprimé avec succés. 0 dans le cas d'échec de la requête ou dans le cas d'inexistance de l'identifiant dans la base de données.</li>
+				<li><span class="field">return:</span> 1 si le chapitre a été supprimé avec succés. 0 dans le cas d'échec de la requête ou dans le cas d'inexistance de l'identifiantdans la base de données.</li>
 			</ul>
 	
 	<div class="method-signature">
@@ -395,9 +399,9 @@
 	
 	<!-- ========== Info from phpDoc block ========= -->
 <p class="short-description">Modifier les informations d'un chapitre dans la base de données.</p>
-<p class="description"><p>L'attribut $id contient l'identifiant du chapitre à modifier. Les attributs $num et $nom ainsi que l'attribut $module-&gt;id contiennent les modifications à apporter.</p></p>
+<p class="description"><p>Modifier les informations d'un chapitre dans la base de données.L'attribut $id contient l'identifiant du chapitre à modifier.Les attributs $num et $nom ainsi que l'attribut $module-&gt;id contiennent les modifications à apporter.</p></p>
 	<ul class="tags">
-				<li><span class="field">return:</span> 1 si le chapitre a été modifié avec succés. 0 dans le cas où les nouvelles et anciennes valeurs sont identiques. -1 dans le cas d'échec de la requête (Ex: identifiant du module inexistant).</li>
+				<li><span class="field">return:</span> 1 si le chapitre a été modifié avec succés. 0 dans le cas où les nouvelles et anciennes valeurs sont identiques. -1 dans le casd'échec de la requête (Ex: identifiant du module inexistant).</li>
 			</ul>
 	
 	<div class="method-signature">
@@ -417,7 +421,7 @@
 
 
 	<p class="notes" id="credit">
-		Documentation generated on Wed, 21 Oct 2009 23:16:54 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Wed, 28 Oct 2009 16:31:33 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</p>
 	</div></body>
 </html>
