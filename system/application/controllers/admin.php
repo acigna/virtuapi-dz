@@ -15,7 +15,7 @@ class Admin extends Controller
 		$this->load->model('catalogue/module','module');
 		$this->load->model('catalogue/chapitre','chapitre');
 		$this->load->model('membre');
-		$this->load->model('contenu/coursmoderee','cours');
+		$this->load->model('contenu/coursmodere','cours');
 		$this->load->model('contenu/sujetsmoderee','sujets');
 		$this->load->model('contenu/tdmoderee','td');
 	}
@@ -223,7 +223,7 @@ class Admin extends Controller
 	function moderation_specialite($id)
 	{
 		$specialite=$this->oms->verifSpecialite($this,$id); //Verifier l'existence de la spécialité 
-	  
+	        
 		$this->oms->partie_haute('./../../../',"Page de modération de contenus",$this);
 		
 		//Vérifier l'accés à cette page
@@ -232,7 +232,7 @@ class Admin extends Controller
         	$this->_verifierModSpecialite($id,$idUser);
           	        	           	        
         	$contenu=$this->load->view('admin/moderation_specialite',
-        					array("specialite"=>$specialite->NomSpecialite,"nbr_cours"=>$this->cours->getNbrCoursMod($id),
+        					array("specialite"=>$specialite->nom,"nbr_cours"=>$this->cours->getNbrCoursMod($id),
           	        			    "nbr_sujets"=>$this->sujets->getNbrSujetsMod($id), "nbr_td"=>$this->td->getNbrTdMod($id),
           	        			    "id"=>$id),true);          	  	
           	echo $contenu;
@@ -242,17 +242,42 @@ class Admin extends Controller
 	
 	function moderer_cours($idspecialite=0)
 	{
-		$specialite=$this->oms->verifSpecialite($this,$id); //Verifier l'existence de la spécialité 
-	  
-	  	
-		$this->oms->partie_haute('./../../../',"Page de modération des cours de la spécialité {$specialite['nom']}",$this);
+		$specialite=$this->oms->verifSpecialite($this,$idspecialite); //Verifier l'existence de la spécialité 
+	  	  	
+		$this->oms->partie_haute('./../../../',"Page de modération des cours de la spécialité {$specialite->nom}",$this);
 		
 		//Vérifier l'accés à cette page
 		$idUser=$this->oms->verifierConnecte($this);
 		$this->_verifierModerateur($idUser);          		
-        	$this->_verifierModSpecialite($id,$idUser);
+        	$this->_verifierModSpecialite($idspecialite,$idUser);
         	
-	   
+        	//Traiter les requêtes
+        	$action=$this->input->post("action");
+        	$cible=$this->input->post("cible");
+        	$notification="" ;
+        	
+        	switch($action)
+        	{
+        		case "valider":
+        			       $this->cours->validerCoursMod($cible);
+        		               $notification="Cours validé avec succés";
+        		  	       break;
+        		
+        		case "refuser":
+        		               //Supprimer le cours à modérer
+        		               $notification="Cours supprimé avec succés";
+        		               $this->cours->refuserCoursMod($cible);  
+        		               break;      	
+        	
+        	}
+        	
+        	//Récupérer les cours à modérer
+        	$coursMod=$this->cours->getCoursMod($idspecialite);
+        	     	
+        	
+        	$contenu=$this->load->view('admin/moderation_cours',array("coursMod"=>$coursMod, "specialite"=>$specialite->nom,"notification"=>$notification),true);
+        	echo $contenu;
+        	
 		$this->oms->partie_basse($this); 
 	}
 	
