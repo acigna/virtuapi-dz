@@ -6,7 +6,7 @@
 		<?php
 		if (!empty($titre)) //Si le titre est indiqué , on l'affiche entre les balises <title>
 		{
-			echo '<title> Open Mind Students - '.$titre.' </title>';
+			echo '<title> Open Mind Students - '.stripslashes($titre).' </title>';
 		}
 		else //Sinon, on l'écrit title par d�faut
 		{

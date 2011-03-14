@@ -1,8 +1,7 @@
-<div id="colTwo" style="text-align:center;">
-    <h2>Liste de contenus de cours à modérer pour la spécialité <?=$specialite;?></h2>
+    <h2 style='text-align:center;'>Liste de contenus de cours à modérer pour la spécialité <?=stripslashes($specialite);?></h2>
     <div style="text-align:center;"><br/><strong style="color:green;"><?=$notification;?></strong></div>	
 	         <p> 
-			   <table >
+			   <table>
 			    <tr>
 				 <th style="text-align:center;">Publié Par</th>
 				 <th style="text-align:center;">Publié Le</th>
@@ -65,4 +64,3 @@
 		            </table>
 	         </p>
 	  </div>
-	 </div>
