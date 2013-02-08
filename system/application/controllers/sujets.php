@@ -167,6 +167,12 @@ class Sujets extends Controller {
 
 
 
+	function publier()
+	{
+	
+	
+	
+	}
 }
 
 

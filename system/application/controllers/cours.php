@@ -101,9 +101,7 @@ class Cours extends Controller {
         
         function publier()
         {
-         
-          session_start();
-          
+                  
           $this->oms->partie_haute('./../../',"Publier un cours",$this);
                             
           //Verfier si l'utilisateur est connecté
