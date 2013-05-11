@@ -20,3 +20,4 @@ system/application/config/mimes.php
 system/application/config/routes.php
 system/application/config/smileys.php
 system/application/config/user_agents.php
+index.php
