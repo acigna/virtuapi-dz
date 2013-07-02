@@ -8,6 +8,7 @@ class Cours extends Controller {
 	{
 		parent::Controller();	
 		$this->load->library('oms');
+		$this->load->library('generateurCode');
 	}
         
         
@@ -101,7 +102,8 @@ class Cours extends Controller {
         
         function publier()
         {
-                  
+          $captcha = $this->generateurcode->getCaptcha();
+          
           $this->oms->partie_haute('./../../',"Publier un cours",$this);
                             
           //Verfier si l'utilisateur est connecté
@@ -138,7 +140,7 @@ class Cours extends Controller {
 	        }
 	  	
 	  	
-	  	if($_POST['code']!=$_SESSION['code'])
+	  	if($this->generateurcode->checkCaptcha())
 	  	{
 	  	  $code_verif="<p style='color:red;'>*Vous n'avez pas bien répondu à la question du formulaire.</p>";	  	
 	  	}
@@ -268,8 +270,9 @@ class Cours extends Controller {
           
           }
           
-          $contenu=$this->load->view("cours_publier",array('specialites'=>$specialites, 'modules'=>$modules, 'chapitres' => $chapitres, 'error_upload'=>$upload_verif, 
-                                                           'default'=>$default,'error_code'=>$code_verif),true);      
+          $contenu=$this->load->view("cours_publier",array('specialites'=>$specialites, 'modules'=>$modules, 'chapitres' => $chapitres, 
+                                                           'error_upload'=>$upload_verif, 'default'=>$default,'error_code'=>$code_verif, 
+                                                           'captcha'=>$captcha),true);      
           echo $contenu;
           
           $this->oms->partie_basse($this);

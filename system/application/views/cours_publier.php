@@ -101,7 +101,7 @@
 		  <legend><h4>Chemin du contenu(1Mo max):</h4></legend>
 		 <input type="file" name="Cours" />
         </fieldset><br/>
-         <label for="code"><?php  include(base_url()."script/generateurcode.php"); ?>?</label>
+         <label for="code"><?=$captcha ?>?</label>
          <input type="text" name="code" id="code" /><br/><br/><br/>
 	 <div style="text-align:center;"><input type="submit" value="  Publier  " /></div>
 	
