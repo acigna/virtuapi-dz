@@ -4,7 +4,7 @@
     
     class Chapitre extends Model
     {
-	var $id;
+	    var $id;
      	var $numchapitre;
      	var $nomchapitre;
      	var $idmodule;

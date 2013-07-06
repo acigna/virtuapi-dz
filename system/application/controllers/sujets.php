@@ -4,50 +4,39 @@
 
 class Sujets extends Controller {
 
- 	function Sujets()
- 	{
- 	   parent::Controller();	
- 	   $this->load->library('oms');
- 	
- 	}
+    function Sujets()
+    {
+        parent::Controller();
+        $this->load->database();
+        $this->load->library('oms');
+        $this->load->model('catalogue/specialite','specialite');
+        $this->load->model('catalogue/annee','annee');
+    }
  	
  	function Deconnection()
-        {
-          	$this->oms->Deconnection($this);
-        }
-        
-        
-        
-        function annees($idspecialite=0)
-        {
-              if($idspecialite==0)
-                  show_404();
-              $this->load->database();
+    {
+       $this->oms->Deconnection($this);
+    }
+          
+    function annees($idspecialite=0)
+    {
+        //Vérifier l'existance de la spécialité, puis la récupérer 
+        $specialite = $this->oms->verifSpecialite($this, $idspecialite);
 
-  	      $idspecialite=mysql_real_escape_string(htmlentities($idspecialite));
-	      $specialite=mysql_fetch_array(mysql_query("select NomSpecialite from specialite where Id='$idspecialite'"));	
-	      
-	      if(!$specialite) show_404();
-	      
-              $this->oms->partie_haute('./../../../',"Les sujets de la spécialité {$specialite[0]}",$this);
-                      
-  	       //Contenu principal ici   
-               
-               $requete=mysql_query("select * from annee where idspecialite='$idspecialite' order by NomAnnee");
-               
-	       $annees=array();
-	       
-	       while(list($id,$nom)=mysql_fetch_array($requete))
- 	       {
- 	          $annees[$id]=$nom ;
- 	          
- 	       }	
-               
-               $contenu=$this->load->view("annees",array('type'=>'sujets','nom' => $specialite[0], 'annees'=>$annees),true);             	
-               echo $contenu ;
-               $this->oms->partie_basse($this);
+        //Afficher la partie haute du site	    
+        $this->oms->partie_haute('./../../../',"Les sujets de la spécialité {$specialite->nom}",$this);
+        
+        //Récupérer la liste des années de cette spécialité
+        $annees = $this->annee->listerAnnees($idspecialite);
+        
+        //Afficher le contenu principal               
+        $contenu=$this->load->view("annees",array('type'=>'sujets','nom' => $specialite->nom, 'annees'=>$annees),true);             	
+        echo $contenu ;
+        
+        //Afficher la partie basse du site       
+        $this->oms->partie_basse($this);
 
-        }
+    }
         
         
         function contenu($idannee=0)

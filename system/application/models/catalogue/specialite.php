@@ -23,7 +23,7 @@
     	//Récupérer la spécialité dont l'identifiant est id
     	function getSpecialite($id)
     	{
-    	    $requete=$this->db->query("select id,NomSpecialite as nom from specialite where id='$id'");	
+    	    $requete=$this->db->query("select id, NomSpecialite as nom from specialite where id='$id'");	
     	    $resultat=$requete->result();
     	    
     	    return $resultat;

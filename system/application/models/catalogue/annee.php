@@ -26,6 +26,14 @@
        $requete=$this->db->delete('annee',array("id"=>$id));    	
     }
     
+    //Lister les années d'une spécialité donnée
+    function listerAnnees($ids)
+    { 
+        $id = mysql_real_escape_string(htmlentities($id,ENT_QUOTES,'UTF-8'));
+        return $this->db->query("select id, NomAnnee as nom, IdSpecialite as ids, TimeStampAjout as tsajout from annee where idspecialite='$ids' order by NomAnnee")
+                        ->result();	    
+    }
+    
     //Lister les années avec les spécialités
     function listerAnneesSpec()
     {
