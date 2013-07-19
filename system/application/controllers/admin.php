@@ -108,7 +108,8 @@ class Admin extends Controller
 		         		
 		         			if($action=="supp")
 		         			{      
-		    				       $id=$this->input->post("annee");	    					     			      							       $this->annee->supprimerAnnee($id);
+		    				       $id=$this->input->post("annee");	
+		    				       $this->annee->supprimerAnnee($id);
 		    				       $notification_annee="Année supprimée avec succés";
 		         			       $type_notif_annee="succes";
 		         			}else{		       

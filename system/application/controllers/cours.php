@@ -1,42 +1,45 @@
 <?php
 
-/* Controlleur de la partie cours de Open Mind Students */
+/* Controlleur de la partie cours de VirtUAPI-DZ */
 
-class Cours extends Controller {
+class Cours extends Controller 
+{
 
-	function Cours()
-	{
-		parent::Controller();	
-		$this->load->library('oms');
-		$this->load->library('generateurCode');
-	}
+    function Cours()
+    {
+        parent::Controller();
+        $this->load->database();
+        $this->load->library('oms');
+        $this->load->library('generateurCode');
+        $this->load->model('catalogue/specialite','specialite');
+        $this->load->model('catalogue/annee','annee');        
+    }
         
         
-        function Deconnection()
+    function Deconnection()
+    {
+        $this->oms->Deconnection($this);
+    }
+        
+    function contenu($idannee=0)
+    {
+        if($idannee==0)
+            show_404();
+            
+        $idannee=mysql_real_escape_string(htmlentities($idannee));
+        $annee=mysql_fetch_array(mysql_query("select * from annee where id='$idannee' "));
+            
+        if(!$idannee) show_404();
+            
+        $this->oms->partie_haute('./../../../',"Les cours de la {$annee[1]}",$this);	
+            
+        $cours=array();
+            
+        // Liste des modules 
+        $module = mysql_query("select id,nommodule from module where idannee='$idannee'");
+            
+        while(list($id,$nomM)=mysql_fetch_array($module))
         {
-          	$this->oms->Deconnection($this);
-        }
-        
-        function contenu($idannee=0)
-        {
-            if($idannee==0)
-                show_404();
-            
-            $this->load->database();
-            $idannee=mysql_real_escape_string(htmlentities($idannee));
-            $annee=mysql_fetch_array(mysql_query("select * from annee where id='$idannee' "));
-            
-            if(!$idannee) show_404();
-            
-            $this->oms->partie_haute('./../../../',"Les cours de la {$annee[1]}",$this);	
-            
-            $cours=array();
-            
-            // Liste des modules 
-            	$module=mysql_query("select id,nommodule from module where idannee='$idannee'");
-            
-            while(list($id,$nomM)=mysql_fetch_array($module))
-            {
               $chapitre=mysql_query("select id,nomchapitre,numchapitre from chapitre where idmodule='$id'");
               
               $chapitres=array();
@@ -70,35 +73,24 @@ class Cours extends Controller {
             $this->oms->partie_basse($this);
         }
           
-        function annees($idspecialite=0)
-        {
-              if($idspecialite==0)
-                  show_404();
-              $this->load->database();
+    function annees($idspecialite=0)
+    {
+        //Vérifier l'existance de la spécialité, puis la récupérer 
+        $specialite = $this->oms->verifSpecialite($this, $idspecialite);
 
-  	      $idspecialite=mysql_real_escape_string(htmlentities($idspecialite));
-	      $specialite=mysql_fetch_array(mysql_query("select NomSpecialite from specialite where Id='$idspecialite'"));	
-	      
-	      if(!$specialite) show_404();
-	      
-              $this->oms->partie_haute('./../../../',"Les cours de la spécialité {$specialite[0]}",$this);
-                      
-  	       //Contenu principal ici   
-               
-               $requete=mysql_query("select * from annee where idspecialite='$idspecialite' order by NomAnnee");
-               
-	       $annees=array();
-	       
-	       while(list($id,$nom)=mysql_fetch_array($requete))
- 	       {
- 	          $annees[$id]=$nom ;
- 	       }	
-               
-               $contenu=$this->load->view("annees",array('type'=>'cours','nom' => $specialite[0], 'annees'=>$annees),true);             	
-               echo $contenu ;
-               $this->oms->partie_basse($this);
-
-        }
+        //Afficher la partie haute du site	    
+        $this->oms->partie_haute('./../../../',"Les sujets de la spécialité {$specialite->nom}",$this);
+        
+        //Récupérer la liste des années de cette spécialité
+        $annees = $this->annee->listerAnnees($idspecialite);
+        
+        //Afficher le contenu principal               
+        $contenu=$this->load->view("annees",array('type'=>'cours','nom' => $specialite->nom, 'annees'=>$annees),true);             	
+        echo $contenu ;
+        
+        //Afficher la partie basse du site       
+        $this->oms->partie_basse($this);
+    }
         
         function publier()
         {

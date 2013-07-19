@@ -29,7 +29,7 @@
     //Lister les années d'une spécialité donnée
     function listerAnnees($ids)
     { 
-        $id = mysql_real_escape_string(htmlentities($id,ENT_QUOTES,'UTF-8'));
+        $ids = mysql_real_escape_string(htmlentities($ids,ENT_QUOTES,'UTF-8'));
         return $this->db->query("select id, NomAnnee as nom, IdSpecialite as ids, TimeStampAjout as tsajout from annee where idspecialite='$ids' order by NomAnnee")
                         ->result();	    
     }
