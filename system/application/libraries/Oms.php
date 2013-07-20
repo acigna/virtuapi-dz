@@ -163,6 +163,17 @@ class Oms
 	       
 	  return $specialite_exist[0];     
 	}
+	
+	//Verifier l'existence d'une année
+	function verifAnnee(&$cont,$id)
+	{
+	  $annee_exist=$cont->annee->getAnnee($id);
+	  
+	  if(!$annee_exist)
+	      show_404();
+	       
+	  return $annee_exist[0];     
+	}
 
 }
 

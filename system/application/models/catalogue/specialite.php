@@ -16,15 +16,15 @@
     	//Ajouter une specialite
     	function ajouterSpecialite($nom)
     	{
-    	  $requet=$this->db->insert("specialite",array("nomspecialite"=>$nom,"timestampajout"=>time()));
+    	  $requete = $this->db->insert("specialite",array("nomspecialite"=>$nom,"timestampajout"=>time()));
     	  return $this->db->insert_id();
     	}    	
     	
     	//Récupérer la spécialité dont l'identifiant est id
     	function getSpecialite($id)
     	{
-    	    $requete=$this->db->query("select id, NomSpecialite as nom from specialite where id='$id'");	
-    	    $resultat=$requete->result();
+    	    $requete = $this->db->query("select id, NomSpecialite as nom from specialite where id='$id'");	
+    	    $resultat = $requete->result();
     	    
     	    return $resultat;
     	}

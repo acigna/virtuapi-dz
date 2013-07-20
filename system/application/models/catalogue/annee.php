@@ -8,15 +8,23 @@
     var $nomannee;
     var $idspecialite;
     var $timestampajout;
-    
+      
     //Ajouter une année dans une spécialité
     function ajouterAnnee($nom,$idspecialite)
     {
-    	$nom=mysql_real_escape_string(htmlentities($nom,ENT_QUOTES,'UTF-8'));
-    	$idspecialite=mysql_real_escape_string(htmlentities($idspecialite,ENT_QUOTES,'UTF-8'));
+    	$nom = mysql_real_escape_string(htmlentities($nom,ENT_QUOTES,'UTF-8'));
+    	$idspecialite = mysql_real_escape_string(htmlentities($idspecialite,ENT_QUOTES,'UTF-8'));
         
-        $requet=$this->db->insert("annee",array("nomannee"=>$nom,"idspecialite"=>$idspecialite, "timestampajout"=>time()));
+        $requete = $this->db->insert("annee",array("nomannee"=>$nom,"idspecialite"=>$idspecialite, "timestampajout"=>time()));
     	return $this->db->insert_id();
+    }
+    
+    //Récupérer l'année dont l'identifiant est id
+    function getAnnee($id)
+    {
+        $requete = $this->db->query("select id, nomannee as nom, idspecialite as specialite from annee where id='$id'");
+        $resultat = $requete->result();
+        return $resultat;
     }
     
     //Supprimer l'année dont l'identifiant est id

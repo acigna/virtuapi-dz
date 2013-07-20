@@ -23,15 +23,9 @@ class Cours extends Controller
         
     function contenu($idannee=0)
     {
-        if($idannee==0)
-            show_404();
-            
-        $idannee=mysql_real_escape_string(htmlentities($idannee));
-        $annee=mysql_fetch_array(mysql_query("select * from annee where id='$idannee' "));
-            
-        if(!$idannee) show_404();
-            
-        $this->oms->partie_haute('./../../../',"Les cours de la {$annee[1]}",$this);	
+        $annee = $this->oms->verifAnnee($this, $idannee);
+                    
+        $this->oms->partie_haute('./../../../',"Les cours de la {$annee->nom}",$this);	
             
         $cours=array();
             
@@ -67,7 +61,7 @@ class Cours extends Controller
             }
             
             
-            $contenu=$this->load->view("cours",array('nomannee'=> $annee[1], 'cours' => $cours),true);             	
+            $contenu=$this->load->view("cours",array('nomannee'=> $annee->nom, 'cours' => $cours),true);             	
             echo $contenu ;
             
             $this->oms->partie_basse($this);

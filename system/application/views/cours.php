@@ -28,8 +28,8 @@
       	     		</a><br/>
       	     		Publié par: <?php echo $contenu['publiant']; ?><br/>
       	     		Publié le:  <?php echo date('d/m/Y à H\h:i\m\n',$contenu['pub']); ?><br/>
-      	     		derniére modification le: <?php echo date('d/m/Y à H\h:i\m\n',$contenu['dernmodif']); ?> <br/>
-      	     		type de fichier: <br/>
+      	     		Derniére modification le: <?php echo date('d/m/Y à H\h:i\m\n',$contenu['dernmodif']); ?> <br/>
+      	     		Type de fichier: <?=$contenu['typefichier']; ?><br/>
       	     		
       	     </li>
       	   
