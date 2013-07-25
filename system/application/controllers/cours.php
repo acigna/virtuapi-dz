@@ -12,7 +12,8 @@ class Cours extends Controller
         $this->load->library('oms');
         $this->load->library('generateurCode');
         $this->load->model('catalogue/specialite','specialite');
-        $this->load->model('catalogue/annee','annee');        
+        $this->load->model('catalogue/annee','annee');
+        $this->load->model('contenu/coursaccepte', 'cours');
     }
         
         
@@ -23,49 +24,23 @@ class Cours extends Controller
         
     function contenu($idannee=0)
     {
+        //Vérifier l'existance de l'année
         $annee = $this->oms->verifAnnee($this, $idannee);
-                    
+        
+        //Afficher la partie haute du site            
         $this->oms->partie_haute('./../../../',"Les cours de la {$annee->nom}",$this);	
-            
-        $cours=array();
-            
-        // Liste des modules 
-        $module = mysql_query("select id,nommodule from module where idannee='$idannee'");
-            
-        while(list($id,$nomM)=mysql_fetch_array($module))
-        {
-              $chapitre=mysql_query("select id,nomchapitre,numchapitre from chapitre where idmodule='$id'");
-              
-              $chapitres=array();
-              
-              while(list($id,$nomC,$num)=mysql_fetch_array($chapitre))
-              {
-                $contenu=mysql_query("select  Id,Type,IdPubliant,TypeFichier,TimeStampPub,TimeStampDernModif from cours where idchapitre='$id' order by type asc");
-                
-                $contenus=array();
-                
-                while(list($id,$type,$idpubliant,$typefichier,$pub,$dernModif)=mysql_fetch_array($contenu))
-                {
-                 $nomP=mysql_fetch_array(mysql_query("select * from membre where id='$idpubliant'"));
-                 
-                 $contenus[]=array('id'=>$id,'type'=>$type,'publiant'=>$nomP['Pseudo'],'typefichier'=>$typefichier,'pub'=>$pub,
-                                   'dernmodif'=> $dernModif);                
-                }
-                
-                $chapitres[]=array('nom'=>$nomC,'num'=>$num,'contenus'=>$contenus);              
-              }
-              
-              $cours[]=array('nom'=>$nomM,'chapitres'=>$chapitres);   
-              
-              
-            }
-            
-            
-            $contenu=$this->load->view("cours",array('nomannee'=> $annee->nom, 'cours' => $cours),true);             	
-            echo $contenu ;
-            
-            $this->oms->partie_basse($this);
-        }
+        
+        //Récupérer la liste des cours de l'année
+        $cours = $this->cours->listerCoursAnnee($idannee);
+         
+        //Afficher le contenu principal
+        $contenu=$this->load->view("cours",array('nomannee'=> $annee->nom, 'cours' => $cours),true);             	
+        echo $contenu ;
+        
+        
+        //Afficher la partie basse du site
+        $this->oms->partie_basse($this);
+    }
           
     function annees($idspecialite=0)
     {
