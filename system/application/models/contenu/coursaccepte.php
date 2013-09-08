@@ -1,18 +1,23 @@
 <?php
     class CoursAccepte extends Model
     {
+        //Le constructeur
+        function CoursAccepte() {
+            $CI = & get_instance();
+            $CI->load->model('catalogue/module', 'module');
+            $this->module = $CI->module;
+        }
+        
         //Lister les cours d'une année donnée
-        function listerCoursAnnee($idannee)
-        {
+        function listerCoursAnnee($idannee) {
             $cours=array();
             
             // Liste des modules 
-            $module = mysql_query("select id,nommodule from module where idannee='$idannee'");
-            
-            while(list($id,$nomM)=mysql_fetch_array($module))
+            $modules = $this->module->listerModule($idannee); 
+            foreach($modules as $module)
             {
-                $chapitre=mysql_query("select id,nomchapitre,numchapitre from chapitre where idmodule='$id'");
-                $chapitres=array();
+                $chapitre = mysql_query("select id,nomchapitre,numchapitre from chapitre where idmodule='{$module['id']}'");
+                $chapitres = array();
               
                 while(list($id,$nomC,$num)=mysql_fetch_array($chapitre))
                 {
@@ -30,7 +35,7 @@
                     $chapitres[]=array('nom'=>$nomC,'num'=>$num,'contenus'=>$contenus);              
                 }
               
-                $cours[]=array('nom'=>$nomM,'chapitres'=>$chapitres);   
+                $cours[]=array('nom'=>$module['nom'],'chapitres'=>$chapitres);   
             }
             
             return $cours;
