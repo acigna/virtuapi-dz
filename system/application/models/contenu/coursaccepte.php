@@ -13,11 +13,11 @@
         }
         
         //Lister les cours d'une année donnée
-        function listerCoursAnnee($idannee) {
+        function listerCoursAnnee( $id ) {
             $cours=array();
             
             // Liste des modules 
-            $modules = $this->module->listerModule($idannee); 
+            $modules = $this->module->listerModule($id); 
             foreach( $modules as $module ) {
 
                 //Lister les chapitres
@@ -33,17 +33,17 @@
                         $contenus[$i]['publiant'] = $this->membre->charger($contenu['idpubliant'])->pseudo;
                     }
                     
-                    $chapitres[] = array('nom'=>$chapitre['nom'],'num'=>$chapitre['num'],'contenus'=> $contenus);              
+                    $chapitres[] = array( 'nom'=>$chapitre['nom'],'num'=>$chapitre['num'],'contenus'=> $contenus );              
                 }
               
-                $cours[] = array('nom'=>$module['nom'],'chapitres'=>$chapitres);   
+                $cours[] = array( 'nom'=>$module['nom'],'chapitres'=>$chapitres );   
             }
             
             return $cours;
         }
         
         //Lister les cours d'un chapitre donné
-        function listerCoursChapitre($id) {
+        function listerCoursChapitre( $id ) {
             return $this->db->query("select Id as id,Type as type, IdPubliant as idpubliant, TypeFichier as typefichier, TimeStampPub as pub,
             TimeStampDernModif as dernmodif from cours where idchapitre='$id' order by type asc")->result_array();
         }
