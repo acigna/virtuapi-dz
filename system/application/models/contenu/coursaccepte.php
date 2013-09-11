@@ -3,9 +3,17 @@
     {
         //Le constructeur
         function CoursAccepte() {
+            //Récupérer une instance de CodeIgniter
             $CI = & get_instance();
+            
+            //Charger les modèles            
             $CI->load->model('catalogue/module', 'module');
+            $CI->load->model('catalogue/chapitre', 'chapitre');
+            $CI->load->model('membre');
+            
+            //Affecter les modèles à l'instance de CoursAccepte
             $this->module = $CI->module;
+            $this->chapitre = $CI->chapitre;
         }
         
         //Lister les cours d'une année donnée
@@ -14,31 +22,34 @@
             
             // Liste des modules 
             $modules = $this->module->listerModule($idannee); 
-            foreach($modules as $module)
-            {
-                $chapitre = mysql_query("select id,nomchapitre,numchapitre from chapitre where idmodule='{$module['id']}'");
+            foreach( $modules as $module ) {
+
+                //Lister les chapitres
+                $chapitres_list = $this->chapitre->listerChapitre($module['id']);
                 $chapitres = array();
-              
-                while(list($id,$nomC,$num)=mysql_fetch_array($chapitre))
-                {
-                    $contenu=mysql_query("select  Id,Type,IdPubliant,TypeFichier,TimeStampPub,TimeStampDernModif from cours where idchapitre='$id' order by 
-                                          type asc");
-                    $contenus=array();
-                
-                    while(list($id,$type,$idpubliant,$typefichier,$pub,$dernModif)=mysql_fetch_array($contenu))
-                    {
-                        $nomP=mysql_fetch_array(mysql_query("select * from membre where id='$idpubliant'"));
-                        $contenus[]=array('id'=>$id,'type'=>$type,'publiant'=>$nomP['Pseudo'],'typefichier'=>$typefichier,'pub'=>$pub,
-                                          'dernmodif'=> $dernModif);                
+                foreach($chapitres_list as $chapitre) {
+
+                    //Lister les cours d'un chapitre
+                    $contenus = $this->listerCoursChapitre($chapitre['id']);
+                    
+                    //Intégrer le pseudo du publiant dans chaque contenu (cours)
+                    foreach ( $contenus as $i => $contenu ) {
+                        $contenus[$i]['publiant'] = $this->membre->charger($contenu['idpubliant'])->pseudo;
                     }
-                
-                    $chapitres[]=array('nom'=>$nomC,'num'=>$num,'contenus'=>$contenus);              
+                    
+                    $chapitres[] = array('nom'=>$chapitre['nom'],'num'=>$chapitre['num'],'contenus'=> $contenus);              
                 }
               
-                $cours[]=array('nom'=>$module['nom'],'chapitres'=>$chapitres);   
+                $cours[] = array('nom'=>$module['nom'],'chapitres'=>$chapitres);   
             }
             
             return $cours;
+        }
+        
+        //Lister les cours d'un chapitre donné
+        function listerCoursChapitre($id) {
+            return $this->db->query("select Id as id,Type as type, IdPubliant as idpubliant, TypeFichier as typefichier, TimeStampPub as pub,
+            TimeStampDernModif as dernmodif from cours where idchapitre='$id' order by type asc")->result_array();
         }
     }
 ?>

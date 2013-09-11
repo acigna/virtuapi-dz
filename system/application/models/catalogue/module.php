@@ -1,7 +1,7 @@
 <?php
 
     //Modéle pour la classe module
-    
+    //TODO:ListerModule -> lister
     class Module extends Model
     {
      	var $id;

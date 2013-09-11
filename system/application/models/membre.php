@@ -18,7 +18,7 @@
       //Charger le membre
       function charger($id)
       {
-        $requete=$this->db->query("select id,pseudo,nom,prenom,typemembre,email,motdepasse,timestampinscrit,dernessai from membre where id='$id'");
+        $requete=$this->db->query("select id, pseudo, nom, prenom, typemembre, email, motdepasse, timestampinscrit, dernessai from membre where id='$id'");
         
         $resultat=$requete->result();
         $resultat=$resultat[0];
