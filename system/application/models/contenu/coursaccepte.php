@@ -10,10 +10,6 @@
             $CI->load->model('catalogue/module', 'module');
             $CI->load->model('catalogue/chapitre', 'chapitre');
             $CI->load->model('membre');
-            
-            //Affecter les modèles à l'instance de CoursAccepte
-            $this->module = $CI->module;
-            $this->chapitre = $CI->chapitre;
         }
         
         //Lister les cours d'une année donnée
