@@ -11,7 +11,10 @@ class Cours extends Controller
         $this->load->library('generateurCode');
         $this->load->model('catalogue/specialite','specialite');
         $this->load->model('catalogue/annee','annee');
+        $this->load->model('catalogue/module', 'module');
+        $this->load->model('catalogue/chapitre', 'chapitre');
         $this->load->model('contenu/coursaccepte', 'cours');
+        $this->load->model('contenu/coursmodere', 'coursmodere');
     }
         
         
@@ -30,7 +33,7 @@ class Cours extends Controller
         $cours = $this->cours->listerCoursAnnee($idannee);
          
         //Afficher le contenu principal
-        $contenu=$this->load->view("cours",array('nomannee'=> $annee->nom, 'cours' => $cours), true);             	
+        $contenu=$this->load->view("cours", array('nomannee'=> $annee->nom, 'cours' => $cours), true);             	
         echo $contenu ;
         
         
@@ -38,8 +41,8 @@ class Cours extends Controller
         $this->oms->partie_basse($this);
     }
           
-    function annees($idspecialite=0)
-    {
+    function annees($idspecialite=0) {
+    
         //Vérifier l'existance de la spécialité, puis la récupérer 
         $specialite = $this->oms->verifSpecialite($this, $idspecialite);
 
@@ -57,19 +60,20 @@ class Cours extends Controller
         $this->oms->partie_basse($this);
     }
         
-    function publier()
-    {
+    function publier() {
+    
         $captcha = $this->generateurcode->getCaptcha();
           
-        $this->oms->partie_haute('./../../',"Publier un cours",$this);
+        $this->oms->partie_haute('./../../',"Publier un cours", $this);
                             
         //Verfier si l'utilisateur est connecté
         $this->oms->verifierConnecte($this);         
            
         //Traiter le formulaire.
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper( array( 'form', 'url' ));
         $this->load->library('form_validation'); 
-          
+        
+        //Initialization de la validation de formulaire si requête POST
         if(!isset($_POST['PseudoC'])) { 
             $this->form_validation->set_rules('IdChapitre', 'Chapitre', 'required|xss_clean');
           	$this->form_validation->set_rules('Type', 'Type de contenu', 'required|xss_clean');
@@ -79,8 +83,8 @@ class Cours extends Controller
         }  
           
           
-        $upload_verif="";
-        $code_verif="";
+        $upload_verif  = "";
+        $code_verif = "";
           
           
         if(isset($_POST['IdChapitre'])) {
@@ -95,17 +99,16 @@ class Cours extends Controller
 	  	    }
 	  
 	    }      
-          
-        if($this->form_validation->run() == TRUE && $upload_verif=="" && $code_verif=="") {
+        
+        //Run the form validation
+        if($this->form_validation->run() == TRUE && $upload_verif == "" && $code_verif == "") {
 	       
-	        $idchapitre=mysql_real_escape_string(htmlentities($_POST['IdChapitre']));
-	        $type=mysql_real_escape_string(htmlentities($_POST['Type']));
-	       
-            mysql_query("Insert into coursamoderer values('','$idchapitre','$type','".$idUser."','pdf',".time().")");
-	       
-	        $this->oms->upload("Cours","Cours",mysql_insert_id());
-	       
-	        $contenu=$this->load->view('cours_publiee',"",true);
+	        //Insérer le cours à modérer dans la base de données et dans le système de fichier
+	        $idcours = $this->coursmodere->ajouter($idchapitre, $type, $idUser, 'pdf');
+	        $this->oms->upload("Cours", "Cours", $idcours);
+	        
+	        //TODO: Change to redirect
+	        $contenu=$this->load->view('cours_publiee', "", true);
             echo $contenu;
 	       
 	       
@@ -114,92 +117,42 @@ class Cours extends Controller
 	        return ;
 	    }  
 	  
-	    //Remplir les années, modules et chapitres
-	  
-	    $default=array();
-	  
-	    if(isset($_POST['IdChapitre'])) { 
-	        $defaultchapitre = mysql_real_escape_string(htmlentities($_POST['IdChapitre']));
-	        $remplir_cas = mysql_fetch_array(mysql_query("select c.id as idC,m.id as idM,a.id as idA from chapitre c, module m, annee a, specialite s where " +    
-	                                                     "c.id='$defaultchapitre' and c.idmodule=m.id and m.idannee=a.id"));
-	   
-	        $default['chapitre'] = $remplir_cas['idC'];
-	        $default['module'] = $remplir_cas['idM'];
-	        $default['annee'] = $remplir_cas['idA'];
-	   
+	    //Remplir les années, modules et chapitres par défault
+	    if( isset($_POST['IdChapitre']) ) { 
+            $default = $this->chapitre->getCMA($_POST['IdChapitre']);
 	    } else {
-	  
-	       $default['chapitre']="";
-	       $default['module']="";
-	       $default['annee']="";	   
-	  
+            $default['chapitre'] = "";
+            $default['module'] = "";
+            $default['annee'] = "";	   
 	    }
 	  
-	    $annee=mysql_query("select a.id,s.NomSpecialite,NomAnnee,IdSpecialite from annee a,specialite s where s.id=a.idspecialite order by s.NomSpecialite ASC,a.NomAnnee ASC");
-          
-	              
-        list($idA,$nomS,$nomA,$idS)=mysql_fetch_array($annee);
-                                       
-        $specialites=array();
-          
-        if($idA!=NULL) {
-            if($default['annee']=="") {  
-                $firstA=$idA;
+	    //Récupérer les années avec leurs spécialités associées, ainsi que l'année à afficher (Par défaut ou le premier)
+        $specialites = $this->annee->listerAnneesSpec();
+         
+        if( count($specialites) != 0 ) {
+            if($default['annee'] == "") {  
+                $firstA = $specialites[0]["id"];
             } else {
-                $firstA=$default['annee'];              
+                $firstA = $default['annee'];              
             } 
-                
-            $specialites=array(array('nom'=>$nomS,'annees' => array(array('id'=>$idA,'nom'=>$nomA) ) ) );
-                
-                
-          	while(list($idA,$nomS,$nomA,$idS) = mysql_fetch_array($annee)) {
-                if($specialites[count($specialites)-1]['nom']==$nomS) {
-                    $specialites[count($specialites)-1]['annees'][]=array('id'=>$idA,'nom'=>$nomA) ;
-                } else {
-                    $specialites[]=array('nom'=>$nomS,'annees' => array(array('id'=>$idA,'nom'=>$nomA)));
-                }  
-          	} 
         }
-          
-          
-        $module=mysql_query("select id,nommodule from module where idannee='$firstA'");
-          
-        list($id,$nom)=mysql_fetch_array($module);
-          
-        $modules=array();
-          
-        if($id!=NULL) { 
-            if($default['module']=="") {  
-                $firstM = $id;
+               
+        //Récupérer les modules et le module à afficher (Par défaut ou le premier)
+        $modules = $this->module->listerModule($firstA);
+        if( count($modules) != 0 ) {
+            if( $default['module'] == "" ) {  
+                $firstM = $modules[0]["id"];
             } else {
                 $firstM = $default['module'];              
-            } 
-            	
-            $modules = array( array( 'id'=>$id,'nom'=>$nom ) );
-            	
-          	while(list($id,$nom)=mysql_fetch_array($module)) {
-                  $modules[]=array( 'id'=>$id,'nom'=>$nom );            
-            }
+            }                     
         }
+        
+        //Récupérer les chapitres 
+        $chapitres = $this->chapitre->listerChapitre($firstM);
           
-        $chapitre = mysql_query("select id,numchapitre,nomchapitre from chapitre where idmodule='$firstM'");
-          
-        list($id,$num,$nom) = mysql_fetch_array($chapitre);
-          
-        $chapitres=array();
-          
-        if($id!=NULL) { 
-            $chapitres = array( array( 'id'=>$id,'num' => $num,'nom' => $nom ) );
-            	
-          	while(list($id,$num,$nom) = mysql_fetch_array($chapitre)) {
-                  $chapitres[]=array( 'id'=>$id,'num' => $num,'nom' => $nom );            
-         	}
-          
-        }
-          
-        $contenu = $this->load->view("cours_publier",array('specialites'=>$specialites, 'modules'=>$modules, 'chapitres' => $chapitres, 
-                                                         'error_upload'=>$upload_verif, 'default'=>$default,'error_code'=>$code_verif, 
-                                                           'captcha'=>$captcha),true);      
+        $contenu = $this->load->view( "cours_publier", array( 'specialites' => $specialites, 'modules' => $modules, 'chapitres' => $chapitres, 
+                                                              'error_upload' => $upload_verif, 'default' => $default,'error_code' => $code_verif, 
+                                                              'captcha' => $captcha ), true );      
         echo $contenu;
           
         $this->oms->partie_basse($this);

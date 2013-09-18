@@ -30,8 +30,8 @@
     //Supprimer l'année dont l'identifiant est id
     function supprimerAnnee($id)
     {
-       $id=mysql_real_escape_string(htmlentities($id,ENT_QUOTES,'UTF-8'));
-       $requete=$this->db->delete('annee',array("id"=>$id));    	
+       $id = mysql_real_escape_string(htmlentities($id,ENT_QUOTES,'UTF-8'));
+       $requete = $this->db->delete('annee',array("id"=>$id));    	
     }
     
     //Lister les années d'une spécialité donnée

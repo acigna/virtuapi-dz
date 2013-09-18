@@ -2,6 +2,14 @@
 
 class CoursModere extends Model
 {
+   function ajouter($idchapitre, $type, $idpubliant, $typefichier) {
+       $idchapitre = mysql_real_escape_string(htmlentities($idchapitre));
+       $type = mysql_real_escape_string(htmlentities($type)); 
+       
+       $this->db->insert( "coursamoderer", array( "idchapitre" => $idchapitre, "type" => $type, "idpubliant" => $idpubliant, 
+                                                  "typefichier" => $typefichier,  "timestampmoderation" => time() ) ); 
+       return $this->db->insert_id();        
+   }
   
    //Récupérer le nombre de cours à modérer pour une spécialité donnée
    function getNbrCoursMod($idS)
@@ -69,9 +77,9 @@ class CoursModere extends Model
        copy(dirname(__FILE__)."/../../../../temp/Cours{$coursmod[0]->id}.{$coursmod[0]->typefichier}",dirname(__FILE__)."/../../../../contenus/Cours{$courscible[0]->id}.{$courscible[0]->typefichier}");
      }else{
        //Si c'est un nouveau cours publié
-       $query=$this->db->insert("cours",array("idchapitre"=>$coursmod[0]->idchapitre,"idpubliant"=>$coursmod[0]->idpubliant,
-                                              "timestamppub"=>$coursmod[0]->timestampmoderation, "timestampdernmodif"=>$coursmod[0]->timestampmoderation,
-                                              "typefichier"=>$coursmod[0]->typefichier, "type"=>$coursmod[0]->type));
+       $query = $this->db->insert("cours", array( "idchapitre" => $coursmod[0]->idchapitre, "idpubliant" => $coursmod[0]->idpubliant,
+                                                  "timestamppub" => $coursmod[0]->timestampmoderation, "timestampdernmodif"=>$coursmod[0]->timestampmoderation,
+                                                  "typefichier" => $coursmod[0]->typefichier, "type"=>$coursmod[0]->type));
       
        copy(dirname(__FILE__)."/../../../../temp/Cours{$coursmod[0]->id}.{$coursmod[0]->typefichier}",
             dirname(__FILE__)."/../../../../contenus/Cours".$this->db->insert_id().".{$coursmod[0]->typefichier}");

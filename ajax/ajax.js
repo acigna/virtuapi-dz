@@ -76,9 +76,9 @@ function reponse_chapitre(reponse)
   var chapitre;
   var chapitres=reponse.getElementsByTagName('chapitre');
   
-  for each(eleC in chapitres)
+  for (var i in chapitres)
   {
-    
+    var eleC = chapitres[i];
     if(typeof(eleC)=='object')
     {
      chapitre=new Array(eleC.getAttribute("id"),eleC.getAttribute("num"),eleC.childNodes[0].nodeValue);
@@ -99,10 +99,12 @@ function remplir_chapitre(reponse,elementResultat)
    var tab_reponse=reponse_chapitre(reponse);
    
       
-   for each(chapitre in tab_reponse)
+   for (i in tab_reponse) {
+    var chapitre = tab_reponse[i];
    	chapitres_select+='<option value="'+chapitre[0]+'">'+chapitre[1]+' : '+chapitre[2]+'</option>';  
+   }
    
-   _$(elementResultat).innerHTML=chapitres_select;
+   _$(elementResultat).innerHTML = chapitres_select;
    
  
 }
@@ -121,9 +123,9 @@ function reponse_module(reponse)
   var module;
   var modules=reponse.getElementsByTagName('module');
   
-  for each(eleM in modules)
+  for( var i in modules)
   {
-    
+    var eleM = modules[i];
     if(typeof(eleM)=='object')
     {
      module=new Array(eleM.getAttribute("id"),eleM.childNodes[0].nodeValue);
@@ -142,8 +144,10 @@ function remplir_module(reponse,parametresReponse)
  
    var modules_select="";
    var tab_reponse=reponse_module(reponse);
-   for each(module in tab_reponse)
+   for( var i in tab_reponse) {
+    var module = tab_reponse[i];
    	modules_select+='<option value="'+module[0]+'">'+module[1]+'</option>';  
+   }
    
    element_module=_$(parametresReponse[0]);
    element_module.innerHTML=modules_select;
