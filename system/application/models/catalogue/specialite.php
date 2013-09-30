@@ -31,9 +31,8 @@
     	
     	
     	//Supprimer la spécialité dont l'identifiant id
-    	function supprimerSpecialite($id)
-    	{
-    	   $requete=$this->db->delete('specialite',array("id"=>$id));    	
+    	function supprimerSpecialite($id) {
+    	   $requete = $this->db->delete('specialite',array("id"=>$id));    	
     	}
     	
     	//Lister les spécialités

@@ -5,8 +5,7 @@
 class Admin extends Controller 
 {
 
-	function Admin()
-	{
+	function Admin() {
 		parent::Controller();	
 		$this->load->library('oms'); //Les fonctions les plus courantes du site.
 		$this->load->database();
@@ -29,7 +28,7 @@ class Admin extends Controller
         	{
         		$contenu=$this->load->view('admin/erreurs/nonmod',"",true);
          		echo $contenu;
-         		$this->oms->partie_basse($this);//Vérifier l'accés à la page
+         		$this->oms->partie_basse();//Vérifier l'accés à la page
 			die();      		
          	}
 	}
@@ -41,7 +40,7 @@ class Admin extends Controller
         	{
         		$contenu=$this->load->view('admin/erreurs/nonadmin',"",true);
          		echo $contenu;
-         		$this->oms->partie_basse($this);
+         		$this->oms->partie_basse();
 			die();      		
          	}
 	}
@@ -60,24 +59,25 @@ class Admin extends Controller
         // Les pages de l'admin
 	function gerer_samc()
 	{
-		$this->oms->partie_haute('./../../',"Page de gestion des spécialités, années, modules et chapitres",$this);	
-		
-		//Vérifier l'accés à la page
-		$idUser=$this->oms->verifierConnecte($this);
+	    //Vérifier l'accés à la page
+		$idUser=$this->oms->verifierConnecte('./../../');
 		$this->_verifierAdmin($idUser);
+		
+		
+		$this->oms->partie_haute('./../../',"Page de gestion des spécialités, années, modules et chapitres");	
 		
 		//Traiter les requêtes 
 		$action=$this->input->post("action");
 		$cible=$this->input->post("cible");
 		
-		$notification_specialite=""; //La notification pour la spécialité
-		$type_notif_spec="";	     //Type de notification pour la spécialité
-		$notification_annee="";	     //La notification pour l'année
-		$type_notif_annee="";	     //Type de notification pour l'année
-		$notification_module="";     //La notification du module
-		$type_notif_module="";	     //Type de notification pour le module
-		$notification_chapitre="";   //La notification du chapitre
-		$type_notif_chapitre="";     //Type de notification pour le chapitre
+		$notification_specialite = ""; //La notification pour la spécialité
+		$type_notif_spec  = "";	     //Type de notification pour la spécialité
+		$notification_annee  = "";	     //La notification pour l'année
+		$type_notif_annee  = "";	     //Type de notification pour l'année
+		$notification_module = "";     //La notification du module
+		$type_notif_module = "";	     //Type de notification pour le module
+		$notification_chapitre = "";   //La notification du chapitre
+		$type_notif_chapitre = "";     //Type de notification pour le chapitre
 		
 		if($action!=NULL && $cible!=NULL)
 		{
@@ -90,7 +90,7 @@ class Admin extends Controller
 		         				$this->specialite->supprimerSpecialite($id);
 		         				$notification_specialite="Spécialité supprimée avec succés";
 		         				$type_notif_spec="succes";
-		         			}else{
+		         			} else {
 		         				$nom=$this->input->post("specialite");
 		         				if($this->specialite->ajouterSpecialite($nom)>0)
 		         				{
@@ -202,35 +202,35 @@ class Admin extends Controller
 							            "type_notif_chapitre"=>$type_notif_chapitre),true);
 		echo $contenu;
 		
-		$this->oms->partie_basse($this);
+		$this->oms->partie_basse();
 	}
 	
 	function moderation()
 	{ 
-		$this->oms->partie_haute('./../../',"Modération du contenu de l'université virtuelle",$this);
-	  
 		//Vérifier l'accés à la page
-		$idUser=$this->oms->verifierConnecte($this);
+		$idUser=$this->oms->verifierConnecte('./../../');
 		$this->_verifierModerateur($idUser);          		
+		$this->oms->partie_haute('./../../',"Modération du contenu de l'université virtuelle");
 	  
         	$sModerees=$this->specialite->getSpecialiteMod($idUser);
           
         	$contenu=$this->load->view('admin/moderation',array('sModerees'=>$sModerees),true);
         	echo $contenu;
 		
-        	$this->oms->partie_basse($this);	
+        	$this->oms->partie_basse();	
 	}
 	
 	function moderation_specialite($idspecialite)
 	{
-		$specialite=$this->oms->verifSpecialite($this,$idspecialite); //Verifier l'existence de la spécialité 
-	        
-		$this->oms->partie_haute('./../../../',"Page de modération de contenus",$this);
+	    //Vérifier l'accés à cette page
+		$idUser = $this->oms->verifierConnecte('./../../../');
+		$this->_verifierModerateur($idUser);          	
 		
-		//Vérifier l'accés à cette page
-		$idUser=$this->oms->verifierConnecte($this);
-		$this->_verifierModerateur($idUser);          		
-        	$this->_verifierModSpecialite($idspecialite,$idUser);
+		$specialite = $this->oms->verifSpecialite($idspecialite); //Verifier l'existence de la spécialité 
+	    
+		$this->oms->partie_haute( './../../../', "Page de modération de contenus" );
+		
+        	$this->_verifierModSpecialite($idspecialite, $idUser);
           	        	           	        
         	$contenu=$this->load->view('admin/moderation_specialite',
         					array("specialite"=>$specialite->nom,"nbr_cours"=>$this->cours->getNbrCoursMod($idspecialite),
@@ -238,20 +238,20 @@ class Admin extends Controller
           	        			    "id"=>$idspecialite),true);          	  	
           	echo $contenu;
          
-		$this->oms->partie_basse($this);          
+		$this->oms->partie_basse();          
 	}
 	
 	function moderer_cours($idspecialite=0)
 	{
-		$specialite=$this->oms->verifSpecialite($this,$idspecialite); //Verifier l'existence de la spécialité 
-	  	  	
-		$this->oms->partie_haute('./../../../',"Page de modération des cours de la spécialité {$specialite->nom}",$this);
-		
-		//Vérifier l'accés à cette page
-		$idUser=$this->oms->verifierConnecte($this);
+	    //Vérifier l'accés à cette page
+		$idUser=$this->oms->verifierConnecte('./../../../');
 		$this->_verifierModerateur($idUser);          		
-        	$this->_verifierModSpecialite($idspecialite,$idUser);
-        	
+		
+		$specialite=$this->oms->verifSpecialite($idspecialite); //Verifier l'existence de la spécialité 
+        $this->_verifierModSpecialite($idspecialite,$idUser);
+	  	  	
+		$this->oms->partie_haute('./../../../',"Page de modération des cours de la spécialité {$specialite->nom}");
+		
         	//Traiter les requêtes
         	$action=$this->input->post("action");
         	$cible=$this->input->post("cible");
@@ -283,12 +283,12 @@ class Admin extends Controller
 	
 	function moderer_sujets($idspecialite=0)
 	{
-	 	$specialite=$this->oms->verifSpecialite($this,$idspecialite); //Verifier l'existence de la spécialité 
+	 	$specialite=$this->oms->verifSpecialite($idspecialite); //Verifier l'existence de la spécialité 
 	  	  	
-		$this->oms->partie_haute('./../../../',"Page de modération des sujets de la spécialité {$specialite->nom}",$this);
+		$this->oms->partie_haute('./../../../',"Page de modération des sujets de la spécialité {$specialite->nom}");
 		
 		//Vérifier l'accés à cette page
-		$idUser=$this->oms->verifierConnecte($this);
+		$idUser=$this->oms->verifierConnecte('./../../../');
 		$this->_verifierModerateur($idUser);          		
         	$this->_verifierModSpecialite($idspecialite,$idUser);
 	  	
@@ -317,7 +317,7 @@ class Admin extends Controller
 	  	$contenu=$this->load->view('admin/moderer_sujets',array('sujetsMod'=>$sujetsMod,'specialite'=>$specialite->nom,"notification"=>$notification),true);
 	  	echo $contenu;
 	  	
-	        $this->oms->partie_basse($this);	     	
+	        $this->oms->partie_basse();	     	
 	}
 	
 	function moderer_td($idspecialite=0)
@@ -331,7 +331,7 @@ class Admin extends Controller
 		$this->oms->partie_haute('./../../',"Gérer les modérateurs",$this);
 		
 		//Vérifier l'accés à la page
-		$idUser=$this->oms->verifierConnecte($this);
+		$idUser=$this->oms->verifierConnecte('./../../');
 		$this->_verifierAdmin($idUser);
 		
 		//Traiter les requêtes posts
@@ -367,9 +367,9 @@ class Admin extends Controller
 		$moderateurs=$this->membre->listerModerateurs();
 		
 		$contenu=$this->load->view("admin/gerer_moderateur",
-				           array("specialites"=>$specialites,"moderateurs"=>$moderateurs,
-						 "notification_ajout"=>$notification_ajout, "erreur_ajout"=>$erreur_ajout,
-						 "notification_supp"=>$notification_supp),true);
+				           array("specialites" => $specialites,"moderateurs" => $moderateurs,
+						         "notification_ajout"=> $notification_ajout, "erreur_ajout" => $erreur_ajout,
+						         "notification_supp" => $notification_supp),true);
 		echo $contenu;
 		$this->oms->partie_basse($this);  
 	}
@@ -377,7 +377,7 @@ class Admin extends Controller
 	function index()
 	{
 		$this->oms->partie_haute('./../',"Page d'administration du portail",$this);	
-		$idUser=$this->oms->verifierConnecte($this);
+		$idUser=$this->oms->verifierConnecte('./../../../');
           	
           	if(!($this->membre->estAdmin($idUser)) && !($this->membre->estModerateur($idUser)))
           	{
@@ -390,7 +390,7 @@ class Admin extends Controller
           	$contenu=$this->load->view('admin/admin',array('admin'=>$this->membre->estAdmin($idUser), 'mod'=>$this->membre->estModerateur($idUser)),true);
               	echo $contenu;
 		
-		$this->oms->partie_basse($this);
+		$this->oms->partie_basse();
 	}
 }        
 ?>

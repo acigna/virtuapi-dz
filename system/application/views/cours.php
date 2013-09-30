@@ -1,3 +1,10 @@
+<?php
+  //Récupérer l'instance de CI, et afficher la partie haute
+  $CI = & get_instance();
+  $CI->load->library('oms');
+  $this->oms->partie_haute("Les cours de la $nomannee");
+?>
+
 <h2 style="text-align:center;">Cours de <?php echo $nomannee; ?> classés par module</h2><p></p>
 
 <?php 
@@ -48,4 +55,9 @@
 <?php 
 
  }
+?>
+
+<?php
+  //Afficher la partie basse
+  $CI->oms->partie_basse();
 ?>      

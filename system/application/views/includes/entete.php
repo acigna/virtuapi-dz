@@ -6,16 +6,16 @@
 		<?php
 		if (!empty($titre)) //Si le titre est indiqué , on l'affiche entre les balises <title>
 		{
-			echo '<title> Open Mind Students - '.stripslashes($titre).' </title>';
+			echo '<title> VirtUAPI-DZ - '.stripslashes($titre).' </title>';
 		}
 		else //Sinon, on l'écrit title par d�faut
 		{
-			echo '<title> Open Mind Students </title>';
+			echo '<title> VirtUAPI-DZ </title>';
 		}
 		?>
-	<meta name="author" content="L'équipe Open Mind Students" />
-	<meta name="copyright"	content="Copyright 2009 Open Mind Students" />	
-	<meta name="keywords" content="Open Mind Students, community, students, étudiant, communauté,entraide, collaboration,algérie, algeria" />
+	<meta name="author" content="L'équipe VirtUAPI-DZ" />
+	<meta name="copyright"	content="Copyright 2009 VirtAPI-DZ" />	
+	<meta name="keywords" content="VirtUAPI-DZ, community, students, étudiant, communauté, entraide, collaboration, algérie, algeria" />
 	<meta name="description" content="Un portail d'entraide et de collaboration pour les étudiants algériens" />	
 	<meta http-equiv="imagetoolbar" content="no" />
 	<link href="<?php echo base_url(); ?>default.css" rel="stylesheet" type="text/css" />
@@ -23,7 +23,7 @@
 <!--
 <?php
 
- $nombreSpecialite=mysql_fetch_array(mysql_query("select count(*) from specialite"));
+ $nombreSpecialite = mysql_fetch_array(mysql_query("select count(*) from specialite"));
 
 ?>
 window.onload=montre;

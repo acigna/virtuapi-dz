@@ -2,17 +2,43 @@
 
    //Modéle pour la classe membre
    
-   class Membre extends Model
-   {
-      var $id;
-      var $pseudo;
-      var $nom;
-      var $prenom;
-      var $typemembre;
-      var $email;
-      var $motdepasse;
-      var $timestampinscrit;
-      var $dernessai;
+class Membre extends Model
+{
+    var $id;
+    var $pseudo;
+    var $nom;
+    var $prenom;
+    var $typemembre;
+    var $email;
+    var $motdepasse;
+    var $timestampinscrit;
+    var $dernessai;
+      
+      //Le pseudo existe-il dans la base de donnée (Retourne True ou False)
+      function existepseudo($pseudo) {
+          $pseudo = mysql_real_escape_string(htmlentities($pseudo));
+          $requete = $this->db->query("select * from membre where lower(Pseudo)='".strtolower($pseudo)."'");
+          return $requete->num_rows();
+      }
+      
+      //Authentifier un utilisateur (Retourne True ou False)
+      function auth($pseudo, $mdp) {
+          $CI = & get_instance();
+          $pseudo = mysql_real_escape_string(htmlentities($pseudo));
+          $mdp = mysql_real_escape_string(htmlentities($mdp));
+          $requete = $this->db->query("select * from membre where lower(Pseudo)='".strtolower($pseudo)."'");
+          $membre = $requete->row();
+          $CI->config->load('oms');
+          
+          //Vérifier si l'utilisateur existe
+          if( $requete->num_rows() ){
+              //Ajouter l'attribut auth qui indique si l'utilsateur a été authentifié avec succès
+              $membre->auth = $membre->MotDePasse == md5(($CI->config->item('salt_gauche')).md5($mdp).($CI->config->item('salt_droite')));
+              return $membre;          
+          } else {
+              return false;
+          }
+      }
       
       
       //Charger le membre
@@ -23,11 +49,11 @@
         $resultat=$requete->result();
         $resultat=$resultat[0];
         
-        $estAdmin=$this->estAdmin($id);
-        $estModerateur=$this->estModerateur($id);
+        $estAdmin = $this->estAdmin($id);
+        $estModerateur = $this->estModerateur($id);
       
-        $resultat->estAdmin=$estAdmin;
-        $resultat->estModerateur=$estModerateur;
+        $resultat->estAdmin = $estAdmin;
+        $resultat->estModerateur = $estModerateur;
       
         return $resultat;
       }
@@ -51,7 +77,7 @@
       
       function supprimerModerateur($id)
       {
-         $id=mysql_real_escape_string(htmlentities($id));
+         $id = mysql_real_escape_string(htmlentities($id));
          $this->db->delete('moderateur', array('id' => $id));      
       }
            
@@ -70,16 +96,27 @@
       	   return 0;      	         
       }
       
-      function estModerateur($id)
-      {
-         $mod=$this->db->query("Select count(*) as nb from moderateur where IdModerateur='$id'")->result();    
-	 
-	 if($mod[0]->nb)
+      function estModerateur($id) {
+          $mod = $this->db->query("Select count(*) as nb from moderateur where IdModerateur='$id'")->result();    
+          if($mod[0]->nb)
       	   return 1;
       	 else
       	   return 0;      	   
       }
-   }
+      
+      function majDernEssai($dernessai, $pseudo) {
+          $dernessai = mysql_real_escape_string(htmlentities($dernessai));
+          $pseudo = mysql_real_escape_string(htmlentities($pseudo));
+          $temps = time();
+          $difSeconde = $temps - $dernessai;
+          if( $difSeconde > 15 ) {
+              $this->db->query("update membre set DernEssai=$temps where lower(Pseudo)='$pseudo'");
+              return false;
+          } else {
+              return 15 - $difSeconde;
+          }
+      }
+}
 
 
 ?>

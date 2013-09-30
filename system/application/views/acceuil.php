@@ -1,6 +1,12 @@
-	      <div class="box">
-		<h2>OpenMindStudents.org c'est quoi ?</h2>
-		  <p style="text-indent: 30px;"><strong>OpenMindStudents.org</strong> est un portail communautaire de nature collaborative permettant 
+<?php
+  //Récupérer l'instance de CI, et afficher la partie haute
+  $CI = & get_instance();
+  $CI->load->library('oms');
+  $this->oms->partie_haute('Page d\'acceuil');
+?>
+  <div class="box">
+    <h2>VirtUAPI-DZ c'est quoi ?</h2>
+		  <p style="text-indent: 30px;"><strong>VirtUAPI-DZ</strong> est un portail communautaire de nature collaborative permettant 
 		  aux étudiants de s'unir pour faire face aux challenges du quotidien. Actuellement, le portail est une source de contenus diverses de 
 		  Cours, TD, TP et Sujets d'examens.		  
 		  </p>
@@ -10,13 +16,13 @@
           une nouvelle spécialitée ou une nouvelle année pour le portail ou étre partenaire, <a href="index.php/contact">cliquez içi</a> pour nous contacter.		
 		  </p>
 		  <p>
-		     Pour plus de détails sur le portail OpenMindStudents.org, vueillez <a href="index.php/news1">cliquer ici</a>.
+		     Pour plus de détails sur le portail VirtUAPI-DZ, vueillez <a href="index.php/news1">cliquer ici</a>.
 			 
 		  </p>
            <p class="bottom"></p>
 	  </div>
 	<div class="box">
-          <h3>Lancement du portail OpenMindStudents.org</h3>
+          <h3>Lancement du portail VirtUAPI-DZ</h3>
 	  <p>Bonjour tout le monde,</p>
 	  <p style="text-indent: 30px;">
              Sans aucun doute, le jeune et tout particuliérement l'étudiant représente le pilier de notre société. C'est à lui qu'on fait appel pour innover, inventer et faire progresser la société, c'est à lui....<a href="index.php/news1">Cliquer pour plus de détails</a>
@@ -24,4 +30,9 @@
            <p style="border-top: 1px solid #EFEFEF;"><br/><strong>Posté par Tarik le 09/03/2009 à 23:17</strong></p>
    	   <p class="bottom"></p>
 	</div>
+
+<?php
+  //Afficher la partie basse
+  $CI->oms->partie_basse();
+?>
   	   

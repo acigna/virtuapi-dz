@@ -11,7 +11,7 @@
 <div id="content">
  <div id="head2">
   <div id="logo">
-			<h1><a href="<?php echo base_url(); ?>index.php">OpenMindStudents.org</a></h1>
+			<h1><a href="<?php echo base_url(); ?>index.php">Acigna VirtUAPI-DZ</a></h1>
 			<h2>Entraide et Collaboration pour tous</h2>
   </div>
  </div>

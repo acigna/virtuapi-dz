@@ -1,13 +1,18 @@
+<?php
+  //Récupérer l'instance de CI, et afficher la partie haute
+  $CI = & get_instance();
+  $CI->load->library('oms');
+  $this->oms->partie_haute("Publier un cours");
+?>
+
 <script type="text/javascript" src="<?php echo base_url(); ?>ajax/ajax.js"></script>
 
 <h2 style="text-align:center;">Création d'un contenu pour les Cours</h2>
 <?php
 	echo validation_errors();
-	echo $error_upload;
-        echo $error_code;
          
 ?>
-<form method="POST"  enctype="multipart/form-data">	<p>
+<form method="POST"  enctype="multipart/form-data">	<p>
 	<table style="border:none;">
 	<tr>
 	
@@ -103,7 +108,12 @@
         </fieldset><br/>
          <label for="code"><?=$captcha ?>?</label>
          <input type="text" name="code" id="code" /><br/><br/><br/>
-	 <div style="text-align:center;"><input type="submit" value="  Publier  " /></div>
+	 <div style="text-align:center;"><input type="submit" name="cours_publier" value="  Publier  " /></div>
 	
 	</p>
 </form>
+
+<?php
+  //Afficher la partie basse
+  $CI->oms->partie_basse();
+?>

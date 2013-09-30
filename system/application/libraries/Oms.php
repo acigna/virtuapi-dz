@@ -1,104 +1,100 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Oms 
-{
+class Oms {
 
-    function Deconnection(&$cont)
-    {
-	$cont->load->library('session');
- 	$cont->session->sess_destroy();
- 	header("location: ./../../index.php");
+    function Deconnection() {
+        $CI = & get_instance();
+        $CI->load->helper('url');
+        $CI->load->library('session');
+        $CI->session->sess_destroy();
+        redirect('./../../index.php', 'location');
+        die();
     }
     
-    function partie_basse(&$cont)
-    {
-	echo "</div>";
+    function partie_basse() {
         echo "</div>";
-	$footer=$cont->load->view('includes/footer','',true);
+        echo "</div>";
+        $CI = & get_instance();
+        $footer = $CI->load->view('includes/footer', '', true);
         echo $footer.'</body></html>';
     }
 
-    function partie_haute($root,$titre,&$cont)
-    {
-        $cont->load->database();
-	$cont->load->library('session');
-	$cont->load->helper(array('form', 'url'));
-	$cont->load->library('form_validation');
+    function partie_haute( $titre ) {
+        $CI = & get_instance();
+        $CI->load->database();
+        $CI->load->library('session');
+        $CI->load->helper(array('form', 'url'));
+        $CI->load->library('form_validation');
               
-        $erreur=$this->traiterConnectionMembre($cont);
-        $entete=$cont->load->view('includes/entete', array('titre' => $titre),true);
-	echo $entete;
+        $erreur = $this->traiterConnectionMembre();
+        $entete = $CI->load->view( 'includes/entete', array( 'titre' => $titre ), true);
+        echo $entete;
                 
-        $menu_haut=$cont->load->view('includes/menu_haut','',true);
+        $menu_haut = $CI->load->view( 'includes/menu_haut', '', true );
         
-        $cont->load->model("membre");
+        $CI->load->model("membre");
         
-        $id=$cont->session->userdata('id');
-        if($id!=null)
-        {
-          $membre=$cont->membre->charger($id);
+        $id = $CI->session->userdata('id');
+        if($id!=null) {
+          $membre = $CI->membre->charger($id);
         }else{
-          $membre=null;
+          $membre = null;
         }
         
-        $menu_gauche=$cont->load->view('includes/menu_gauche', array('membre'=>$membre,'erreurConnection' => $erreur),true);
+        $menu_gauche = $CI->load->view('includes/menu_gauche', array( 'membre'=>$membre, 'erreurConnection' => $erreur ), true);
               
         echo "$menu_haut $menu_gauche" ;
         echo "<div id='colTwo'>";
-     }
+    }
          
 
-    function traiterConnectionMembre(&$cont)
-    {
-	if(isset($_POST['PseudoC']) && isset($_POST['MotDePasseC']) && $_POST['PseudoC']!=null && $_POST['MotDePasseC']!=null ){
-  	 //Netoyage des variables
-   		$SainBD['PseudoC']=mysql_real_escape_string(htmlentities($_POST['PseudoC']));
-   		$SainBD['MotDePasseC']=mysql_real_escape_string(htmlentities($_POST['MotDePasseC']));
-  	        $MembreRequete=mysql_query("select * from membre where lower(Pseudo)='".strtolower($SainBD['PseudoC'])."'");    
-   		$MembreResultat=mysql_fetch_array($MembreRequete);
-   		$NombreLigne=mysql_num_rows($MembreRequete) ;
-   		
-   		$cont->config->load('oms');
-   
-   if($NombreLigne && $MembreResultat['MotDePasse']==md5(($cont->config->item('salt_gauche')).md5($SainBD['MotDePasseC']).($cont->config->item('salt_droite')))){
-     //Vérifier si le dernier essai de connection dépasse  15 secondes
-	  $difSeconde=time()-$MembreResultat['DernEssai'];
-	 if($difSeconde>15){
-     //Sauvegarder les données personnelles du membre 
-  	   $cont->session->set_userdata('id',$MembreResultat['Id']);
-	   $cont->session->set_userdata('Pseudo',$MembreResultat['Pseudo']);
-           $cont->session->set_userdata('Nom',$MembreResultat['Nom']);
-	   $cont->session->set_userdata('Prenom',$MembreResultat['Prenom']);
-	   $cont->session->set_userdata('TypeMembre',$MembreResultat['TypeMembre']);
-           $cont->session->set_userdata('EMail',$MembreResultat['EMail']);
-           $cont->session->set_userdata('TimeStampInscrit',$MembreResultat['TimeStampInscrit']);
-	   $cont->session->set_userdata('MotDePasse',$MembreResultat['MotDePasse']);
+    function traiterConnectionMembre()  {
+        $CI = & get_instance();
+        $CI->load->model('membre');
+        $pseudo = $CI->input->post( 'PseudoC', true );
+        $mdp = $CI->input->post( 'MotDePasseC', false );
+        if( $pseudo &&  $mdp ) {
+            $membre = $CI->membre->auth( $pseudo, $mdp );
+            if( $membre && $membre->auth ) {
+                //Vérifier si le dernier essai de connection dépasse  15 secondes                $difSeconde = time() - $membre->DernEssai;
+                if( $difSeconde > 15 ) {
+                    //Sauvegarder les données personnelles du membre 
+  	                $CI->session->set_userdata( 'id', $membre->Id );
+	                $CI->session->set_userdata( 'Pseudo', $membre->Pseudo );
+                    $CI->session->set_userdata( 'Nom', $membre->Nom );
+	                $CI->session->set_userdata( 'Prenom', $membre->Prenom );
+	                $CI->session->set_userdata( 'TypeMembre', $membre->TypeMembre );
+                    $CI->session->set_userdata( 'EMail', $membre->EMail );
+                    $CI->session->set_userdata( 'TimeStampInscrit', $membre->TimeStampInscrit );
+	                $CI->session->set_userdata( 'MotDePasse', $membre->MotDePasse );
 
- 	  }else return "Connection suspendu, veuillez rÃ©essayer dans $difSeconde secondes";
-   	}else{
-     
-       		if($NombreLigne){
-	              //Vérifier si le dernier essai de connection dépasse  15 secondes
-		      $difSeconde=time()-$MembreResultat['DernEssai'];
-		      if($difSeconde>15){
-		       return "Pseudo inexistant, ou mot de passe incorrecte";   
-        	       $temps=time();
-			       mysql_query("update membre set DernEssai=$temps where lower(Pseudo)='".strtolower($SainBD['PseudoC'])."'");
-			 }else return "Connection suspendu, veuillez rÃ©essayer dans $difSeconde secondes"; 
-          
-		   }else return "Pseudo inexistant, ou mot de passe incorrecte";  		 
-   		}
-  	  }else if( isset($_POST['PseudoC']) && isset($_POST['MotDePasseC']) && ($_POST['PseudoC']!="" || $_POST['MotDePasseC']!="")){
-   	   		return "Pseudo ou mot de passe manquant";   
-  
-  		} 
-	  return ""; 
+ 	            } else {
+ 	                return "Connection suspendu, veuillez rÃ©essayer dans $difSeconde secondes";
+ 	            }
+ 	        
+   	        } else {
+                //Vérifier si le membre existe
+                if( $membre ) {
+	                //Vérifier si le dernier essai de connection dépasse 15 secondes
+	                $difSeconde = $CI->membre->majDernEssai( $membre->DernEssai, $pseudo );
+		            if( !$difSeconde  ) {			            return "Pseudo inexistant, ou mot de passe incorrecte";
+			        } else {
+			            return "Connection suspendu, veuillez rÃ©essayer dans $difSeconde secondes"; 
+                    }
+		        } else {
+		            return "Pseudo inexistant, ou mot de passe incorrecte";  
+		        }		 
+            }
+        } else {
+            if( $pseudo === "" || $mdp === "" ){
+                return "Pseudo ou mot de passe manquant"; //TODO: Vérifier le language   
+            } 
+            return ""; 
+        }
+    }
+	
+	function verifierUpload($name) {
 
-	}
-	
-	function verifierUpload($name)
-	{
-	
 	     
 	  	if ( $_FILES[$name]['error'] == 0)
  		{
@@ -129,34 +125,33 @@ class Oms
 	    	return "";
 	}
 	
-	function upload($name,$type,$id)
-	{
+	function upload($name, $type, $id) {
 	  // On peut valider le fichier et le stocker définitivement
  		move_uploaded_file($_FILES[$name]['tmp_name'], "./temp/{$type}{$id}.pdf" );
   	
 	}
 	
-        //Vérifier si l'utilisateur est connecté
-        function verifierConnecte(&$cont)
-	{
-	  $id=$cont->session->userdata("id");
-	  
-	  
-          if($id==null)
-          {
-          	$contenu=$cont->load->view('includes/nonconnecte',"",true);
-          	echo $contenu;
-          	$cont->oms->partie_basse($cont);
-          	die();
-          }  
+    //Vérifier si l'utilisateur est connecté
+    function verifierConnecte() {
+      //Récupérer une instance de CodeIgniter
+      $CI = & get_instance();
+      $CI->load->library('session');
+	  $id = $CI->session->userdata("id");
+	  if($id == null) {
+          $CI->oms->partie_haute("Accès non autorisée");
+          $contenu = $CI->load->view('includes/nonconnecte',"",true);
+          echo $contenu;
+          $CI->oms->partie_basse();
+          die();
+      }  
 	  
 	  return $id;	
 	}
 	
 	//Verifier l'existence d'une spécialité
-	function verifSpecialite(&$cont,$id)
-	{
-	  $specialite_exist=$cont->specialite->getSpecialite($id);
+	function verifSpecialite($id) {
+	  $CI = & get_instance();
+	  $specialite_exist = $CI->specialite->getSpecialite($id);
 	  
 	  if(!$specialite_exist)
 	       show_404();
@@ -165,9 +160,9 @@ class Oms
 	}
 	
 	//Verifier l'existence d'une année
-	function verifAnnee(&$cont,$id)
-	{
-	  $annee_exist=$cont->annee->getAnnee($id);
+	function verifAnnee($id) {
+	  $CI = & get_instance();
+	  $annee_exist=$CI->annee->getAnnee($id);
 	  
 	  if(!$annee_exist)
 	      show_404();

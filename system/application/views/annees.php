@@ -1,3 +1,10 @@
+<?php
+  //Récupérer l'instance de CI, et afficher la partie haute
+  $CI = & get_instance();
+  $CI->load->library('oms');
+  $this->oms->partie_haute("Les $type de la spécialité " . stripslashes($nom));
+?>
+
 <h2 style="text-align:center;">Les <?php echo $type; ?> de la spécialité <?php echo stripslashes($nom); ?></h2>
 <h3>Vueillez choisir l'année qui vous concerne:</h3>
 <ul>
@@ -10,3 +17,8 @@
        }
  ?>
 </ul>
+
+<?php
+  //Afficher la partie basse
+  $CI->oms->partie_basse();
+?>
