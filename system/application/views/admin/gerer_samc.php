@@ -1,3 +1,9 @@
+<?php
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("Gestion des spécialités, années, modules et chapitres");
+?>
+
 <!-- Les requêtes AJAX --> 
 
 <script type="text/javascript" src="<?php echo base_url(); ?>ajax/ajax.js"></script>
@@ -383,3 +389,9 @@
 	  <br/>
      </p>
 	 </form>
+	 
+<?php
+  //Afficher la partie basse
+  $this->oms->partie_basse();
+?>    
+

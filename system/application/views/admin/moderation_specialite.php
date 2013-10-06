@@ -1,3 +1,9 @@
+<?php
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("Page de modération de contenus");
+?>
+
 <div id="colTwo" >
             <h2 style="text-align:center;">Modération de contenus pour la spécialité <?=stripslashes($specialite);?></h2>
             <table style="border:none;margin-left:250px;">
@@ -63,6 +69,8 @@
             	
             </table>                        
 
-
-
-</div>            
+</div> 
+<?php
+  //Afficher la partie basse
+  $this->oms->partie_basse();
+?>           

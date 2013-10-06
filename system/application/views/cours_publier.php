@@ -1,8 +1,7 @@
 <?php
-  //Récupérer l'instance de CI, et afficher la partie haute
-  $CI = & get_instance();
-  $CI->load->library('oms');
-  $this->oms->partie_haute("Publier un cours");
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("Page de modération des sujets de la spécialité $specialite");
 ?>
 
 <script type="text/javascript" src="<?php echo base_url(); ?>ajax/ajax.js"></script>
@@ -10,7 +9,6 @@
 <h2 style="text-align:center;">Création d'un contenu pour les Cours</h2>
 <?php
 	echo validation_errors();
-         
 ?>
 <form method="POST"  enctype="multipart/form-data">	<p>
 	<table style="border:none;">
@@ -115,5 +113,5 @@
 
 <?php
   //Afficher la partie basse
-  $CI->oms->partie_basse();
+  $this->oms->partie_basse();
 ?>

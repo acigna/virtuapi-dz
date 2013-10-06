@@ -8,7 +8,7 @@
       foreach($annees as $annee)
       {
     ?>
-        <annee id="<?php echo $annee['id']; ?>"><![CDATA[<?php echo stripslashes($annee['nom']); ?>]]></annee>     
+        <annee id="<?php echo $annee->id; ?>"><![CDATA[<?php echo stripslashes($annee->nom); ?>]]></annee>     
     <?php
       }
     ?>

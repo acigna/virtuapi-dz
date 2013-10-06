@@ -1,7 +1,6 @@
 <?php
-  //Récupérer l'instance de CI, et afficher la partie haute
-  $CI = & get_instance();
-  $CI->load->library('oms');
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
   $this->oms->partie_haute("Cours publié avec succès");
 ?>
 
@@ -21,5 +20,5 @@ pour votre contribution au contenu du portail VirtUAPI-DZ.<br/>
 
 <?php
   //Afficher la partie basse
-  $CI->oms->partie_basse();
+  $this->oms->partie_basse();
 ?>

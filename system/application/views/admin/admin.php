@@ -1,3 +1,9 @@
+<?php
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("Page d'administration du portail");
+?>
+
 <h2 style="text-align:center;">Administration du portail</h2>
 	<p style="text-align:center;">
 	  <?php /*Verifier s'il est moderateur */
@@ -10,3 +16,8 @@
            <?php
             } ?>
 	</p>
+
+<?php
+  //Afficher la partie basse
+  $this->oms->partie_basse();
+?>

@@ -1,17 +1,14 @@
 <?php
 
-  // Modéle pour la classe Annee
-  
-  class Annee extends Model
-  {
+// Modéle pour la classe Annee
+class Annee extends Model {
     var $id;
     var $nomannee;
     var $idspecialite;
     var $timestampajout;
       
     //Ajouter une année dans une spécialité
-    function ajouterAnnee($nom,$idspecialite)
-    {
+    function ajouterAnnee($nom,$idspecialite) {
     	$nom = mysql_real_escape_string(htmlentities($nom,ENT_QUOTES,'UTF-8'));
     	$idspecialite = mysql_real_escape_string(htmlentities($idspecialite,ENT_QUOTES,'UTF-8'));
         
@@ -37,7 +34,7 @@
     //Lister les années d'une spécialité donnée
     function listerAnnees($ids)
     { 
-        $ids = mysql_real_escape_string(htmlentities($ids,ENT_QUOTES,'UTF-8'));
+        $ids = mysql_real_escape_string( htmlentities($ids, ENT_QUOTES, 'UTF-8') );
         return $this->db->query("select id, NomAnnee as nom, IdSpecialite as ids, TimeStampAjout as tsajout from annee where idspecialite='$ids' order by NomAnnee")
                         ->result();	    
     }

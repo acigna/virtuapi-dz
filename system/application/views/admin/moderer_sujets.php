@@ -1,3 +1,9 @@
+<?php
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("Publier un cours");
+?>
+
 <h2 style='text-align:center;'>Liste de contenus de sujets d'examens à  modérer pour la spécialité <?=stripslashes($specialite); ?></h2>
 <div style="text-align:center;"><br/><strong style="color:green;"><?=$notification;?></strong></div>
 
@@ -68,4 +74,10 @@
 	         ?> 
 	   </table>
 	   
-  </p>	   	 
+  </p>	
+
+<?php
+  //Afficher la partie basse
+  $this->oms->partie_basse();
+?>
+   	 

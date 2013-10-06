@@ -1,3 +1,9 @@
+<?php
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("Gérer les modérateurs");
+?>
+
 <h2 style="text-align:center;">Gestion des modérateurs</h2><br/>
 		<?php
 			if($notification_ajout)
@@ -84,3 +90,8 @@
        ?>
       </table> <br/>
     </div> 
+    
+<?php
+  //Afficher la partie basse
+  $this->oms->partie_basse();
+?>

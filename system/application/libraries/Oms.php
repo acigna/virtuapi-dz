@@ -139,7 +139,7 @@ class Oms {
 	  $id = $CI->session->userdata("id");
 	  if($id == null) {
           $CI->oms->partie_haute("Accès non autorisée");
-          $contenu = $CI->load->view('includes/nonconnecte',"",true);
+          $contenu = $CI->load->view('includes/nonconnecte', "", true);
           echo $contenu;
           $CI->oms->partie_basse();
           die();
