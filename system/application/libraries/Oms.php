@@ -138,10 +138,7 @@ class Oms {
       $CI->load->library('session');
 	  $id = $CI->session->userdata("id");
 	  if($id == null) {
-          $CI->oms->partie_haute("Accès non autorisée");
-          $contenu = $CI->load->view('includes/nonconnecte', "", true);
-          echo $contenu;
-          $CI->oms->partie_basse();
+          $CI->load->view('includes/nonconnecte');
           die();
       }  
 	  

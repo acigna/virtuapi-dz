@@ -5,16 +5,17 @@
 class Cours extends Controller {
 
     function Cours() {
+    
         parent::Controller();
         $this->load->database();
         $this->load->library('oms');
         $this->load->library('generateurCode');
-        $this->load->model('catalogue/specialite','specialite');
-        $this->load->model('catalogue/annee','annee');	    
-        $this->load->model('catalogue/module', 'module');
-        $this->load->model('catalogue/chapitre', 'chapitre');
-        $this->load->model('contenu/coursaccepte', 'cours');
-        $this->load->model('contenu/coursmodere', 'coursmodere');
+        $this->load->model( 'catalogue/specialite', 'specialite' );
+        $this->load->model( 'catalogue/annee', 'annee' );	    
+        $this->load->model( 'catalogue/module', 'module' );
+        $this->load->model( 'catalogue/chapitre', 'chapitre' );
+        $this->load->model( 'contenu/coursaccepte', 'cours' );
+        $this->load->model( 'contenu/coursmodere', 'coursmodere' );
     }
         
         
@@ -114,7 +115,7 @@ class Cours extends Controller {
     }
     
     function publie() {
-	    $contenu = $this->load->view( 'cours_publie' );
+	    $this->load->view('cours_publie');
     }
     
     function checkCaptcha() {

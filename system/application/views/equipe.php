@@ -1,4 +1,9 @@
-     <h2 style="text-align:center">L'équipe de OpenMindStudents.org</h2><br/>
+<?php
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("L'équipe de VirtUAPI-DZ");
+?>
+     <h2 style="text-align:center">L'équipe de VirtUAPI-DZ</h2><br/>
      <h2 style="text-align:center">Les membres actifs</h2><br/>
      <table align="center">
 	 
@@ -87,4 +92,9 @@
 
 
         </table>
+
+<?php
+  //Afficher la partie basse
+  $this->oms->partie_basse();
+?>
    

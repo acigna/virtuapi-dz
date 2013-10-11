@@ -1,3 +1,10 @@
+<?php
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("L'université virtuelle");
+?>
+
+
 <h2 style="text-align:center">Bienvenu dans l'université virtuelle</h2>
     
 	 <p style="text-indent: 25px;">L'université virtuelle vous permet de consulter ou de publier 
@@ -17,3 +24,9 @@
      être partenaire du portail en utilisant le formulaire de 'Contactez-nous'. <a href="./../index.php/contact">Cliquez içi</a> pour
      y accédez.	
 	 </p>
+
+<?php
+  //Afficher la partie basse
+  $this->oms->partie_basse();
+?> 
+	

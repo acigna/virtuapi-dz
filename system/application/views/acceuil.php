@@ -1,8 +1,7 @@
 <?php
-  //Récupérer l'instance de CI, et afficher la partie haute
-  $CI = & get_instance();
-  $CI->load->library('oms');
-  $this->oms->partie_haute('Page d\'acceuil');
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("Page d'acceuil");
 ?>
   <div class="box">
     <h2>VirtUAPI-DZ c'est quoi ?</h2>
@@ -33,6 +32,6 @@
 
 <?php
   //Afficher la partie basse
-  $CI->oms->partie_basse();
+  $this->oms->partie_basse();
 ?>
   	   

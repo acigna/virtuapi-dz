@@ -4,31 +4,20 @@
 
 class Equipe extends Controller {
 
-	function Equipe()
-	{
+    function Equipe() {
 		parent::Controller();	
 		$this->load->library('oms');
-	}
+    }
         
         
-        function Deconnection()
-        {
+    function Deconnection() {
           	$this->oms->Deconnection($this);
-        }
+    }
         
         
-       	function index()
-	{
-                
-               $this->oms->partie_haute('./../','L\'équipe de Open Mind Students',$this);
-                      
-  	       //Contenu principal ici   
-		
-               $contenu=$this->load->view("equipe",'',true);             	
-               echo $contenu ;
-               $this->oms->partie_basse($this);
- 
-       }
+    function index() {
+        $this->load->view("equipe");             	
+    }
 }
 
 ?>

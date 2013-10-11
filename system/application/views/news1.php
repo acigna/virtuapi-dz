@@ -1,3 +1,9 @@
+<?php
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("Lancement du site");
+?>
+
 	 <p>Bonjour tout le monde,</p>
 	 <p style="text-indent: 30px;">
 	  Sans aucun doute, le jeune et tout particuliérement l'étudiant représente le pilier de notre société. C'est à lui qu'on fait appel pour innover, inventer et faire progresser la société, c'est à lui qu'on fait appel pour la main d'oeuvre, c'est à lui qu'on fait lors des famines et des catastrophes naturelles, c'est à lui aussi qu'on fait au temps des guerres pour défendre notre terre. C'est l'entité du changement et du progrés culturel, technologique et économique.    
@@ -35,11 +41,16 @@ Actuellement, le portail comporte  une seule rubrique nommée l'université virt
     </p>
 
      <p style="text-indent: 30px;">
-      Et pour finir, au nom de toute l'équipe, j'annonce le lancement du portail OpenMindStudents.org.
+      Et pour finir, au nom de toute l'équipe, j'annonce le lancement du portail VirtUAPI-DZ.
      </p>
-        Mr Ben Merar Tarik Zakaria,<br/> 
+        Mr Benmerar Tarik Zakaria,<br/> 
         Chef du projet,<br/>  
-        OpenMindStudents.org
+        VirtUAPI-DZ
      </p>
      <p></p>
+
+<?php
+  //Afficher la partie basse
+  $this->oms->partie_basse();
+?>
 

@@ -1,34 +1,21 @@
 <?php
 
-/* Controlleur de contactez-nous du Open Mind Students */
+/* Controlleur de contactez-nous du VirtUAPI-DZ */
 
 class Universite_virtuelle extends Controller {
 
-	function Universite_virtuelle()
-	{
+    function Universite_virtuelle() {
 		parent::Controller();	
 		$this->load->library('oms');
-	}
+    }
         
-        
-        function Deconnection()
-        {
+    function Deconnection() {
           	$this->oms->Deconnection($this);
-        }
-        
-        
-       	function index()
-	{
-                
-               $this->oms->partie_haute('./../','L\'université virtuelle',$this);
-                      
-  	       //Contenu principal ici   
-		
-               $contenu=$this->load->view("universite_virtuelle",'',true);             	
-               echo $contenu ;
-               $this->oms->partie_basse($this);
- 
-       }
+    }
+            
+    function index() {
+        $this->load->view("universite_virtuelle");             	
+    }
 }
 
 ?>
