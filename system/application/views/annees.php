@@ -20,5 +20,5 @@
 
 <?php
   //Afficher la partie basse
-  $CI->oms->partie_basse();
+  $this->load->view('includes/partie_basse.php');
 ?>

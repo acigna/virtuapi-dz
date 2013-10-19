@@ -11,14 +11,6 @@ class Oms {
         die();
     }
     
-    function partie_basse() {
-        echo "</div>";
-        echo "</div>";
-        $CI = & get_instance();
-        $footer = $CI->load->view('includes/footer', '', true);
-        echo $footer.'</body></html>';
-    }
-
     function partie_haute( $titre ) {
         $CI = & get_instance();
         $CI->load->database();

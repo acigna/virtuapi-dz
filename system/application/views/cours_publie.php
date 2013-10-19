@@ -20,5 +20,5 @@ pour votre contribution au contenu du portail VirtUAPI-DZ.<br/>
 
 <?php
   //Afficher la partie basse
-  $this->oms->partie_basse();
+  $this->load->view('includes/partie_basse.php');
 ?>

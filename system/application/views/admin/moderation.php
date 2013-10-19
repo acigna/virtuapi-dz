@@ -18,5 +18,5 @@
 
 <?php
   //Afficher la partie basse
-  $this->oms->partie_basse();
+  $this->load->view('includes/partie_basse.php');
 ?>    

@@ -91,5 +91,6 @@
 ?>
 
 <?php
-  $this->oms->partie_basse();
+  //Afficher la partie basse
+  $this->load->view('includes/partie_basse.php');
 ?>

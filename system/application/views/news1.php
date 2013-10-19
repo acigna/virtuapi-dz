@@ -51,6 +51,6 @@ Actuellement, le portail comporte  une seule rubrique nommée l'université virt
 
 <?php
   //Afficher la partie basse
-  $this->oms->partie_basse();
+  $this->load->view('includes/partie_basse.php');
 ?>
 
