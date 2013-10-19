@@ -23,7 +23,7 @@ class Admin extends Controller {
 	//Vérifier si un utilisateur est un modérateur    
     function _verifierModerateur( $idUser ) {
 	    if( !( $this->membre->estModerateur($idUser) ) ) {
-            $this->load->view('admin/erreurs/nonmod');
+            echo $this->load->view( 'admin/erreurs/nonmod', '', True );
             die();      		
         }
     }
@@ -31,7 +31,7 @@ class Admin extends Controller {
 	//Vérifier si un utilisateur est un admin
     function _verifierAdmin( $idUser ) {
         if( !( $this->membre->estAdmin($idUser) ) ) {
-            $this->load->view('admin/erreurs/nonadmin');
+            echo $this->load->view( 'admin/erreurs/nonadmin', '', True );
             die();      		
         }
     }
@@ -39,7 +39,7 @@ class Admin extends Controller {
 	//Vérifier si le membre peut modérer cette spécialité    
     function _verifierModSpecialite( $idS,$idM ) {
         if( !$this->specialite->verifierModSpecialite( $idS, $idM ) ) {  
-            $this->load->view('admin/erreurs/nonautorisemod');
+            echo $this->load->view( 'admin/erreurs/nonautorisemod', '', True );
             die();          	        
         }
 	}	

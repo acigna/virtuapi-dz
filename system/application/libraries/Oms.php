@@ -130,7 +130,7 @@ class Oms {
       $CI->load->library('session');
 	  $id = $CI->session->userdata("id");
 	  if($id == null) {
-          $CI->load->view('includes/nonconnecte');
+          echo $CI->load->view('includes/nonconnecte', '', True);
           die();
       }  
 	  
