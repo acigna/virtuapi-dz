@@ -33,10 +33,10 @@
                         $contenus[$i]['publiant'] = $this->membre->charger($contenu['idpubliant'])->pseudo;
                     }
                     
-                    $chapitres[] = array( 'nom'=>$chapitre['nom'],'num'=>$chapitre['num'],'contenus'=> $contenus );              
+                    $chapitres[] = array( 'nom' => $chapitre['nom'], 'num' => $chapitre['num'], 'contenus' => $contenus );              
                 }
               
-                $cours[] = array( 'nom'=>$module['nom'],'chapitres'=>$chapitres );   
+                $cours[] = array( 'nom' => $module['nom'],'chapitres' => $chapitres );   
             }
             
             return $cours;

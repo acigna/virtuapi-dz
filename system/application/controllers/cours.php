@@ -23,18 +23,6 @@ class Cours extends Controller {
         $this->oms->Deconnection();
     }
         
-    function contenu($idannee=0) {
-    
-        //Vérifier l'existance de l'année
-        $annee = $this->oms->verifAnnee($idannee);
-        
-        //Récupérer la liste des cours de l'année
-        $cours = $this->cours->listerCoursAnnee($idannee);
-         
-        //Afficher la page de contenu de cours
-        $this->load->view( "cours", array( 'nomannee'=> $annee->nom, 'cours' => $cours ) );             	
-    }
-          
     function annees($idspecialite=0) {
     
         //Vérifier l'existance de la spécialité, puis la récupérer 
@@ -45,6 +33,19 @@ class Cours extends Controller {
         
         //Afficher la page de liste des années pour la spécialité               
         $this->load->view( "annees", array( 'type'=>'cours', 'nom' => $specialite->nom, 'annees'=>$annees ) );             	
+    }
+    
+    function contenu($idannee=0) {
+    
+        //Vérifier l'existance de l'année
+        $annee = $this->oms->verifAnnee($idannee);
+        
+        //Récupérer la liste des cours de l'année
+        $cours = $this->cours->listerCoursAnnee($idannee);
+         
+        //Afficher la page de contenu de cours
+        $this->load->view( "cours", array( 'nomannee'=> $annee->nom, 'cours' => $cours ) );     
+                	
     }
         
     function publier() {

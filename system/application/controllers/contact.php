@@ -15,8 +15,7 @@ class Contact extends Controller {
         
         
     function index() {
-  	    //Contenu principal ici   
-	    $contenu=$this->load->view("contact");             	
+	    $this->load->view("contact");             	
     }
 }
 

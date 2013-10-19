@@ -4,164 +4,48 @@
 
 class Sujets extends Controller {
 
-    function Sujets()
-    {
+    function Sujets() {
+    
         parent::Controller();
         $this->load->database();
         $this->load->library('oms');
         $this->load->model('catalogue/specialite','specialite');
         $this->load->model('catalogue/annee','annee');
+        $this->load->model( 'contenu/sujetaccepte', 'sujet' );
     }
  	
- 	function Deconnection()
-    {
-       $this->oms->Deconnection($this);
+    function Deconnection() {
+        $this->oms->Deconnection($this);
     }
           
-    function annees($idspecialite=0)
-    {
+    function annees($idspecialite=0) {
+    
         //Vérifier l'existance de la spécialité, puis la récupérer 
-        $specialite = $this->oms->verifSpecialite($this, $idspecialite);
+        $specialite = $this->oms->verifSpecialite($idspecialite);
 
-        //Afficher la partie haute du site	    
-        $this->oms->partie_haute('./../../../',"Les sujets de la spécialité {$specialite->nom}",$this);
-        
         //Récupérer la liste des années de cette spécialité
         $annees = $this->annee->listerAnnees($idspecialite);
         
         //Afficher le contenu principal               
-        $contenu=$this->load->view("annees",array('type'=>'sujets','nom' => $specialite->nom, 'annees'=>$annees),true);             	
-        echo $contenu ;
-        
-        //Afficher la partie basse du site       
-        $this->oms->partie_basse($this);
-
+        $this->load->view( "annees", array( 'type'=>'sujets','nom' => $specialite->nom, 'annees'=>$annees ) );  
+                   	
     }
         
+    function contenu($idannee=0) {
+    
+        //Vérifier l'existance de l'année
+        $annee = $this->oms->verifAnnee($idannee);
         
-        function contenu($idannee=0)
-        {
- 	      if($idannee==0)
-                  show_404();
-              $this->load->database();
-              
-            $idannee=mysql_real_escape_string(htmlentities($idannee));
-            $annee=mysql_fetch_array(mysql_query("select * from annee where id='$idannee' "));
-            
-            if(!$idannee) show_404();
-            
-            $this->oms->partie_haute('./../../../',"Les sujets de la {$annee[1]}",$this);	
-            
-            $sujets=array();
-            
-            // Liste des modules 
-             $module=mysql_query("select id,nommodule from module where idannee='$idannee'");
-            
-            while(list($id,$nomM)=mysql_fetch_array($module))
-            {
-              $contenu=mysql_query("select s.Id,s.Type,s.TypeFichier,s.NumSujet,s.TypeExam,me.Pseudo,s.AnneeUniv,s.TimeStampPub,s.TimeStampDernModif from sujets s, membre me where s.IdPubliant=me.Id and s.IdModule='$id'  order by s.AnneeUniv desc,case s.TypeExam when 'EMD1' THEN 1 WHEN 'EMD2' THEN 2  WHEN 'EMD3' THEN 3 WHEN 'Synthese' THEN 4 WHEN 'Rattrapage' THEN 5 ELSE NULL END,s.NumSujet,s.Type DESC"); 
-              
-              $contenus=array();             
-              
-              
-               
-             list($id,$type,$typefichier,$numsujet,$typeexam,$pseudo,$anneeuniv,$pub,$dernmodif)=mysql_fetch_array($contenu);
-              
-              if($id!=NULL)
-              {
-                 $contenus[]=array('anneeuniv'=>$anneeuniv,
-                              'sujetsa'=>array(array(
-                                                 'typeexam'=>$typeexam,
-                                                                        'sujetse'=>array(array('numsujet'=>$numsujet,
-                                                                                         'sujetsn'=>array(array('id'=>$id,'type'=>$type,'pseudo'=>$pseudo,
-                                                                                          'typefichier'=>$typefichier, 'pub'=>$pub,'dernmodif'=>$dernmodif)))))));        
-                      
-              	while(list($id,$type,$typefichier,$numsujet,$typeexam,$pseudo,$anneeuniv,$pub,$dernmodif)=mysql_fetch_array($contenu))
-             	{
-             	 
-             	  
-                   
-             	 
-                    if($contenus[count($contenus)-1]['anneeuniv']==$anneeuniv)
-                    {
-                     
-                      if($contenus[count($contenus)-1]['sujetsa'][count($contenus[count($contenus)-1]['sujetsa'])-1]['typeexam']==$typeexam)
-                      {
-                      
-                        $contenus[count($contenus)-1]['sujetsa'][count($contenus[count($contenus)-1]['sujetsa'])-1]['sujetse'];
-                      
-                        if($contenus[count($contenus)-1]['sujetsa'][count($contenus[count($contenus)-1]['sujetsa'])-1]['sujetse'][count($contenus[count($contenus)-1]['sujetsa'][count($contenus[count($contenus)-1]['sujetsa'])-1]['sujetse'])-1]['numsujet']==$numsujet)
-                         {
-                          
-                           $contenus[count($contenus)-1]['sujetsa'][count($contenus[count($contenus)-1]['sujetsa'])-1]['sujetse'][count($contenus[count($contenus)-1]['sujetsa'][count($contenus[count($contenus)-1]['sujetsa'])-1]['sujetse'])-1]['sujetsn'][]=array('id'=>$id,'type'=>$type,'pseudo'=>$pseudo,
-                                                                                          'typefichier'=>$typefichier, 'pub'=>$pub,'dernmodif'=>$dernmodif);
-                                 
-                         
-                         }else{
-                          
-                          $contenus[count($contenus)-1]['sujetsa'][count($contenus[count($contenus)-1]['sujetsa'])-1]['sujetse'][]=array('numsujet'=>$numsujet,
-                                                                                         'sujetsn'=>array(array('id'=>$id,'type'=>$type,'pseudo'=>$pseudo,
-                                                                                          'typefichier'=>$typefichier, 'pub'=>$pub,
-                                                                                          'dernmodif'=>$dernmodif)));
-                                                                                                                  
-                        }
-                        
-                      
-                      }else{
-                         
-                         $contenus[count($contenus)-1]['sujetsa'][]=array(
-                                                 'typeexam'=>$typeexam,
-                                                                        'sujetse'=>array(array('numsujet'=>$numsujet,
-                                                                                         'sujetsn'=>array(array('id'=>$id,'type'=>$type,'pseudo'=>$pseudo,
-                                                                                          'typefichier'=>$typefichier, 'pub'=>$pub,'dernmodif'=>$dernmodif)))));
-                      
-                      }
-                        
-                    
-                    }else{
-                  	$contenus[]=array('anneeuniv'=>$anneeuniv,
-                              'sujetsa'=>array(array(
-                                                 'typeexam'=>$typeexam,
-                                                                        'sujetse'=>array(array('numsujet'=>$numsujet,
-                                                                                         'sujetsn'=>array(array('id'=>$id,'type'=>$type,'pseudo'=>$pseudo,
-                                                                                          'typefichier'=>$typefichier, 'pub'=>$pub,'dernmodif'=>$dernmodif)))))));        
-                    
-                    
-                    
-                    }
-                    
-                             
-              	}
-              	
-              }	   
-              
-              
-              $sujets[]=array('nom'=>$nomM,'contenus' =>$contenus);   
-              
-              
-              
-            }
-            
-            
-            $contenu=$this->load->view("sujets",array('nomannee'=> $annee[1], 'sujets' => $sujets),true);             	
-            echo $contenu ;
-            
-            $this->oms->partie_basse($this);
-            
+        //Récupérer la liste des sujets de l'année
+        $sujets = $this->sujet->listerSujetsAnnee($idannee);
+         
+        //Afficher la page de contenu de sujets
+        $this->load->view( "sujets", array( 'nomannee'=> $annee->nom, 'sujets' => $sujets ) );
+    }
 
-              
-        
-        
-        }
-
-
-
-	function publier()
-	{
+    function publier() {
 	
-	
-	
-	}
+    }
 }
 
 

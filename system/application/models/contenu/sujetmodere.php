@@ -1,7 +1,7 @@
 <?php
 
 
-class sujetmodere extends Model
+class SujetModere extends Model
 {
 
    //Récupérer le nombre de sujets à modérer pour une spécialité donnée

@@ -1,4 +1,10 @@
 <?php
+  //Récupérer la libririe OMS, et afficher la partie haute
+  $this->load->library('oms');
+  $this->oms->partie_haute("Les sujets de la $nomannee");
+?>
+
+<?php
 /* Tableaux d'association entre les valeurs base de données et les valeurs réelles*/
 	  
 	  //Association du type
@@ -82,4 +88,8 @@
    
 <?php
   }
+?>
+
+<?php
+  $this->oms->partie_basse();
 ?>
