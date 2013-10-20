@@ -14,18 +14,12 @@ class Oms {
     function partie_haute( $titre ) {
         $CI = & get_instance();
         $CI->load->database();
+        $CI->load->model("membre");
         $CI->load->library('session');
-        $CI->load->helper(array('form', 'url'));
+        $CI->load->helper( array( 'form', 'url' ) );
         $CI->load->library('form_validation');
               
         $erreur = $this->traiterConnectionMembre();
-        $entete = $CI->load->view( 'includes/entete', array( 'titre' => $titre ), true);
-        echo $entete;
-                
-        $menu_haut = $CI->load->view( 'includes/menu_haut', '', true );
-        
-        $CI->load->model("membre");
-        
         $id = $CI->session->userdata('id');
         if($id!=null) {
           $membre = $CI->membre->charger($id);
@@ -33,10 +27,8 @@ class Oms {
           $membre = null;
         }
         
-        $menu_gauche = $CI->load->view('includes/menu_gauche', array( 'membre'=>$membre, 'erreurConnection' => $erreur ), true);
-              
-        echo "$menu_haut $menu_gauche" ;
-        echo "<div id='colTwo'>";
+        $CI->load->view('includes/partie_haute', array( 'titre' => $titre, 'membre'=>$membre, 'erreurConnection' => $erreur ) );
+      
     }
          
 
