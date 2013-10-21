@@ -16,8 +16,8 @@ class Oms {
         $CI->load->database();
         $CI->load->model("membre");
         $CI->load->library('session');
-        $CI->load->helper( array( 'form', 'url' ) );
         $CI->load->library('form_validation');
+        $CI->load->helper( array( 'form', 'url' ) );
               
         $erreur = $this->traiterConnectionMembre();
         $id = $CI->session->userdata('id');
@@ -36,7 +36,7 @@ class Oms {
         $CI = & get_instance();
         $CI->load->model('membre');
         $pseudo = $CI->input->post( 'PseudoC', true );
-        $mdp = $CI->input->post( 'MotDePasseC', false );
+        $mdp = $CI->input->post( 'MotDePasseC', true );
         if( $pseudo &&  $mdp ) {
             $membre = $CI->membre->auth( $pseudo, $mdp );
             if( $membre && $membre->auth ) {
@@ -78,7 +78,6 @@ class Oms {
     }
 	
 	function verifierUpload($name) {
-
 	     
 	  	if ( $_FILES[$name]['error'] == 0)
  		{

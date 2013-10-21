@@ -1,7 +1,7 @@
 <?php
   //Récupérer la libririe OMS, et afficher la partie haute
   $this->load->library('oms');
-  $this->oms->partie_haute("Page de modération des sujets de la spécialité $specialite");
+  $this->oms->partie_haute("Création d'un contenu pour les Cours");
 ?>
 
 <script type="text/javascript" src="<?php echo base_url(); ?>ajax/ajax.js"></script>

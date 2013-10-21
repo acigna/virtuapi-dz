@@ -6,9 +6,12 @@ class PublierCoursForm
     function PublierCoursForm() {
         $CI = $this->CI = & get_instance();
         
+        $CI->load->database();
+        $CI->load->model( 'contenu/coursmodere', 'coursmodere' );
         $CI->load->library('form_validation'); 
         $CI->load->library('oms');
         $CI->load->library('generateurCode');
+        $CI->load->helper('form');
         
         $CI->form_validation->set_rules( 'IdChapitre', 'Chapitre', 'required|xss_clean' );
         $CI->form_validation->set_rules( 'Type', 'Type de contenu', 'required|xss_clean' );
@@ -21,6 +24,13 @@ class PublierCoursForm
     
     function is_valid() {
         return $this->CI->form_validation->run();
+    }
+    
+    function save() {
+        $CI = $this->CI;
+        $idcours = $CI->coursmodere->ajouter( $CI->input->post('IdChapitre', true), $CI->input->post('Type', true), 
+	                                          $CI->session->userdata('id'), 'pdf' );
+	    $CI->oms->upload( "Cours", "Cours", $idcours );    
     }
     
     function checkCaptcha() {

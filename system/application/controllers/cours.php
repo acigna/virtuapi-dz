@@ -15,7 +15,6 @@ class Cours extends Controller {
         $this->load->model( 'catalogue/module', 'module' );
         $this->load->model( 'catalogue/chapitre', 'chapitre' );
         $this->load->model( 'contenu/coursaccepte', 'cours' );
-        $this->load->model( 'contenu/coursmodere', 'coursmodere' );
     }
         
         
@@ -54,19 +53,17 @@ class Cours extends Controller {
         $this->oms->verifierConnecte();  
     
         //Charger les helpers requis.
-        $this->load->helper( array( 'form', 'url' ) );
+        $this->load->helper('url');
         
         //Validation de formulaire si requête POST
         if( $this->input->post('cours_publier') ) { 
             $this->load->library('contenu/publierCoursForm');
             if( $this->publiercoursform->is_valid() == true ) {
-	       
-	            //Insérer le cours à modérer dans la base de données et dans le système de fichier
-	            $idcours = $this->coursmodere->ajouter( $this->input->post('IdChapitre', true), $this->input->post('Type', true), 
-	                                                    $this->session->userdata('id'), 'pdf' );
-	            $this->oms->upload( "Cours", "Cours", $idcours );
-	        
-	            redirect('/cours/publie', 'location');
+                //Sauvegarder les informations du formulaire dans la BDD, et uploader le contenu
+	            $this->publiercoursform->save();
+	            
+	            //Redériger vers la page de confirmation de publication
+                redirect('/cours/publie', 'location');
 	            return ;
 	        }  
      
