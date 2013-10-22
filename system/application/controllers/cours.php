@@ -22,7 +22,7 @@ class Cours extends Controller {
         $this->oms->Deconnection();
     }
         
-    function annees($idspecialite=0) {
+    function annees( $idspecialite=0 ) {
     
         //Vérifier l'existance de la spécialité, puis la récupérer 
         $specialite = $this->oms->verifSpecialite($idspecialite);
@@ -34,7 +34,7 @@ class Cours extends Controller {
         $this->load->view( "annees", array( 'type'=>'cours', 'nom' => $specialite->nom, 'annees'=>$annees ) );             	
     }
     
-    function contenu($idannee=0) {
+    function contenu( $idannee=0 ) {
     
         //Vérifier l'existance de l'année
         $annee = $this->oms->verifAnnee($idannee);
@@ -43,8 +43,7 @@ class Cours extends Controller {
         $cours = $this->cours->listerCoursAnnee($idannee);
          
         //Afficher la page de contenu de cours
-        $this->load->view( "cours", array( 'nomannee'=> $annee->nom, 'cours' => $cours ) );     
-                	
+        $this->load->view( "cours", array( 'nomannee'=> $annee->nom, 'cours' => $cours ) );
     }
         
     function publier() {
@@ -58,9 +57,9 @@ class Cours extends Controller {
         //Validation de formulaire si requête POST
         if( $this->input->post('cours_publier') ) { 
             $this->load->library('contenu/publierCoursForm');
-            if( $this->publiercoursform->is_valid() == true ) {
+            if( $this->form->is_valid() == true ) {
                 //Sauvegarder les informations du formulaire dans la BDD, et uploader le contenu
-	            $this->publiercoursform->save();
+	            $this->form->save();
 	            
 	            //Redériger vers la page de confirmation de publication
                 redirect('/cours/publie', 'location');
@@ -117,11 +116,11 @@ class Cours extends Controller {
     }
     
     function checkCaptcha() {
-        return $this->publiercoursform->checkCaptcha();   
+        return $this->form->checkCaptcha();   
     }
     
     function verifierUpload() {
-        return $this->publiercoursform->verifierUpload();
+        return $this->form->verifierUpload();
     }
     
     
