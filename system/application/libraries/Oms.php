@@ -2,16 +2,8 @@
 
 class Oms {
 
-    function Deconnection() {
-        $CI = & get_instance();
-        $CI->load->helper('url');
-        $CI->load->library('session');
-        $CI->session->sess_destroy();
-        redirect('./../../index.php', 'location');
-        die();
-    }
-    
     function partie_haute( $titre ) {
+    
         $CI = & get_instance();
         $CI->load->database();
         $CI->load->model("membre");
@@ -35,6 +27,7 @@ class Oms {
     function traiterConnectionMembre()  {
         $CI = & get_instance();
         $CI->load->model('membre');
+        $CI->load->helper('url');
         $pseudo = $CI->input->post( 'PseudoC', true );
         $mdp = $CI->input->post( 'MotDePasseC', true );
         if( $pseudo &&  $mdp ) {
@@ -51,6 +44,8 @@ class Oms {
                     $CI->session->set_userdata( 'EMail', $membre->EMail );
                     $CI->session->set_userdata( 'TimeStampInscrit', $membre->TimeStampInscrit );
 	                $CI->session->set_userdata( 'MotDePasse', $membre->MotDePasse );
+	                redirect( uri_string( current_url() ), "location" );
+	                die();
 
  	            } else {
  	                return "Connection suspendu, veuillez rÃ©essayer dans $difSeconde secondes";
@@ -106,9 +101,11 @@ class Oms {
 		   return "*Une erreur est survenue lors de l'envoi du fichier. Vieullez réessayer la publlication." ; 		 
 		 }
 	    	return "";
+	    	
 	}
 	
 	function upload($name, $type, $id) {
+	
 	  // On peut valider le fichier et le stocker définitivement
  		move_uploaded_file($_FILES[$name]['tmp_name'], "./temp/{$type}{$id}.pdf" );
   	
@@ -116,38 +113,44 @@ class Oms {
 	
     //Vérifier si l'utilisateur est connecté
     function verifierConnecte() {
+    
       //Récupérer une instance de CodeIgniter
       $CI = & get_instance();
       $CI->load->library('session');
 	  $id = $CI->session->userdata("id");
-	  if($id == null) {
+	  if( $id == null ) {
           echo $CI->load->view('includes/nonconnecte', '', True);
           die();
       }  
 	  
 	  return $id;	
+	  
 	}
 	
 	//Verifier l'existence d'une spécialité
 	function verifSpecialite($id) {
+	
 	  $CI = & get_instance();
 	  $specialite_exist = $CI->specialite->getSpecialite($id);
 	  
 	  if(!$specialite_exist)
 	       show_404();
 	       
-	  return $specialite_exist[0];     
+	  return $specialite_exist[0]; 
+	      
 	}
 	
 	//Verifier l'existence d'une année
 	function verifAnnee($id) {
+	
 	  $CI = & get_instance();
 	  $annee_exist=$CI->annee->getAnnee($id);
 	  
 	  if(!$annee_exist)
 	      show_404();
 	       
-	  return $annee_exist[0];     
+	  return $annee_exist[0];
+	       
 	}
 
 }

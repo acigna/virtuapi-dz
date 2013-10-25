@@ -9,12 +9,6 @@ class Welcome extends Controller {
         $this->load->library('oms');
 	}
         
-        
-    function Deconnection() {
-        $this->oms->Deconnection($this);
-    }
-        
-        
     function index() {
         //Afficher la page d'acceuil
         $this->load->view("acceuil");             	

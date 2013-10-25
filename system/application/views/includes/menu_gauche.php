@@ -73,7 +73,7 @@
 				   <li><a  href="<?php echo base_url(); ?>index.php/admin">Administration</a></li>
 				   <?php } ?>
 				   
-				   <li><a href="<?php echo base_url(); ?>index.php/welcome/Deconnection">Se déconnecter</a></li>
+				   <li><a href="<?php echo base_url(); ?>index.php/membre/deconnexion">Se déconnecter</a></li>
 				  </ul>
 				 </li>
 			    </ul>	 

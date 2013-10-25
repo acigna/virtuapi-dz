@@ -15,11 +15,7 @@ class Cours extends Controller {
         $this->load->model( 'catalogue/module', 'module' );
         $this->load->model( 'catalogue/chapitre', 'chapitre' );
         $this->load->model( 'contenu/coursaccepte', 'cours' );
-    }
         
-        
-    function Deconnection() {
-        $this->oms->Deconnection();
     }
         
     function annees( $idspecialite=0 ) {
@@ -62,7 +58,7 @@ class Cours extends Controller {
 	            $this->form->save();
 	            
 	            //Redériger vers la page de confirmation de publication
-                redirect('/cours/publie', 'location');
+                redirect( '/cours/publie', 'location' );
 	            return ;
 	        }  
      

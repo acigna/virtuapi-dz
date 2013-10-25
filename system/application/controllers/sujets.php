@@ -15,10 +15,6 @@ class Sujets extends Controller {
         
     }
  	
-    function Deconnection() {
-        $this->oms->Deconnection($this);
-    }
-          
     function annees($idspecialite=0) {
     
         //Vérifier l'existance de la spécialité, puis la récupérer 

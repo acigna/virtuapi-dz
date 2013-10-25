@@ -9,10 +9,6 @@ class News1 extends Controller {
         $this->load->library('oms');
     }
         
-    function Deconnection() {
-        $this->oms->Deconnection($this);
-    }
-        
     function index() {
         $this->load->view("news1");             	
     }

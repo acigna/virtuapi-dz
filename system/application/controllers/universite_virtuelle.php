@@ -9,10 +9,6 @@ class Universite_virtuelle extends Controller {
 		$this->load->library('oms');
     }
         
-    function Deconnection() {
-          	$this->oms->Deconnection($this);
-    }
-            
     function index() {
         $this->load->view("universite_virtuelle");             	
     }
