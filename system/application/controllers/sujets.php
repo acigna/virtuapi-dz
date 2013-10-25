@@ -1,6 +1,6 @@
 <?php
 
-/* Controlleur de la partie cours de Open Mind Students */
+/* Controlleur de la partie cours de VirtUAPI-DZ */
 
 class Sujets extends Controller {
 
@@ -12,6 +12,7 @@ class Sujets extends Controller {
         $this->load->model('catalogue/specialite','specialite');
         $this->load->model('catalogue/annee','annee');
         $this->load->model( 'contenu/sujetaccepte', 'sujet' );
+        
     }
  	
     function Deconnection() {
@@ -27,7 +28,7 @@ class Sujets extends Controller {
         $annees = $this->annee->listerAnnees($idspecialite);
         
         //Afficher le contenu principal               
-        $this->load->view( "annees", array( 'type'=>'sujets','nom' => $specialite->nom, 'annees'=>$annees ) );  
+        $this->load->view( "contenu/annees", array( 'type'=>'sujets','nom' => $specialite->nom, 'annees'=>$annees ) );  
                    	
     }
         
@@ -40,7 +41,7 @@ class Sujets extends Controller {
         $sujets = $this->sujet->listerSujetsAnnee($idannee);
          
         //Afficher la page de contenu de sujets
-        $this->load->view( "sujets", array( 'nomannee'=> $annee->nom, 'sujets' => $sujets ) );
+        $this->load->view( "contenu/sujets", array( 'nomannee'=> $annee->nom, 'sujets' => $sujets ) );
     }
 
     function publier() {

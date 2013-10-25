@@ -1,6 +1,7 @@
 <?php
 
 //Helper pour charger les formulaire à travers une class librairie formulaire
+//TODO:$req_msg => $msg use an array instead
 function load_form( $obj, $config, $err_delim1="", $err_delim2="", $req_msg="" ) {
     $CI = $obj->CI = & get_instance();
     $CI->load->library('form_validation');

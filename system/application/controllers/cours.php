@@ -31,7 +31,7 @@ class Cours extends Controller {
         $annees = $this->annee->listerAnnees($idspecialite);
         
         //Afficher la page de liste des années pour la spécialité               
-        $this->load->view( "annees", array( 'type'=>'cours', 'nom' => $specialite->nom, 'annees'=>$annees ) );             	
+        $this->load->view( "contenu/annees", array( 'type'=>'cours', 'nom' => $specialite->nom, 'annees'=>$annees ) );             	
     }
     
     function contenu( $idannee=0 ) {
@@ -43,7 +43,7 @@ class Cours extends Controller {
         $cours = $this->cours->listerCoursAnnee($idannee);
          
         //Afficher la page de contenu de cours
-        $this->load->view( "cours", array( 'nomannee'=> $annee->nom, 'cours' => $cours ) );
+        $this->load->view( "contenu/cours", array( 'nomannee'=> $annee->nom, 'cours' => $cours ) );
     }
         
     function publier() {
@@ -107,12 +107,12 @@ class Cours extends Controller {
         $chapitres = $this->chapitre->listerChapitre($firstM);
         
         //Afficher la page de publication de cours
-        $this->load->view( "cours_publier", array( 'specialites' => $specialites, 'modules' => $modules, 'chapitres' => $chapitres, 
-                                                   'default' => $default, 'captcha' => $captcha ) );      
+        $this->load->view( "contenu/cours_publier", array( 'specialites' => $specialites, 'modules' => $modules, 'chapitres' => $chapitres, 
+                                                           'default' => $default, 'captcha' => $captcha ) );      
     }
     
     function publie() {
-	    $this->load->view('cours_publie');
+	    $this->load->view('contenu/cours_publie');
     }
     
     function checkCaptcha() {
