@@ -9,19 +9,18 @@ class Annee extends Model {
       
     //Ajouter une année dans une spécialité
     function ajouterAnnee($nom,$idspecialite) {
-    	$nom = mysql_real_escape_string(htmlentities($nom,ENT_QUOTES,'UTF-8'));
-    	$idspecialite = mysql_real_escape_string(htmlentities($idspecialite,ENT_QUOTES,'UTF-8'));
+    	
+    	$nom = mysql_real_escape_string( htmlentities( $nom,ENT_QUOTES,'UTF-8' ) );
+    	$idspecialite = mysql_real_escape_string( htmlentities( $idspecialite, ENT_QUOTES,'UTF-8' ) );
         
         $requete = $this->db->insert("annee",array("nomannee"=>$nom,"idspecialite"=>$idspecialite, "timestampajout"=>time()));
     	return $this->db->insert_id();
+    	
     }
     
     //Récupérer l'année dont l'identifiant est id
-    function getAnnee($id)
-    {
-        $requete = $this->db->query("select id, nomannee as nom, idspecialite as specialite from annee where id='$id'");
-        $resultat = $requete->result();
-        return $resultat;
+    function getAnnee($id) {
+        return $this->db->query("select id, nomannee as nom, idspecialite as specialite from annee where id='$id'")->row();
     }
     
     //Supprimer l'année dont l'identifiant est id

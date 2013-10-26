@@ -136,7 +136,7 @@ class Oms {
 	  if(!$specialite_exist)
 	       show_404();
 	       
-	  return $specialite_exist[0]; 
+	  return $specialite_exist; 
 	      
 	}
 	
@@ -144,12 +144,12 @@ class Oms {
 	function verifAnnee($id) {
 	
 	  $CI = & get_instance();
-	  $annee_exist=$CI->annee->getAnnee($id);
+	  $annee_exist = $CI->annee->getAnnee($id);
 	  
 	  if(!$annee_exist)
 	      show_404();
 	       
-	  return $annee_exist[0];
+	  return $annee_exist;
 	       
 	}
 

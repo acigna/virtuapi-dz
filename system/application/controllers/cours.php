@@ -27,7 +27,7 @@ class Cours extends Controller {
         $annees = $this->annee->listerAnnees($idspecialite);
         
         //Afficher la page de liste des années pour la spécialité               
-        $this->load->view( "contenu/annees", array( 'type'=>'cours', 'nom' => $specialite->nom, 'annees'=>$annees ) );             	
+        $this->load->view( "contenu/annees", array( 'type'=>'cours', 'nom' => $specialite->nom, 'annees' => $annees ) );             	
     }
     
     function contenu( $idannee=0 ) {
