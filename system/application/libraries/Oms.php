@@ -2,7 +2,7 @@
 
 class Oms {
 
-    function partie_haute( $titre ) {
+    function partie_haute( $titre, $css = array(), $js = array() ) {
     
         $CI = & get_instance();
         $CI->load->database();
@@ -19,7 +19,8 @@ class Oms {
           $membre = null;
         }
         
-        $CI->load->view('includes/partie_haute', array( 'titre' => $titre, 'membre'=>$membre, 'erreurConnection' => $erreur ) );
+        $CI->load->view('includes/partie_haute', array( 'titre' => $titre, 'css' => $css, 'js' => $js, 
+                                                        'membre'=>$membre, 'erreurConnection' => $erreur ) );
       
     }
          
