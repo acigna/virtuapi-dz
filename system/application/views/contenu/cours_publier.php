@@ -1,10 +1,9 @@
 <?php
   //Récupérer la libririe OMS, et afficher la partie haute
   $this->load->library('oms');
-  $this->oms->partie_haute("Création d'un contenu pour les Cours");
+  $this->load->helper('url');
+  $this->oms->partie_haute("Création d'un contenu pour les Cours", array(), array( base_url()."ajax/ajax.js" ));
 ?>
-
-<script type="text/javascript" src="<?php echo base_url(); ?>ajax/ajax.js"></script>
 
 <h2 style="text-align:center;">Création d'un contenu pour les Cours</h2>
 <?php

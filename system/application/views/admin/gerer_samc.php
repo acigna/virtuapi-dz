@@ -1,12 +1,9 @@
 <?php
   //Récupérer la libririe OMS, et afficher la partie haute
   $this->load->library('oms');
-  $this->oms->partie_haute("Gestion des spécialités, années, modules et chapitres");
+  $this->load->helper('url');
+  $this->oms->partie_haute("Gestion des spécialités, années, modules et chapitres", array(), array( base_url()."ajax/ajax.js" ));
 ?>
-
-<!-- Les requêtes AJAX --> 
-
-<script type="text/javascript" src="<?php echo base_url(); ?>ajax/ajax.js"></script>
 
 <h2 style="text-align:center;">Page de gestion des spécialités,années,modules et chapitres</h2><br/><h3 style="text-align:center;" id="specialite">Spécialités:</h3>
 <div style="text-align:center;"><br/><strong style="color:<?php if($type_notif_spec=='error') echo 'red'; else echo 'green'; ?>;"><?=$notification_specialite;?></strong></div>
