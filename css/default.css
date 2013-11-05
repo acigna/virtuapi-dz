@@ -42,14 +42,14 @@ a:hover {
 .box {
 	margin-bottom: 0;
 	padding-bottom: 0;
-	background: url(images/img07.gif) repeat-x left bottom;
+	background: url(./../images/img07.gif) repeat-x left bottom;
 }
 
 .bottom {
 	display: block;
 	margin-bottom: 0;
 	padding-bottom: 10px;
-	background: url(images/img08.gif) no-repeat left bottom;
+	background: url(./../images/img08.gif) no-repeat left bottom;
 }
 
 .image {
@@ -68,7 +68,7 @@ a:hover {
 	width: 928px;
 	height: 37px;
 	margin: 0 auto;
-	background: #BECF74 url(images/img01.gif) repeat-x;
+	background: #BECF74 url(../images/img01.gif) repeat-x;
 	border-bottom: 3px solid #FFFFFF;
 }
 
@@ -81,7 +81,7 @@ a:hover {
 	margin: 0;
 	padding: 0 0 0 10px;
 	list-style: none;
-	background: url(images/img02.gif) no-repeat;
+	background: url(./../images/img02.gif) no-repeat;
 }
 
 #menu li {
@@ -101,7 +101,7 @@ a:hover {
 }
 
 #menu a:hover {
-	background: #A4B74C url(images/img04.gif) repeat-x;
+	background: #A4B74C url(./../images/img04.gif) repeat-x;
 }
 
 /* Search */
@@ -111,7 +111,7 @@ a:hover {
 	height: 28px;
 	margin: 0;
 	padding: 9px 25px 0 0;
-	background: url(images/img03.gif) no-repeat right top;
+	background: url(./../images/img03.gif) no-repeat right top;
 }
 
 #search fieldset {
@@ -208,11 +208,11 @@ a:hover {
 
 #logo {
 	height: 150px;
-	background: url(images/img06.gif) no-repeat;
+	background: url(./../images/img06.gif) no-repeat;
 }
 
 #head2 {	
-	background: url(images/img05.gif) repeat-x;
+	background: url(./../images/img05.gif) repeat-x;
 }
 
 #logo h1, #logo h2, #logo a {
@@ -241,7 +241,7 @@ a:hover {
 	width: 928px;
 	margin: 0 auto;
 	padding-top: 40px;
-	background: url(images/img11.gif) repeat-x;
+	background: url(./../images/img11.gif) repeat-x;
 }
 
 #footer p {

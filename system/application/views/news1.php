@@ -5,7 +5,8 @@
 ?>
 
 <p>Bonjour tout le monde,</p>
-<div class="article"><p>Sans aucun doute, le jeune et tout particuliérement l'étudiant représente le pilier de notre société. C'est à lui qu'on fait appel pour innover, inventer et faire progresser la société, c'est à lui qu'on fait appel pour la main d'oeuvre, c'est à lui qu'on fait lors des famines et des catastrophes naturelles, c'est à lui aussi qu'on fait au temps des guerres pour défendre notre terre. C'est l'entité du changement et du progrés culturel, technologique et économique.</p>
+<div class="article">
+<p>Sans aucun doute, le jeune et tout particuliérement l'étudiant représente le pilier de notre société. C'est à lui qu'on fait appel pour innover, inventer et faire progresser la société, c'est à lui qu'on fait appel pour la main d'oeuvre, c'est à lui qu'on fait lors des famines et des catastrophes naturelles, c'est à lui aussi qu'on fait au temps des guerres pour défendre notre terre. C'est l'entité du changement et du progrés culturel, technologique et économique.</p>
 
 <p>Mais voilà, sentons-nous  cette résponsabilité envers notre société? Ou contentons-nous juste de nous-même? N'est-il  pas le moment de s'ouvrir à la société et aux autres et admettre cette résponsabilité?</p>
 

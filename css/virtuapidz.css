@@ -1,3 +1,7 @@
 .article > p {
     text-indent: 25px;
 }
+
+.center {
+    text-align:center;
+}

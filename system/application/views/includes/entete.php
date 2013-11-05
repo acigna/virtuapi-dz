@@ -18,7 +18,7 @@
 	<meta name="keywords" content="VirtUAPI-DZ, community, students, étudiant, communauté, entraide, collaboration, algérie, algeria" />
 	<meta name="description" content="Un portail d'entraide et de collaboration pour les étudiants algériens" />	
 	<meta http-equiv="imagetoolbar" content="no" />
-	<link href="<?=base_url(); ?>default.css" rel="stylesheet" type="text/css" />
+	<link href="<?=base_url(); ?>css/default.css" rel="stylesheet" type="text/css" />
         <link href="<?=base_url(); ?>css/virtuapidz.css" rel="stylesheet" type="text/css" />
         <?php
             //Intégrer les fichiers CSS
