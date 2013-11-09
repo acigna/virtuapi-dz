@@ -9,7 +9,7 @@
        une simple suggestion, ou pour autre chose? 
 	  </p>
       <p style="font-size:150%; color:black; text-indent: 30px;">
-	   Toute l'équipe de VirtUAPI-DZ est à votre écoute. Veuillez nous contacter par email à l'adresse:    <strong>openmindstudents[arobase]gmail[point]com</strong>. 
+	   Toute l'équipe de VirtUAPI-DZ est à votre écoute. Veuillez nous contacter par email à l'adresse:    <strong>contact[arobase]acigna[point]com</strong>. 
 	 </p>  
 	 
 <?php
