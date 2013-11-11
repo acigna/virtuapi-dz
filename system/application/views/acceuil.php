@@ -8,18 +8,17 @@
   
 ?>
 <div class="box">
-  <h2>VirtUAPI-DZ c'est quoi ?</h2>
+  <h2>Acigna VirtUAPI-DZ c'est quoi ?</h2>
     <div class="article">
 	  <p><strong>Acigna VirtUAPI-DZ</strong> est un projet libre concrétisé par l'entreprise Acigna, pour la mise en place d'un portail communautaire de nature 
 	  collaborative permettant aux étudiants de s'échanger du contenu pédagogique (Cours, TD, TP et Sujets d'examens).</p>
 	  <p>Pour des suggestions ou des propositions, veuillez  <a href="<?=site_url(array('contact')); ?>" >cliquez içi</a> pour nous contacter.</p>
 	</div>
 	<p>Pour plus de détails sur le projet VirtUAPI-DZ, vueillez <a href="<?=site_url(array('news1')); ?>">cliquer ici</a>.</p>
-     
-           <p class="bottom"></p>
+    <p class="bottom"></p>
 </div>
 <div class="box">
-  <h3>Lancement du portail VirtUAPI-DZ</h3>
+  <h3>Lancement du projet Acigna VirtUAPI-DZ</h3>
   <p>Bonjour tout le monde,</p>
   <div class="article">
     <p>Sans aucun doute, le jeune et tout particuliérement l'étudiant représente le pilier de notre société. C'est à lui qu'on fait appel pour innover, inventer et 

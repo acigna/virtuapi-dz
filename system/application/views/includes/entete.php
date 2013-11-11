@@ -6,11 +6,11 @@
 		<?php
 		if (!empty($titre)) //Si le titre est indiqué , on l'affiche entre les balises <title>
 		{
-			echo '<title> VirtUAPI-DZ - '.stripslashes($titre).' </title>';
+			echo '<title> Acigna VirtUAPI-DZ - '.stripslashes($titre).' </title>';
 		}
-		else //Sinon, on l'écrit title par d�faut
+		else //Sinon, on l'écrit title par défaut
 		{
-			echo '<title> VirtUAPI-DZ </title>';
+			echo '<title> Acigna VirtUAPI-DZ </title>';
 		}
 		?>
 	<meta name="author" content="L'équipe VirtUAPI-DZ" />
