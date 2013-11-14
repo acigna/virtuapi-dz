@@ -34,7 +34,7 @@
     	//Lister les spécialités
     	function listerSpecialites()
     	{
-    	    return $this->db->query('select id,NomSpecialite as nom from specialite')->result_array();
+    	    return $this->db->query('select id, NomSpecialite as nom from specialite')->result_array();
     	}
     	
     	//Lister les spécialités à modérer

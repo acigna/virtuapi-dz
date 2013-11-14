@@ -2,17 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 <head>
 
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<?php
-		if (!empty($titre)) //Si le titre est indiqué , on l'affiche entre les balises <title>
-		{
-			echo '<title> Acigna VirtUAPI-DZ - '.stripslashes($titre).' </title>';
-		}
-		else //Sinon, on l'écrit title par défaut
-		{
-			echo '<title> Acigna VirtUAPI-DZ </title>';
-		}
-		?>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Acigna VirtUAPI-DZ <?=(!empty($titre) ? "- ".stripslashes($titre) : "");?></title>
 	<meta name="author" content="L'équipe VirtUAPI-DZ" />
 	<meta name="copyright"	content="Copyright 2009 VirtAPI-DZ" />	
 	<meta name="keywords" content="VirtUAPI-DZ, community, students, étudiant, communauté, entraide, collaboration, algérie, algeria" />

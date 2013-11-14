@@ -1,4 +1,7 @@
 <?php
+  //Charger le helper url
+  $this->load->helper('url');
+  
   //Récupérer la libririe OMS, et afficher la partie haute
   $this->load->library('oms');
   $this->oms->partie_haute("L'université virtuelle");

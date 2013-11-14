@@ -1,4 +1,7 @@
 <?php
+  //Charger le helper url
+  $this->load->helper('url');  
+  
   //Récupérer la libririe OMS, et afficher la partie haute
   $this->load->library('oms');
   $this->oms->partie_haute("Lancement du site");
@@ -20,7 +23,7 @@
    
 <p>Actuellement, le portail comporte  une seule rubrique nommée l'université virtuelle. Cette rubrique vise à apporter un espace communautaire pour la publication et la consultation du contenu pédagogique incluant les Cours, sujets d'examens, TD, et TP. Tout étudiant peut y contribuer en publiant du contenu à condition que le module ou le chapitre du module concerné soit répertorié dans le portail. Le contenu n'est pas publié directement et passe par un modérateur de la spécialité concernée. Cette rubrique a été concue de telle façon à permettre une inclusion facile et rapide de nouvelles spécialités et années. A noter qu'il y'a quelques problémes techniques, concernant la publication de contenus pour les utilisateurs d'Internet Explorer dans la partie publication de contenus. Nous espérons régler ces problémes dans prochainement.</p>
 
-<p>Certainement, l'inclusion de nouvelles spécialités et années requirt l'implication d'autres étudiants pour la modération et la publication. Nous éspérons que d'autres étudiants vont nous rejoindre pour enrichir le contenu du portail. Si vous voulez  que votre spécialité ou année soit incluse, vieullez nous contacter <a href="./../index.php/contact">ici</a>.</p>
+<p>Certainement, l'inclusion de nouvelles spécialités et années requirt l'implication d'autres étudiants pour la modération et la publication. Nous éspérons que d'autres étudiants vont nous rejoindre pour enrichir le contenu du portail. Si vous voulez  que votre spécialité ou année soit incluse, vieullez nous contacter <a href="<?=site_url( array('contact') );?>">ici</a>.</p>
      
 <p>Je tiens à remercier toute l'équipe de Open Mind Students ainsi que tous ceux qui ont contribués ou qui contriburont dans le portail. Nous incluerons leurs noms au fil du temps en guise de remerciement pour leurs aides et contributions.</p>
 

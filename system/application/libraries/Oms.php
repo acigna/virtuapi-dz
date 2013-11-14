@@ -6,9 +6,8 @@ class Oms {
     
         $CI = & get_instance();
         $CI->load->database();
-        $CI->load->model("membre");
-        $CI->load->library('session');
-        $CI->load->library('form_validation');
+        $CI->load->model( array( "membre", "catalogue/specialite" ) );
+        $CI->load->library( array( 'session', 'form_validation' ) );
         $CI->load->helper( array( 'form', 'url' ) );
               
         $erreur = $this->traiterConnectionMembre();
@@ -18,9 +17,11 @@ class Oms {
         }else{
           $membre = null;
         }
+        $specialites = $CI->specialite->listerSpecialites();
         
         $CI->load->view('includes/partie_haute', array( 'titre' => $titre, 'css' => $css, 'js' => $js, 
-                                                        'membre'=>$membre, 'erreurConnection' => $erreur ) );
+                                                        'membre'=>$membre, 'specialites' => $specialites, 
+                                                        'erreurConnection' => $erreur ) );
       
     }
          
