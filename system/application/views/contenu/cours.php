@@ -1,59 +1,49 @@
 <?php
+  //Charger le helper url
+  $this->load->helper('url');
+
   //Récupérer la libririe OMS, et afficher la partie haute
   $this->load->library('oms');
   $this->oms->partie_haute("Les cours de la $nomannee");
 ?>
 
-<h2 style="text-align:center;">Cours de <?php echo $nomannee; ?> classés par module</h2><p></p>
+<h2 class="center">Cours de <?=$nomannee; ?> classés par module</h2><p></p>
 
 <?php 
- foreach($cours as $module) 
- { 
+  foreach($cours as $module) { 
 ?>
       
-  <h3><?php echo stripslashes($module['nom']) ; ?></h3>
+  <h3><?=stripslashes($module['nom']);?></h3>
   <ul>
   <?php
-     foreach($module['chapitres'] as $chapitre)
-     {
+    foreach($module['chapitres'] as $chapitre) {
   ?>
-     <li><h4>Chapitre <?php echo $chapitre['num']; ?>: <?php echo stripslashes($chapitre['nom']);  ?></h4></li>
-     	<?php
-     	  foreach($chapitre['contenus'] as $contenu)
-     	  {
-      	?>
-      	   <ul>
-      	     <li>
-      	     		<a href='./../../../contenus/Cours<?php echo $contenu['id'] ; ?>.<?php echo $contenu['typefichier'] ; ?>'>
-      	                <?php
-      	                  if($contenu['type']=='Complet')
-      	                   echo 'Le cours complet';
-      	                  else 
-      	                   echo 'Le résumé du cours'; 
-      	                ?>  
-      	     		</a><br/>
-      	     		Publié par: <?php echo $contenu['publiant']; ?><br/>
-      	     		Publié le:  <?php echo date('d/m/Y à H\h:i\m\n',$contenu['pub']); ?><br/>
-      	     		Derniére modification le: <?php echo date('d/m/Y à H\h:i\m\n',$contenu['dernmodif']); ?> <br/>
-      	     		Type de fichier: <?=$contenu['typefichier']; ?><br/>
-      	     		
-      	     </li>
-      	   
-      	   </ul>
-      	   <p></p>
-      	
-      	
-      	<?php
-      	  }      	  
-      	?>
+    <li><h4>Chapitre <?=$chapitre['num']; ?>: <?=stripslashes($chapitre['nom']);?></h4></li>
+    <?php
+      foreach($chapitre['contenus'] as $contenu) {
+    ?>
+    <ul>
+      <li>
+        <a href='<?=base_url()."/contenus/Cours".$contenu['id'].$contenu['typefichier'] ; ?>'>
+        <?=$contenu['type']=='Complet' ? 'Le cours complet' : 'Le résumé du cours'; ?>  
+        </a><br/>
+        Publié par: <?=$contenu['publiant'];?><br/>
+        Publié le:  <?=date('d/m/Y à H\h:i\m\n',$contenu['pub']);?><br/>
+        Derniére modification le: <?=date('d/m/Y à H\h:i\m\n', $contenu['dernmodif']);?> <br/>
+        Type de fichier: <?=$contenu['typefichier']; ?><br/>
+      </li>
+    </ul>
+    <p></p>
+    <?php
+      }      	  
+    ?>
   <?php          
-     }
+    }
   ?>
   </ul>    
       
 <?php 
-
- }
+  }
 ?>
 
 <?php
