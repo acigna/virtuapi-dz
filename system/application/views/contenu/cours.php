@@ -7,7 +7,7 @@
   $this->oms->partie_haute("Les cours de la $nomannee");
 ?>
 
-<h2 class="center">Cours de <?=$nomannee; ?> classés par module</h2><p></p>
+<h2 class="center">Cours de <?=stripslashes($nomannee); ?> classés par module</h2><p></p>
 
 <?php 
   foreach($cours as $module) { 
