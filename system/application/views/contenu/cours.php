@@ -24,8 +24,8 @@
     ?>
     <ul>
       <li>
-        <a href='<?=base_url()."/contenus/Cours".$contenu['id'].$contenu['typefichier'] ; ?>'>
-        <?=$contenu['type']=='Complet' ? 'Le cours complet' : 'Le résumé du cours'; ?>  
+        <a href='<?=base_url()."contenus/Cours".$contenu['id'].".".$contenu['typefichier']; ?>'>
+        <?=$contenu['type'] == 'Complet' ? 'Le cours complet' : 'Le résumé du cours'; ?>  
         </a><br/>
         Publié par: <?=$contenu['publiant'];?><br/>
         Publié le:  <?=date('d/m/Y à H\h:i\m\n',$contenu['pub']);?><br/>
