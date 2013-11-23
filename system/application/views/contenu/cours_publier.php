@@ -8,16 +8,13 @@
 ?>
 
 <h2 class="center">Création d'un contenu pour les Cours</h2>
-<?php
-	echo validation_errors();
-?>
 <form method="POST"  enctype="multipart/form-data" class="form">	
   <table>
     <tr>
       <td class="right"><label for="NomAnnee">Année:</label></td>
       <td class="left">
-        <select id="NomAnnee" onchange="javascript:lancer_module('<?=site_url( array('ajax', 'module') ); ?>'+this.options[this.selectedIndex].value, 
-   		          new Array('NomModule','<?=site_url( array('ajax', 'chapitre'); ?>', 'NomChapitre', true));">
+        <select id="NomAnnee" onchange="javascript:lancer_module('<?=site_url( array('ajax', 'module') ); ?>/'+this.options[this.selectedIndex].value, 
+   		          new Array('NomModule','<?=site_url( array('ajax', 'chapitre') ); ?>/', 'NomChapitre', true));">
         <?php
           foreach( $specialites as $specialite ) {  
         ?>
@@ -41,7 +38,7 @@
     <tr>
       <td class="right"><label for="NomModule">Module:</label></td>  
       <td class="left">   
-        <select id="NomModule" onchange="javascript:lancer_chapitre('<?=site_url( array("ajax", "chapitre") ); ?'+this.options[this.selectedIndex].value,'NomChapitre');">  	      		
+        <select id="NomModule" onchange="javascript:lancer_chapitre('<?=site_url( array("ajax", "chapitre") ); ?>/'+this.options[this.selectedIndex].value,'NomChapitre');">  	      		
         <?php
           foreach($modules as $module) { 
               $selected = $default['module'] == $module['id'] ? 'selected' : ''; 
@@ -53,8 +50,11 @@
         </select>
       </td> 
     </tr>
-	
-	<tr>
+    <tr>
+        <td></td>
+        <td><?=form_error('IdChapitre');?></td>
+    </tr>
+    <tr>
       <td class="right"><label for="IdChapitre">Chapitre:</label></td>  
       <td class="left">
         <select name="IdChapitre" id="NomChapitre"> 
@@ -75,13 +75,16 @@
 
   <h4>Type de contenu :</h4>
   <div class="center">
+    <p><?=form_error('Type');?></p>
     <label><input type="radio" name="Type" <?=set_radio('Type', 'Resume'); ?> value="Resume"/>Résumé de cours</label>
     <label><input type="radio" name="Type" <?=set_radio('Type', 'Complet'); ?> value="Complet"/>Cours complet</label><br/><br/>
   </div>
   <fieldset class="noborder">
+    <p><?=form_error('Cours');?></p>
     <legend><h4>Chemin du contenu(1Mo max):</h4></legend>
     <input type="file" name="Cours" />
   </fieldset><br/>
+  <p><?=form_error('code');?></p>
   <label for="code"><?=$captcha ?>?</label>
   <input type="text" name="code" id="code" /><br/><br/><br/>
   <div class="center"><input type="submit" name="cours_publier" value="  Publier  " /></div>
