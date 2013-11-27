@@ -13,20 +13,20 @@ class Ajax extends Controller {
     }
         
     function annees($idspecialite=0) {
-        $this->load->view( "ajax/ajax_annee", array( 'annees' => $this->annee->listerAnnees($idspecialite) ) );         
+        echo json_encode( array ( 'annees' => $this->annee->listerAnnees($idspecialite) ) );
     }
      
     function existpseudo($pseudo="") {
-        $this->load->view( "ajax/ajax_pseudo", array( 'reponse' => $this->membre->existepseudo($pseudo) ) );    
+        echo json_encode( array ( 'existpseudo' => $this->membre->existepseudo($pseudo) ) );
     }
         
         
-    function module($idannee=0) {
-        $this->load->view( "ajax/ajax_module", array( 'modules' => $this->module->listerModule($idannee) ) );
+    function modules($idannee=0) {
+        echo json_encode( array( 'modules' => $this->module->listerModule($idannee) ) );
     }
         
-    function chapitre($idmodule=0) {
-        $this->load->view( "ajax/ajax_chapitre", array( 'chapitres' => $this->chapitre->listerChapitre($idmodule) ) );      
+    function chapitres($idmodule=0) {
+        echo json_encode( array( 'chapitres' => $this->chapitre->listerChapitre($idmodule) ) );
     }
   
 }
