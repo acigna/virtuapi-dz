@@ -32,7 +32,6 @@ var Modules = Backbone.Collection.extend({
     },
     
     parse : function ( response ) {
-        console.log(response.modules);
         return response.modules;    
     }
 });
