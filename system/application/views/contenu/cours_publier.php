@@ -4,8 +4,19 @@
   
   //Récupérer la libririe OMS, et afficher la partie haute
   $this->load->library('oms');
-  $this->oms->partie_haute("Création d'un contenu pour les Cours", array(), array( base_url()."ajax/ajax.js" ));
+  $this->oms->partie_haute("Création d'un contenu pour les Cours", array(), 
+                           array( base_url()."static/js/libs/require.js", base_url()."static/js/libs/jquery.min.js", 
+                                  base_url()."static/js/base.js", base_url()."static/js/catalogue/cours_publier.js"));
 ?>
+<script type="text/javascript">
+//Initialiser les valeurs d'annee, module et chapitre
+window.annee = <?=isset($specialites[0]['annees'][0]) ? json_encode($specialites[0]['annees'][0]) : "{}";?> ;
+window.module = <?=isset($modules[0]) ? json_encode($modules[0]) : "{}";?> ;
+window.chapitre = <?=isset($chapitres[0]) ? json_encode($chapitres[0]) : "{}";?> ;
+
+//Initialiser le root de l'application
+window.moduleUrlRoot = "<?=site_url( array( 'ajax', 'modules', '') );?>";
+</script>
 
 <h2 class="center">Création d'un contenu pour les Cours</h2>
 <form method="POST"  enctype="multipart/form-data" class="form">	
@@ -13,14 +24,13 @@
     <tr>
       <td class="right"><label for="NomAnnee">Année:</label></td>
       <td class="left">
-        <select id="NomAnnee" onchange="javascript:lancer_module('<?=site_url( array('ajax', 'module') ); ?>/'+this.options[this.selectedIndex].value, 
-   		          new Array('NomModule','<?=site_url( array('ajax', 'chapitre') ); ?>/', 'NomChapitre', true));">
+        <select id="NomAnnee">
         <?php
           foreach( $specialites as $specialite ) {  
         ?>
           <optgroup label='<?=stripslashes($specialite['nom']); ?>'>
           <?php
-            foreach($specialite['annees'] as $annee) {
+            foreach( $specialite['annees'] as $annee ) {
                 $selected = $default['annee'] == $annee['id'] ? 'selected' : '';        
            ?>
             <option value='<?=$annee['id']; ?>' <?=$selected; ?>/><?=stripslashes($annee['nom']); ?></option>
@@ -38,9 +48,9 @@
     <tr>
       <td class="right"><label for="NomModule">Module:</label></td>  
       <td class="left">   
-        <select id="NomModule" onchange="javascript:lancer_chapitre('<?=site_url( array("ajax", "chapitre") ); ?>/'+this.options[this.selectedIndex].value,'NomChapitre');">  	      		
+        <select id="NomModule">  	      		
         <?php
-          foreach($modules as $module) { 
+          foreach( $modules as $module ) { 
               $selected = $default['module'] == $module['id'] ? 'selected' : ''; 
         ?>
           <option value='<?=$module['id']; ?>' <?=$selected; ?>><?=$module['nom']; ?></option>
