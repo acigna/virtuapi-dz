@@ -29,20 +29,53 @@ define(['marionette',
             this.annee = options['annee'];
             this.listenTo( this.annee, "change", this.chargerModules );
             
+               
             //Observer l'event 'reset' de la collection pour le recharger
-            this.listenTo( this.collection, "reset", this.render );
+            this.listenTo( this.collection, "reset", this.afficherModules );
         },
 
         chargerModules : function () {
             this.collection.fetch({reset : true});
         },
         
+        afficherModules : function () {
+            this.render();
+            this.$el.trigger('change');
+        }
+        
+    });
+    
+    //Le module selectionné dans la liste déroulante
+    var ModuleView = Marionette.ItemView.extend({
+        events : {
+            "change" : "setModule"
+        },
+        
+        setModule : function () {
+            this.model.set({"id" : this.$el.val(), "nom" : this.$el.find('[value="' + this.$el.val() + '"]').html()});
+        }
+        
     });
     
     //La liste déroulante des chapitres
     var ChapitresView = Marionette.ItemView.extend({
-        collection : models.Chapitres    
+        template : template,
+        
+        initialize : function ( options ) {
+        
+            //Affecter l'attribut annee, et observer son changement
+            this.module = options['module'];
+            this.listenTo( this.module, "change", this.chargerChapitres );
+               
+            //Observer l'event 'reset' de la collection pour le recharger
+            this.listenTo( this.collection, "reset", this.render );            
+        
+        },
+        
+        chargerChapitres : function () {
+            this.collection.fetch({reset : true});
+        }
     });
 
-    return {'AnneeView' : AnneeView, 'ModulesView' : ModulesView, 'ChapitresView' : ChapitresView};    
+    return {'AnneeView' : AnneeView, 'ModulesView' : ModulesView, 'ModuleView' : ModuleView, 'ChapitresView' : ChapitresView};    
 });

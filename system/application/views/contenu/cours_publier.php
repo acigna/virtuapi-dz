@@ -14,8 +14,9 @@ window.annee = <?=isset($specialites[0]['annees'][0]) ? json_encode($specialites
 window.module = <?=isset($modules[0]) ? json_encode($modules[0]) : "{}";?> ;
 window.chapitre = <?=isset($chapitres[0]) ? json_encode($chapitres[0]) : "{}";?> ;
 
-//Initialiser le root de l'application
+//Initialiser le root de certains url de l'application
 window.moduleUrlRoot = "<?=site_url( array( 'ajax', 'modules', '') );?>";
+window.chapitreUrlRoot = "<?=site_url( array( 'ajax', 'chapitres', '') );?>";
 </script>
 
 <h2 class="center">Création d'un contenu pour les Cours</h2>

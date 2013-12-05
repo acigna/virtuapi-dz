@@ -38,7 +38,22 @@ var Modules = Backbone.Collection.extend({
 
 //La collection de chapitres
 var Chapitres = Backbone.Collection.extend({
-    model : Chapitre
+    url : function () {
+        return this.urlRoot + "/" + this.module.id;
+    },
+    
+    model : Chapitre,
+    
+    initialize : function ( models, options ) {
+        this.urlRoot = options['urlRoot'];
+        this.module = options['module'];
+    },
+    
+    parse : function ( response ) {
+        return response.chapitres;
+    }
+    
+    
 });
 
 return {'Annee' : Annee, 'Modules' : Modules, 'Module' : Module, 'Chapitres' : Chapitres, 'Chapitre' : Chapitre}
