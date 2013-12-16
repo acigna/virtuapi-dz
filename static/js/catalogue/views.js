@@ -29,16 +29,23 @@ define(['marionette',
             this.annee = options['annee'];
             this.listenTo( this.annee, "change", this.chargerModules );
             
+            //Récupérer l'URL du Loader GIF
+            this.loaderUrl = options['loaderUrl'];
                
             //Observer l'event 'reset' de la collection pour le recharger
             this.listenTo( this.collection, "reset", this.afficherModules );
         },
 
         chargerModules : function () {
+            this.$el.html("<option>Chargement des modules...</option>");
+            this.$el.attr('disabled', true);
+            this.$el.before('<img alt="loading..." src="' + this.loaderUrl + '" class="loader" style="height:20px;"/>');
             this.collection.fetch({reset : true});
         },
         
         afficherModules : function () {
+            this.$el.parent().find('.loader').remove();
+            this.$el.attr('disabled', false);
             this.render();
             this.$el.trigger('change');
         }
@@ -66,14 +73,26 @@ define(['marionette',
             //Affecter l'attribut annee, et observer son changement
             this.module = options['module'];
             this.listenTo( this.module, "change", this.chargerChapitres );
+            
+            //Récupérer l'URL du Loader GIF
+            this.loaderUrl = options['loaderUrl'];
                
             //Observer l'event 'reset' de la collection pour le recharger
-            this.listenTo( this.collection, "reset", this.render );            
+            this.listenTo( this.collection, "reset", this.afficherChapitres );            
         
         },
         
         chargerChapitres : function () {
+            this.$el.html("<option>Chargement des chapitres...</option>");
+            this.$el.attr('disabled', true);
+            this.$el.before('<img alt="loading..." src="' + this.loaderUrl + '" class="loader" style="height:20px;"/>');
             this.collection.fetch({reset : true});
+        },
+        
+        afficherChapitres : function () {
+            this.$el.parent().find('.loader').remove();
+            this.$el.attr('disabled', false);
+            this.render();
         }
     });
 

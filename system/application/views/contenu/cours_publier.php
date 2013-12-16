@@ -17,6 +17,9 @@ window.chapitre = <?=isset($chapitres[0]) ? json_encode($chapitres[0]) : "{}";?>
 //Initialiser le root de certains url de l'application
 window.moduleUrlRoot = "<?=site_url( array( 'ajax', 'modules', '') );?>";
 window.chapitreUrlRoot = "<?=site_url( array( 'ajax', 'chapitres', '') );?>";
+
+//Initialiser l'URL du loader
+window.loaderUrl = "<?=base_url()?>static/img/loader.gif";
 </script>
 
 <h2 class="center">Création d'un contenu pour les Cours</h2>
@@ -24,7 +27,7 @@ window.chapitreUrlRoot = "<?=site_url( array( 'ajax', 'chapitres', '') );?>";
   <table>
     <tr>
       <td class="right"><label for="NomAnnee">Année:</label></td>
-      <td class="left">
+      <td class="left" style="padding-left:2px;">
         <select id="NomAnnee">
         <?php
           foreach( $specialites as $specialite ) {  
@@ -34,7 +37,7 @@ window.chapitreUrlRoot = "<?=site_url( array( 'ajax', 'chapitres', '') );?>";
             foreach( $specialite['annees'] as $annee ) {
                 $selected = $default['annee'] == $annee['id'] ? 'selected' : '';        
            ?>
-            <option value='<?=$annee['id']; ?>' <?=$selected; ?>/><?=stripslashes($annee['nom']); ?></option>
+            <option value='<?=$annee['id']; ?>' <?=$selected; ?>><?=stripslashes($annee['nom']); ?></option>
            <?php
             }
             ?>   	
@@ -44,11 +47,12 @@ window.chapitreUrlRoot = "<?=site_url( array( 'ajax', 'chapitres', '') );?>";
    		?>
         </select>
       </td>
+      <td></td>
     </tr>
 	
     <tr>
       <td class="right"><label for="NomModule">Module:</label></td>  
-      <td class="left">   
+      <td class="left" style="padding-left:2px;">   
         <select id="NomModule">  	      		
         <?php
           foreach( $modules as $module ) { 
@@ -67,7 +71,7 @@ window.chapitreUrlRoot = "<?=site_url( array( 'ajax', 'chapitres', '') );?>";
     </tr>
     <tr>
       <td class="right"><label for="IdChapitre">Chapitre:</label></td>  
-      <td class="left">
+      <td class="left" style="padding-left:2px;">
         <select name="IdChapitre" id="NomChapitre"> 
         <?php
           foreach( $chapitres as $chapitre ) {

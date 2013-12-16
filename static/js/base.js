@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl : '/codeigniter/static/js/',
+    baseUrl : '/virtuapi-dz-0.2/static/js/',
     paths : {
         tpl : 'libs/requirejs/tpl',
         json2 : 'libs/json2',
