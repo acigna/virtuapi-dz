@@ -49,7 +49,6 @@ window.loaderUrl = "<?=base_url()?>static/img/loader.gif";
       </td>
       <td></td>
     </tr>
-	
     <tr>
       <td class="right"><label for="NomModule">Module:</label></td>  
       <td class="left" style="padding-left:2px;">   
