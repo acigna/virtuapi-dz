@@ -1,23 +1,46 @@
-.article > p {
+.article > p 
+{
     text-indent: 25px;
 }
 
-.center {
+.center 
+{
     text-align:center;
 }
 
-.right {
+.right
+{
     text-align:right;
 }
 
-.left {
+.left 
+{
     text-align:left;
 }
 
-.form table, .form td {
+.form table, .form td 
+{
     border:none;
 }
 
-.noborder {
-   border:none;
+.noborder 
+{
+    border:none;
 }
+
+.req_error 
+{
+    font-size:13px;
+    color:red;
+}
+
+.req_error a:visited
+{
+    text-decoration:none;
+}
+
+.req_error a:hover
+{
+    text-decoration:underline;
+} 
+

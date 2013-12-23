@@ -2,28 +2,10 @@
 
 define(['underscore',
         'marionette',
+        'app',
         'catalogue/models', 
         'tpl!catalogue/templates/select_template.html'
-], function ( _, Marionette, models, template ) {
-
-    //Vue d'erreur de serveur, contient un lien pour renvoyer la requête.
-    var ErrView = Marionette.ItemView.extend({
-        template : _.template('<td class="right"></td><td class="left" style="font-size:13px;color:red;">Impossible d\'envoyer la requête, <a href="#">cliquer ici</a> pour renvoyer</td>'),
-        events : {
-            "click a" : "renvoyer"
-        },
-        
-        initialize : function ( options ) {
-            this.$el = $("<tr class='error'></tr>").insertBefore(options['el']);
-            window.el = this.$el;
-            this.obj = options['obj'];
-            this.method = options['method'];
-        },
-        
-        renvoyer : function() {
-            this.obj[this.method]();
-        }        
-    });
+], function ( _, Marionette, app, models, template ) {
 
     //L'année selectionnée dans la liste déroulante
     var AnneeView = Marionette.ItemView.extend({
@@ -39,6 +21,9 @@ define(['underscore',
     //La liste déroulante des modules
     var ModulesView = Marionette.ItemView.extend({
         template : template,
+        
+        err_template : "<option>Erreur de chargement des modules...</option>",
+        
         events : {
             "change" : "chargerChapitres"
         },
@@ -65,9 +50,9 @@ define(['underscore',
             this.$el.before('<img alt="loading..." src="' + this.loaderUrl + '" class="loader" style="height:20px;"/>');
             this.collection.fetch({reset : true, 
                                    error : _.bind(function () {
-                                       this.$el.html("<option>Erreur de chargement des modules...</option>");
+                                       this.$el.html(this.err_template);
                                        this.$el.parent().find('.loader').remove();
-                                       this.err_view = new ErrView({el : this.$el.parent().parent(), obj : this, method : "chargerModules"}).render();
+                                       this.err_view = new app.ErrReqView({el : this.$el.parent().parent(), obj : this, method : "chargerModules"}).render();
                                    }, this)
             });
         },
@@ -97,6 +82,8 @@ define(['underscore',
     var ChapitresView = Marionette.ItemView.extend({
         template : template,
         
+        err_template : "<option>Erreur de chargement des chapitres...</option>",
+        
         initialize : function ( options ) {
         
             //Affecter l'attribut annee, et observer son changement
@@ -120,9 +107,9 @@ define(['underscore',
             }
             this.collection.fetch({reset : true,
                                    error : _.bind(function () {
-                                       this.$el.html("<option>Erreur de chargement des chapitres...</option>");
+                                       this.$el.html(this.err_template);
                                        this.$el.parent().find('.loader').remove();
-                                       this.err_view = new ErrView({el : this.$el.parent().parent(), obj : this, method : "chargerChapitres"}).render();
+                                       this.err_view = new app.ErrReqView({el : this.$el.parent().parent(), obj : this, method : "chargerChapitres"}).render();
                                    }, this)});
         },
         
