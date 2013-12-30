@@ -16,6 +16,7 @@
 .left 
 {
     text-align:left;
+    padding-left:2px;
 }
 
 .form table, .form td 
@@ -43,4 +44,9 @@
 {
     text-decoration:underline;
 } 
+
+.loader 
+{
+    height:20px;
+}
 

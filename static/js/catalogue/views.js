@@ -41,13 +41,24 @@ define(['underscore',
             this.listenTo( this.collection, "reset", this.afficherModules );
         },
 
+        //Charger les modules de l'année spécifiée
         chargerModules : function () {
+        
+            //Afficher le message de chargement dans le select
             this.$el.html("<option>Chargement des modules...</option>");
+            
+            //Désactiver le select
             this.$el.attr('disabled', true);
+            
+            //Cacher les erreurs de chargement
             if(this.err_view) {
                 this.err_view.remove();
             }
-            this.$el.before('<img alt="loading..." src="' + this.loaderUrl + '" class="loader" style="height:20px;"/>');
+            
+            //Afficher l'icône de chargement
+            this.$el.before(app.loaderImg());
+            
+            //Récupérer la liste des modules
             this.collection.fetch({reset : true, 
                                    error : _.bind(function () {
                                        this.$el.html(this.err_template);
@@ -57,10 +68,18 @@ define(['underscore',
             });
         },
         
-        afficherModules : function () {
+        //Afficher les modules
+        afficherModules : function () {app.loaderImg()
+            //Supprimer le loader
             this.$el.parent().find('.loader').remove();
+            
+            //Activer le select
             this.$el.attr('disabled', false);
+            
+            //Reafficher le template
             this.render();
+            
+            //Déclencher l'évenement de changement
             this.$el.trigger('change');
         }
         
@@ -101,7 +120,7 @@ define(['underscore',
         chargerChapitres : function () {
             this.$el.html("<option>Chargement des chapitres...</option>");
             this.$el.attr('disabled', true);
-            this.$el.before('<img alt="loading..." src="' + this.loaderUrl + '" class="loader" style="height:20px;"/>');
+            this.$el.before(app.loaderImg());
             if(this.err_view) {
                 this.err_view.remove();
             }

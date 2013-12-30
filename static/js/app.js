@@ -28,5 +28,10 @@ app.ErrReqView = Marionette.ItemView.extend({
     }        
 });
 
+//Loader Icon Image
+app.loaderImg = function () {
+    return '<img alt="Loading..." src="' + window.baseUrl + 'static/img/loader.gif" class="loader"/>';
+};
+
 return app;
 });

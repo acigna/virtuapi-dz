@@ -18,8 +18,10 @@ window.chapitre = <?=isset($chapitres[0]) ? json_encode($chapitres[0]) : "{}";?>
 window.moduleUrlRoot = "<?=site_url( array( 'ajax', 'modules', '') );?>";
 window.chapitreUrlRoot = "<?=site_url( array( 'ajax', 'chapitres', '') );?>";
 
-//Initialiser l'URL du loader
-window.loaderUrl = "<?=base_url()?>static/img/loader.gif";
+//Initialiser l'URL de base de l'application
+window.baseUrl = "<?=base_url()?>";
+
+
 </script>
 
 <h2 class="center">Création d'un contenu pour les Cours</h2>
@@ -27,7 +29,7 @@ window.loaderUrl = "<?=base_url()?>static/img/loader.gif";
   <table>
     <tr>
       <td class="right"><label for="NomAnnee">Année:</label></td>
-      <td class="left" style="padding-left:2px;">
+      <td class="left">
         <select id="NomAnnee">
         <?php
           foreach( $specialites as $specialite ) {  
@@ -51,7 +53,7 @@ window.loaderUrl = "<?=base_url()?>static/img/loader.gif";
     </tr>
     <tr>
       <td class="right"><label for="NomModule">Module:</label></td>  
-      <td class="left" style="padding-left:2px;">   
+      <td class="left">   
         <select id="NomModule">  	      		
         <?php
           foreach( $modules as $module ) { 
@@ -70,7 +72,7 @@ window.loaderUrl = "<?=base_url()?>static/img/loader.gif";
     </tr>
     <tr>
       <td class="right"><label for="IdChapitre">Chapitre:</label></td>  
-      <td class="left" style="padding-left:2px;">
+      <td class="left">
         <select name="IdChapitre" id="NomChapitre"> 
         <?php
           foreach( $chapitres as $chapitre ) {
