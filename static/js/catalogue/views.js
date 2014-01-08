@@ -20,58 +20,78 @@ define(['underscore',
     
     //La liste déroulante des modules
     var ModulesView = Marionette.ItemView.extend({
+    
+        //Template de la liste déroulante
         template : template,
         
+        //Template de chargement
+        load_template : "<option>Chargement des modules...</option>",
+        
+        //Template d'erreur de chargement
         err_template : "<option>Erreur de chargement des modules...</option>",
         
+        //Les évenements DOM
         events : {
             "change" : "chargerChapitres"
         },
         
+        //Initilisation de la vue
         initialize : function ( options ) {
         
             //Affecter l'attribut annee, et observer son changement
             this.annee = options['annee'];
             this.listenTo( this.annee, "change", this.chargerModules );
-            
-            //Récupérer l'URL du Loader GIF
-            this.loaderUrl = options['loaderUrl'];
-               
-            //Observer l'event 'reset' de la collection pour le recharger
+                           
+            //Observer l'event 'reset' de la collection pour réafficher les modules
             this.listenTo( this.collection, "reset", this.afficherModules );
         },
 
         //Charger les modules de l'année spécifiée
         chargerModules : function () {
         
-            //Afficher le message de chargement dans le select
-            this.$el.html("<option>Chargement des modules...</option>");
+            //Afficher le message de chargement dans la liste
+            this.$el.html(this.load_template);
             
             //Désactiver le select
             this.$el.attr('disabled', true);
             
-            //Cacher les erreurs de chargement
+            //Enlever les erreurs de chargement
             if(this.err_view) {
                 this.err_view.remove();
             }
             
             //Afficher l'icône de chargement
-            this.$el.before(app.loaderImg());
+            this.showLoaderImg();
             
             //Récupérer la liste des modules
             this.collection.fetch({reset : true, 
                                    error : _.bind(function () {
+                                       //Afficher le template d'erreur de chargement dans la liste
                                        this.$el.html(this.err_template);
-                                       this.$el.parent().find('.loader').remove();
+                                       
+                                       //Enlever l'icone de chargement
+                                       this.removeLoaderImg();
+                                       
+                                       //Afficher le message d'erreur contenant le lien de rechargement
                                        this.err_view = new app.ErrReqView({el : this.$el.parent().parent(), obj : this, method : "chargerModules"}).render();
                                    }, this)
             });
         },
         
-        //Afficher les modules
-        afficherModules : function () {app.loaderImg()
-            //Supprimer le loader
+        //Afficher l'icône de chargement
+        showLoaderImg : function () {
+            this.$el.before(app.loaderImg());
+        },
+        
+        //Enlever l'icône de chargement
+        removeLoaderImg : function() {
             this.$el.parent().find('.loader').remove();
+        },
+        
+        //Afficher les modules
+        afficherModules : function () {
+            //Supprimer l'icone de chargement
+            this.removeLoaderImg();
             
             //Activer le select
             this.$el.attr('disabled', false);
@@ -99,42 +119,76 @@ define(['underscore',
     
     //La liste déroulante des chapitres
     var ChapitresView = Marionette.ItemView.extend({
+        //Template de la liste déroulante
         template : template,
         
+        //Template de chargement
+        load_template : "<option>Chargement des chapitres...</option>",
+        
+        //Template d'erreur de chargement
         err_template : "<option>Erreur de chargement des chapitres...</option>",
         
+        //Initilisation de la vue
         initialize : function ( options ) {
         
             //Affecter l'attribut annee, et observer son changement
             this.module = options['module'];
             this.listenTo( this.module, "change", this.chargerChapitres );
             
-            //Récupérer l'URL du Loader GIF
-            this.loaderUrl = options['loaderUrl'];
-               
             //Observer l'event 'reset' de la collection pour le recharger
             this.listenTo( this.collection, "reset", this.afficherChapitres );            
         
         },
         
-        chargerChapitres : function () {
-            this.$el.html("<option>Chargement des chapitres...</option>");
-            this.$el.attr('disabled', true);
+        //Afficher l'icône de chargement
+        showLoaderImg : function () {
             this.$el.before(app.loaderImg());
+        },
+        
+        //Enlever l'icône de chargement
+        removeLoaderImg : function() {
+            this.$el.parent().find('.loader').remove();
+        },
+                
+        chargerChapitres : function () {
+            //Afficher le message de chargement dans la liste
+            this.$el.html(this.load_template);
+            
+            //Désactiver le select
+            this.$el.attr('disabled', true);
+            
+            
+            //Enlever les erreurs de chargement
             if(this.err_view) {
                 this.err_view.remove();
             }
+            
+            //Afficher l'icône de chargement
+            this.$el.before(app.loaderImg());
+            
+            //Récupérer la liste des modules
             this.collection.fetch({reset : true,
                                    error : _.bind(function () {
+                                       //Afficher le template d'erreur de chargement dans la liste
                                        this.$el.html(this.err_template);
-                                       this.$el.parent().find('.loader').remove();
+                                       
+                                       //Enlever l'icone de chargement
+                                       this.removeLoaderImg();
+                                       
+                                       //Afficher le message d'erreur contenant le lien de rechargement
                                        this.err_view = new app.ErrReqView({el : this.$el.parent().parent(), obj : this, method : "chargerChapitres"}).render();
                                    }, this)});
         },
         
+        //Afficher les chapitres
         afficherChapitres : function () {
-            this.$el.parent().find('.loader').remove();
+            //Supprimer l'icone de chargement
+            this.removeLoaderImg();
+            
+            //Activer le select
             this.$el.attr('disabled', false);
+            
+            //Reafficher le template
             this.render();
         }
     });

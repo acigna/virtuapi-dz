@@ -24,9 +24,9 @@ var chapitres = new models.Chapitres([], {urlRoot : chapitreUrlRoot, module : mo
 
 ////Initialiser la liste déroulante des modules
 var annee_view = new views.AnneeView({el : "#NomAnnee", model : annee});
-var modules_view = new views.ModulesView({el : "#NomModule", annee : annee, collection : modules, loaderUrl : window.loaderUrl});
+var modules_view = new views.ModulesView({el : "#NomModule", annee : annee, collection : modules});
 var module_view = new views.ModuleView({el : "#NomModule", model : module});
-var chapitres_view = new views.ChapitresView({el : "#NomChapitre", module : module, collection : chapitres, loaderUrl : window.loaderUrl});
+var chapitres_view = new views.ChapitresView({el : "#NomChapitre", module : module, collection : chapitres});
 
 });
 
