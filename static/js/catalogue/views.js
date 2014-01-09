@@ -9,10 +9,13 @@ define(['underscore',
 
     //L'année selectionnée dans la liste déroulante
     var AnneeView = Marionette.ItemView.extend({
+    
+        //Les évenements DOM
         events : {
             "change" : "setAnnee"
         },
         
+        //Fixer l'année dans le modèle
         setAnnee : function () {
             this.model.set({"id" : this.$el.val(), "nom" : this.$el.find('[value="' + this.$el.val() + '"]').html()});
         }
@@ -41,7 +44,7 @@ define(['underscore',
             //Affecter l'attribut annee, et observer son changement
             this.annee = options['annee'];
             this.listenTo( this.annee, "change", this.chargerModules );
-                           
+                           Les évenements DOM
             //Observer l'event 'reset' de la collection pour réafficher les modules
             this.listenTo( this.collection, "reset", this.afficherModules );
         },
@@ -61,7 +64,7 @@ define(['underscore',
             }
             
             //Afficher l'icône de chargement
-            this.showLoaderImg();
+            app.loaderImg.show(this);
             
             //Récupérer la liste des modules
             this.collection.fetch({reset : true, 
@@ -70,7 +73,7 @@ define(['underscore',
                                        this.$el.html(this.err_template);
                                        
                                        //Enlever l'icone de chargement
-                                       this.removeLoaderImg();
+                                       app.loaderImg.remove(this);
                                        
                                        //Afficher le message d'erreur contenant le lien de rechargement
                                        this.err_view = new app.ErrReqView({el : this.$el.parent().parent(), obj : this, method : "chargerModules"}).render();
@@ -78,20 +81,11 @@ define(['underscore',
             });
         },
         
-        //Afficher l'icône de chargement
-        showLoaderImg : function () {
-            this.$el.before(app.loaderImg());
-        },
-        
-        //Enlever l'icône de chargement
-        removeLoaderImg : function() {
-            this.$el.parent().find('.loader').remove();
-        },
-        
         //Afficher les modules
         afficherModules : function () {
+        
             //Supprimer l'icone de chargement
-            this.removeLoaderImg();
+            app.loaderImg.remove(this);
             
             //Activer le select
             this.$el.attr('disabled', false);
@@ -107,10 +101,13 @@ define(['underscore',
     
     //Le module selectionné dans la liste déroulante
     var ModuleView = Marionette.ItemView.extend({
+        
+        //Les évenements DOM
         events : {
             "change" : "setModule"
         },
         
+        //Fixer le module dans le modèle
         setModule : function () {
             this.model.set({"id" : this.$el.val(), "nom" : this.$el.find('[value="' + this.$el.val() + '"]').html()});
         }
@@ -119,6 +116,7 @@ define(['underscore',
     
     //La liste déroulante des chapitres
     var ChapitresView = Marionette.ItemView.extend({
+    
         //Template de la liste déroulante
         template : template,
         
@@ -139,17 +137,7 @@ define(['underscore',
             this.listenTo( this.collection, "reset", this.afficherChapitres );            
         
         },
-        
-        //Afficher l'icône de chargement
-        showLoaderImg : function () {
-            this.$el.before(app.loaderImg());
-        },
-        
-        //Enlever l'icône de chargement
-        removeLoaderImg : function() {
-            this.$el.parent().find('.loader').remove();
-        },
-                
+                        
         chargerChapitres : function () {
             //Afficher le message de chargement dans la liste
             this.$el.html(this.load_template);
@@ -164,7 +152,7 @@ define(['underscore',
             }
             
             //Afficher l'icône de chargement
-            this.$el.before(app.loaderImg());
+            app.loaderImg.show(this);
             
             //Récupérer la liste des modules
             this.collection.fetch({reset : true,
@@ -173,7 +161,7 @@ define(['underscore',
                                        this.$el.html(this.err_template);
                                        
                                        //Enlever l'icone de chargement
-                                       this.removeLoaderImg();
+                                       app.loaderImg.remove(this);
                                        
                                        //Afficher le message d'erreur contenant le lien de rechargement
                                        this.err_view = new app.ErrReqView({el : this.$el.parent().parent(), obj : this, method : "chargerChapitres"}).render();
@@ -183,7 +171,7 @@ define(['underscore',
         //Afficher les chapitres
         afficherChapitres : function () {
             //Supprimer l'icone de chargement
-            this.removeLoaderImg();
+            app.loaderImg.remove(this);
             
             //Activer le select
             this.$el.attr('disabled', false);

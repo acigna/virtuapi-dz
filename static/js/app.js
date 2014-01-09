@@ -28,9 +28,22 @@ app.ErrReqView = Marionette.ItemView.extend({
     }        
 });
 
-//Loader Icon Image
-app.loaderImg = function () {
-    return '<img alt="Loading..." src="' + window.baseUrl + 'static/img/loader.gif" class="loader"/>';
+
+//Gérer la visibilité de l'icône de chargement
+app.loaderImg = {
+    getLoaderImg : function () {
+        return '<img alt="Chargement..." src="' + window.baseUrl + 'static/img/loader.gif" class="loader"/>';
+    },
+    
+    //Afficher l'icône de chargement
+    show : function (context) {
+        context.$el.before(this.getLoaderImg());
+    },
+    
+    //Enlever l'icône de chargement
+    remove : function (context) {
+        context.$el.parent().find('.loader').remove();
+    }
 };
 
 return app;
