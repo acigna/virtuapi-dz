@@ -27,7 +27,4 @@ requirejs.config({
 //replaceAll
 function replaceAll( txt, replace, with_this ) {
     return txt.replace(new RegExp(replace, 'g'), with_this);
-} 
-
-
-
+}

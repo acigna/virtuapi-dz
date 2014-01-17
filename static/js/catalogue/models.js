@@ -1,8 +1,9 @@
 //Les models javascript de la partie catalogue
 
 
-define(['backbone'
-], function ( Backbone ) {
+define(['backbone',
+        'app'
+], function ( Backbone, app ) {
 
 
 //Le modèle Annee
@@ -22,12 +23,12 @@ var Chapitre = Backbone.Model.extend({
 
 //La collection de modules
 var Modules = Backbone.Collection.extend({
+    urlRoot : app.CIBaseUrl + "ajax/modules",
     url : function () {
         return this.urlRoot + "/" + this.annee.id;
     },
     model : Module,
     initialize : function ( models, options ) {
-        this.urlRoot = options['urlRoot'];
         this.annee = options['annee'];
     },
     
@@ -38,6 +39,7 @@ var Modules = Backbone.Collection.extend({
 
 //La collection de chapitres
 var Chapitres = Backbone.Collection.extend({
+    urlRoot : app.CIBaseUrl + "ajax/chapitres",
     url : function () {
         return this.urlRoot + "/" + this.module.id;
     },
@@ -45,7 +47,6 @@ var Chapitres = Backbone.Collection.extend({
     model : Chapitre,
     
     initialize : function ( models, options ) {
-        this.urlRoot = options['urlRoot'];
         this.module = options['module'];
     },
     

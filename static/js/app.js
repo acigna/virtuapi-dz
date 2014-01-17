@@ -1,8 +1,9 @@
 //L'application principale VirtUAPI-DZ 
 
 define(["marionette",
+        "config",
         "tpl!templates/req_error.html"        
-], function ( Marionette, req_error_template ) {
+], function ( Marionette, config, req_error_template ) {
 
 //Créer l'application
 var app = new Marionette.Application();
@@ -28,11 +29,10 @@ app.ErrReqView = Marionette.ItemView.extend({
     }        
 });
 
-
 //Gérer la visibilité de l'icône de chargement
 app.loaderImg = {
     getLoaderImg : function () {
-        return '<img alt="Chargement..." src="' + window.baseUrl + 'static/img/loader.gif" class="loader"/>';
+        return '<img alt="Chargement..." src="' + config.baseUrl + 'static/img/loader.gif" class="loader"/>';
     },
     
     //Afficher l'icône de chargement
@@ -45,6 +45,10 @@ app.loaderImg = {
         context.$el.parent().find('.loader').remove();
     }
 };
+
+//Exporter les configurations de l'application
+app.baseUrl = config.baseUrl;
+app.CIBaseUrl = config.CIBaseUrl;
 
 return app;
 });

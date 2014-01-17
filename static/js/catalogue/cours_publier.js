@@ -17,8 +17,8 @@ var moduleUrlRoot = window.moduleUrlRoot;
 var chapitreUrlRoot = window.chapitreUrlRoot;
 
 //Initialiser les collections
-var modules = new models.Modules([], {urlRoot : moduleUrlRoot, annee : annee});
-var chapitres = new models.Chapitres([], {urlRoot : chapitreUrlRoot, module : module});
+var modules = new models.Modules([], {annee : annee});
+var chapitres = new models.Chapitres([], {module : module});
 
 //Initialiser les vues
 

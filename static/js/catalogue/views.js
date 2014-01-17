@@ -44,7 +44,7 @@ define(['underscore',
             //Affecter l'attribut annee, et observer son changement
             this.annee = options['annee'];
             this.listenTo( this.annee, "change", this.chargerModules );
-                           Les évenements DOM
+
             //Observer l'event 'reset' de la collection pour réafficher les modules
             this.listenTo( this.collection, "reset", this.afficherModules );
         },
