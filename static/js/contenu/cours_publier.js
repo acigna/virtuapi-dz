@@ -12,10 +12,6 @@ var annee = new models.Annee(window.annee);
 var module = new models.Module(window.module);
 var chapitre = new models.Chapitre(window.chapitre);
 
-//Initialiser l'urlRoot
-var moduleUrlRoot = window.moduleUrlRoot;
-var chapitreUrlRoot = window.chapitreUrlRoot;
-
 //Initialiser les collections
 var modules = new models.Modules([], {annee : annee});
 var chapitres = new models.Chapitres([], {module : module});

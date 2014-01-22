@@ -6,7 +6,7 @@
   $this->load->library('oms');
   $this->oms->partie_haute("Création d'un contenu pour les Cours", array(), 
                            array( base_url()."static/js/libs/require.js", base_url()."static/js/libs/jquery.min.js", 
-                                  base_url()."static/js/base.js", base_url()."static/js/catalogue/cours_publier.js"));
+                                  base_url()."static/js/base.js", base_url()."static/js/contenu/cours_publier.js"));
 ?>
 <script type="text/javascript">
 //Initialiser les valeurs d'annee, module et chapitre
