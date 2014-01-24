@@ -2,10 +2,14 @@
   //Récupérer la libririe OMS, et afficher la partie haute
   $this->load->library('oms');
   $this->load->helper('url');
-  $this->oms->partie_haute("Gestion des spécialités, années, modules et chapitres", array(), array( base_url()."ajax/ajax.js" ));
+  $this->oms->partie_haute("Gestion des spécialités, années, modules et chapitres", array(), array( base_url()."static/js/libs/require.js", 
+                                                                                                    base_url()."static/js/libs/jquery.min.js", 
+                                                                                                    base_url()."static/js/base.js", 
+                                                                                                    base_url()."static/js/admin/gerer_samc.js"));
 ?>
 
-<h2 style="text-align:center;">Page de gestion des spécialités,années,modules et chapitres</h2><br/><h3 style="text-align:center;" id="specialite">Spécialités:</h3>
+<h2 style="text-align:center;">Page de gestion des spécialités,années,modules et chapitres</h2><br/>
+<h3 style="text-align:center;" id="specialite">Spécialités:</h3>
 <div style="text-align:center;"><br/><strong style="color:<?php if($type_notif_spec=='error') echo 'red'; else echo 'green'; ?>;"><?=$notification_specialite;?></strong></div>
 
 <form method="POST" action="#specialite">
@@ -23,7 +27,8 @@
         <br/>
    </fieldset>
    <br/>
-  </p></form>
+  </p>
+</form>
 
 
 <form method="POST" action="#specialite">
@@ -52,7 +57,8 @@
 	  </div>
 	  </fieldset>
 	  <br/>
-     </p></form>
+     </p>
+</form>
 
 <h3 style="text-align:center;" id="annees">Années:</h3>
 
@@ -93,7 +99,8 @@
     </div>
    </fieldset>
     <br/>
-   </p></form>
+   </p>
+</form>
 
 
 <form method="POST" action="#annees">
@@ -133,7 +140,8 @@
 	<br/>
    </fieldset>
    <br/>
-  </p></form>   
+  </p>
+</form>   
 
 
 <h3 style="text-align:center;" id="modules">Modules:</h3>
@@ -195,8 +203,7 @@
 	    <tr>
 		 <td style="text-align:right;border:none;"><label for="NomAnnee1">Liste des années:</label></td>  
   	     	 <td style="text-align:left;border:none;">
-		 <select  id="NomAnnee1" onchange="javascript:lancer_module('<?php echo base_url(); ?>index.php/ajax/module/'+this.options[this.selectedIndex].value, 
-   		          new Array('NomModule1','','',false));">
+		 <select  id="NomAnnee1">
 	     	 <?php
   		    foreach($annees as $specialite)
   		    {  		
@@ -267,7 +274,7 @@
 	    <tr>
 	      <td style="text-align:right;border:none;"><label for="NomAnnee3">Dans l'année:</label></td>  
 		  <td style="text-align:left;border:none;">
- 		   <select  id="NomAnnee3" onchange="javascript:lancer_module('<?php echo base_url(); ?>index.php/ajax/module/'+this.options[this.selectedIndex].value, new Array('NomModule3','','',false));"> 
+ 		   <select  id="NomAnnee3"> 
 	           <?php
   		    foreach($annees as $specialite)
   		    {  		
@@ -323,7 +330,7 @@
 	  <tr>
            <td style="text-align:right;border:none;"><label for="NomAnnee2">Liste des années:</label></td>
 	   <td style="text-align:left;border:none;">
-  	     <select name="NomAnnee" id="NomAnnee2" onchange="javascript:lancer_module('<?php echo base_url(); ?>index.php/ajax/module/'+this.options[this.selectedIndex].value, new Array('NomModule2','<?php echo base_url(); ?>index.php/ajax/chapitre/','NomChapitre',true));"> 
+  	     <select name="NomAnnee" id="NomAnnee2"> 
 	      <?php
   		    foreach($annees as $specialite)
   		    {  		
@@ -348,7 +355,7 @@
 	 <tr>
 	  <td style="text-align:right;border:none;"><label for="NomModule2">Liste des modules:</label></td>  
 	  <td style="text-align:left;border:none;">
-	   <select name="NomModule" id="NomModule2" onchange="javascript:lancer_chapitre('<?php echo base_url(); ?>index.php/ajax/chapitre/'+this.options[this.selectedIndex].value,'NomChapitre');">
+	   <select name="NomModule" id="NomModule2">
 	   <?php
 		foreach($modules as $module)
 		{
