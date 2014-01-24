@@ -4,8 +4,10 @@ define(['underscore',
         'marionette',
         'app',
         'catalogue/models', 
-        'tpl!catalogue/templates/select_template.html'
-], function ( _, Marionette, app, models, template ) {
+        'tpl!catalogue/templates/select_module_template.html',
+        'tpl!catalogue/templates/select_chapitre_template.html'
+], function ( _, Marionette, app, models, select_module_template,
+              select_chapitre_template ) {
 
     //L'année selectionnée dans la liste déroulante
     var AnneeView = Marionette.ItemView.extend({
@@ -25,7 +27,7 @@ define(['underscore',
     var ModulesView = Marionette.ItemView.extend({
     
         //Template de la liste déroulante
-        template : template,
+        template : select_module_template,
         
         //Template de chargement
         load_template : "<option>Chargement des modules...</option>",
@@ -118,7 +120,7 @@ define(['underscore',
     var ChapitresView = Marionette.ItemView.extend({
     
         //Template de la liste déroulante
-        template : template,
+        template : select_chapitre_template,
         
         //Template de chargement
         load_template : "<option>Chargement des chapitres...</option>",

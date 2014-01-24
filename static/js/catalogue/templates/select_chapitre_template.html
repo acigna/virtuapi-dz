@@ -1,0 +1,5 @@
+<% _.each(items, function (item) { 
+       var nom = replaceAll(item.nom, "\\", "");
+%>
+    <option value="<%=item.id %>"><%=item.num %> : <%=nom %></option>
+<% }); %>
