@@ -66,21 +66,21 @@ define(['underscore',
             }
             
             //Afficher l'icône de chargement
-            app.loaderImg.show(this);
-            
-            //Récupérer la liste des modules
-            this.collection.fetch({reset : true, 
-                                   error : _.bind(function () {
-                                       //Afficher le template d'erreur de chargement dans la liste
-                                       this.$el.html(this.err_template);
+            app.loaderImg.show(this).done(_.bind(function () {
+                //Récupérer la liste des modules
+                this.collection.fetch({ reset : true, 
+                                        error : _.bind(function () {
+                                            //Afficher le template d'erreur de chargement dans la liste
+                                            this.$el.html(this.err_template);
                                        
-                                       //Enlever l'icone de chargement
-                                       app.loaderImg.remove(this);
+                                            //Enlever l'icone de chargement
+                                            app.loaderImg.remove(this);
                                        
-                                       //Afficher le message d'erreur contenant le lien de rechargement
-                                       this.err_view = new app.ErrReqView({el : this.$el.parent().parent(), obj : this, method : "chargerModules"}).render();
-                                   }, this)
-            });
+                                            //Afficher le message d'erreur contenant le lien de rechargement
+                                            this.err_view = new app.ErrReqView({el : this.$el.parent().parent(), obj : this, method : "chargerModules"}).render();
+                                      }, this)
+                });
+            }, this));
         },
         
         //Afficher les modules
@@ -154,20 +154,22 @@ define(['underscore',
             }
             
             //Afficher l'icône de chargement
-            app.loaderImg.show(this);
-            
-            //Récupérer la liste des modules
-            this.collection.fetch({reset : true,
-                                   error : _.bind(function () {
-                                       //Afficher le template d'erreur de chargement dans la liste
-                                       this.$el.html(this.err_template);
+            app.loaderImg.show(this).done(_.bind(function () {
+
+                //Récupérer la liste des modules
+                this.collection.fetch({ reset : true,
+                                        error : _.bind(function () {
+                                            //Afficher le template d'erreur de chargement dans la liste
+                                            this.$el.html(this.err_template);
                                        
-                                       //Enlever l'icone de chargement
-                                       app.loaderImg.remove(this);
+                                            //Enlever l'icone de chargement
+                                            app.loaderImg.remove(this);
                                        
-                                       //Afficher le message d'erreur contenant le lien de rechargement
-                                       this.err_view = new app.ErrReqView({el : this.$el.parent().parent(), obj : this, method : "chargerChapitres"}).render();
+                                            //Afficher le message d'erreur contenant le lien de rechargement
+                                            this.err_view = new app.ErrReqView({el : this.$el.parent().parent(), obj : this, method : "chargerChapitres"}).render();
                                    }, this)});
+            }, this));
+
         },
         
         //Afficher les chapitres

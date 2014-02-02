@@ -1,6 +1,7 @@
 requirejs.config({
     baseUrl : '/virtuapi-dz-0.2/static/js/',
     paths : {
+        image : 'libs/requirejs/image',
         tpl : 'libs/requirejs/tpl',
         json2 : 'libs/json2',
         jquery : 'libs/jquery.min',
