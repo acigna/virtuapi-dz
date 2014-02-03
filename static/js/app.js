@@ -1,10 +1,10 @@
 //L'application principale VirtUAPI-DZ 
 
-define(["jquery",
+define(["when",
         "marionette",
         "config",
         "tpl!templates/req_error.html"        
-], function ( $, Marionette, config, req_error_template ) {
+], function ( when, Marionette, config, req_error_template ) {
 
 //Créer l'application
 var app = new Marionette.Application();
@@ -32,12 +32,24 @@ app.ErrReqView = Marionette.ItemView.extend({
 
 //Gérer la visibilité de l'icône de chargement
 app.loaderImg = {
+
+    //Initialiser la récupération de l'icone
+    init : function () {
+        var imgDeferred = when.defer();
+        this.imgPromise = imgDeferred.promise;
+        require(["image!" + this.loaderImgUrl], function ( img ) {
+            imgDeferred.resolve(img);
+        });
+    },
+
+    //L'URL du loader
     loaderImgUrl : config.baseUrl + 'static/img/loader.gif',
+
+    //Récupérer un élement clone de l'icone
     getLoaderImg : function ( img ) {
         /*Create a clone image,
           with the appropriate parameters*/
         var clone = $(img).clone();
-        clone.attr("alt", "Chargement...");
         clone.addClass("loader");
         return clone;
     },
@@ -45,12 +57,9 @@ app.loaderImg = {
     //Afficher l'icône de chargement
     show : function (context) {
         var _this = this;
-        var deferred = $.Deferred();
-        require(["image!" + this.loaderImgUrl], function ( img ) {
+        this.imgPromise.then(function ( img ) {
             context.$el.before(_this.getLoaderImg( img ));
-            deferred.resolve();
         });
-        return deferred.promise();
     },
     
     //Enlever l'icône de chargement
@@ -58,6 +67,10 @@ app.loaderImg = {
         context.$el.parent().find('.loader').remove();
     }
 };
+
+/*Initialiser la récupération 
+  de l'icone de chargement*/
+app.loaderImg.init();
 
 //Exporter les configurations de l'application
 app.baseUrl = config.baseUrl;
