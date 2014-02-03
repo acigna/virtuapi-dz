@@ -11,8 +11,11 @@ var app = new Marionette.Application();
 
 //Vue d'erreur de requête, contient un lien pour renvoyer la requête.
 app.ErrReqView = Marionette.ItemView.extend({
+    
+    //Template pour une erreur de requête
     template : req_error_template,
-        
+
+    //Un wrapper autour du template d'erreur
     wrapper : $("<tr class='error'></tr>"),
         
     events : {
@@ -24,7 +27,8 @@ app.ErrReqView = Marionette.ItemView.extend({
         this.obj = options['obj'];
         this.method = options['method'];
     },
-        
+    
+    //Renvoyer la requête  
     renvoyer : function() {
         this.obj[this.method]();
     }        
