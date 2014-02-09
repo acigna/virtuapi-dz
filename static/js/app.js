@@ -1,10 +1,9 @@
 //L'application principale VirtUAPI-DZ 
 
-define(["when",
-        "marionette",
+define(["marionette",
         "config",
         "tpl!templates/req_error.html"        
-], function ( when, Marionette, config, req_error_template ) {
+], function ( Marionette, config, req_error_template ) {
 
 //Créer l'application
 var app = new Marionette.Application();
@@ -36,13 +35,14 @@ app.ErrReqView = Marionette.ItemView.extend({
 
 //Gérer la visibilité de l'icône de chargement
 app.loaderImg = {
-
+    loaded : false,
+    
     //Initialiser la récupération de l'icone
     init : function () {
-        var imgDeferred = when.defer();
-        this.imgPromise = imgDeferred.promise;
+        var _this = this;
         require(["image!" + this.loaderImgUrl], function ( img ) {
-            imgDeferred.resolve(img);
+            _this.loaded = true;
+            _this.img = img;
         });
     },
 
@@ -60,10 +60,9 @@ app.loaderImg = {
     
     //Afficher l'icône de chargement
     show : function (context) {
-        var _this = this;
-        this.imgPromise.then(function ( img ) {
-            context.$el.before(_this.getLoaderImg( img ));
-        });
+        if(this.loaded) {
+            context.$el.before(this.getLoaderImg( this.img ));
+        }
     },
     
     //Enlever l'icône de chargement
