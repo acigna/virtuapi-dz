@@ -49,7 +49,7 @@
           </p>
         </form>
       </li>
-      <li><a href="<?=site_url( array( 'membre', 'inscription' ) ); ?>">Devenir Membre ? Inscrivez-vous dès maintenant !!</a></li>
+      <li><a href="<?=site_url( array( 'auth', 'inscription' ) ); ?>">Devenir Membre ? Inscrivez-vous dès maintenant !!</a></li>
     </ul>		  
 		      
   <?php
@@ -60,11 +60,11 @@
       <li><h4>Mon Compte</h4></li> 
       <li>
         <ul>
-          <li><a href="<?=site_url( array('membre') ); ?>">Mon Profil</a></li>
+          <li><a href="<?=site_url( array('auth') ); ?>">Mon Profil</a></li>
         <?php if( $membre->estAdmin || $membre->estModerateur ) { ?>
           <li><a  href="<?=site_url( array('admin') ); ?>">Administration</a></li>
 		<?php } ?>
-          <li><a href="<?=site_url( array( 'membre', 'deconnexion' ) ); ?>">Se déconnecter</a></li>
+          <li><a href="<?=site_url( array( 'auth', 'deconnexion' ) ); ?>">Se déconnecter</a></li>
         </ul>     
       </li>
     </ul>

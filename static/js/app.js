@@ -1,4 +1,4 @@
-//L'application principale VirtUAPI-DZ 
+//Le module principal de VirtUAPI-DZ 
 
 define(["marionette",
         "config",
@@ -12,33 +12,33 @@ var app = new Marionette.Application();
 app.ErrReqView = Marionette.ItemView.extend({
     
     //Template pour une erreur de requête
-    template : req_error_template,
+    template: req_error_template,
 
     //Un wrapper autour du template d'erreur
-    wrapper : $("<tr class='error'></tr>"),
+    wrapper: $("<tr class='error'></tr>"),
         
-    events : {
-        "click a" : "renvoyer"
+    events: {
+        "click a": "renvoyer"
     },
         
-    initialize : function ( options ) {
-        this.$el = this.wrapper.insertBefore(options['el']);
-        this.obj = options['obj'];
-        this.method = options['method'];
+    initialize: function ( options ) {
+        this.$el = this.wrapper.insertBefore( options[ 'el' ] );
+        this.obj = options[ 'obj' ];
+        this.method = options[ 'method' ];
     },
     
     //Renvoyer la requête  
-    renvoyer : function() {
-        this.obj[this.method]();
+    renvoyer: function() {
+        this.obj[ this.method ]();
     }        
 });
 
 //Gérer la visibilité de l'icône de chargement
 app.loaderImg = {
-    loaded : false,
+    loaded: false,
     
     //Initialiser la récupération de l'icone
-    init : function () {
+    init: function () {
         var _this = this;
         require(["image!" + this.loaderImgUrl], function ( img ) {
             _this.loaded = true;
@@ -47,27 +47,27 @@ app.loaderImg = {
     },
 
     //L'URL du loader
-    loaderImgUrl : config.baseUrl + 'static/img/loader.gif',
+    loaderImgUrl: config.baseUrl + 'static/img/loader.gif',
 
     //Récupérer un élement clone de l'icone
-    getLoaderImg : function ( img ) {
-        /*Create a clone image,
-          with the appropriate parameters*/
-        var clone = $(img).clone();
-        clone.addClass("loader");
+    getLoaderImg: function ( img ) {
+        /*Créer un clone de l'objet img,
+          avec les paramètres appropriés*/
+        var clone = $( img  ).clone();
+        clone.addClass( "loader" );
         return clone;
     },
     
     //Afficher l'icône de chargement
-    show : function (context) {
-        if(this.loaded) {
-            context.$el.before(this.getLoaderImg( this.img ));
+    show: function ( context ) {
+        if( this.loaded ) {
+            context.$el.before( this.getLoaderImg( this.img ) );
         }
     },
     
     //Enlever l'icône de chargement
-    remove : function (context) {
-        context.$el.parent().find('.loader').remove();
+    remove: function ( context ) {
+        context.$el.parent().find( '.loader' ).remove();
     }
 };
 
