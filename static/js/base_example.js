@@ -1,5 +1,9 @@
+//Veuillez renommer ce fichier en base.js.
+
 requirejs.config({
-    baseUrl: '/virtuapi-dz-0.2/static/js/',
+    /*Mettre l'URL de base pour les ressources JS ici 
+      (Remplacez /virtuapi-dz avec votre racine du site).*/
+    baseUrl: '/virtuapi-dz/static/js/',
     paths: {
         when: 'libs/when',
         image: 'libs/requirejs/image',

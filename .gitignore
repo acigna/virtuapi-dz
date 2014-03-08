@@ -21,3 +21,5 @@ system/application/config/routes.php
 system/application/config/smileys.php
 system/application/config/user_agents.php
 index.php
+static/js/base.js
+static/js/config.js
