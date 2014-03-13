@@ -5,7 +5,11 @@ Le but est à la fois de construire un produit utile pour l'ensemble des étudia
 
 ## Installation et déploiement du projet
 
-1. Installation de CodeIgniter (version 2.7):
+1. Installation de CodeIgniter (version 1.7.3):
+
+Afin de pouvoir utiliser le projet, il faudra installer la version 1.7.3 de CodeIgniter. La version 2 n'est pas encore supportée, mais il le sera dans l'avenir.
+
+Veuillez télécharger Codeigniter à partir de [ce lien](http://http://ellislab.com/codeigniter/user-guide/installation/downloads.html "Téléchargement CodeIgnter").
 
 2. Configuration du Projet :
 
