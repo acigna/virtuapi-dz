@@ -9,7 +9,7 @@ Le but est à la fois de construire un produit utile pour l'ensemble des étudia
 
 Afin de pouvoir utiliser le projet, il faudra installer la version 1.7.3 de CodeIgniter. La version 2 n'est pas encore supportée, mais il le sera dans l'avenir.
 
-Veuillez télécharger Codeigniter à partir de [ce lien](http://ellislab.com/codeigniter/user-guide/installation/downloads.html "Téléchargement CodeIgnter").
+Veuillez télécharger Codeigniter à partir de [ce lien](http://ellislab.com/asset/ci_download_files/CodeIgniter_1.7.3.zip "Téléchargement CodeIgnter").
 
 2. Configuration du Projet :
 
