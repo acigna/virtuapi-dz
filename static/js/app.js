@@ -15,10 +15,10 @@ app.ErrReqView = Marionette.ItemView.extend({
     template: req_error_template,
 
     //Un wrapper autour du template d'erreur
-    wrapper: $( '<tr class="error"></tr>'),
+    wrapper: $( '<tr class="error"></tr>' ),
         
     events: {
-        "click a": "renvoyer"
+        'click a': 'renvoyer'
     },
         
     initialize: function ( options ) {

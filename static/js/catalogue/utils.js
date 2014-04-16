@@ -17,31 +17,34 @@ define(['marionette',
         //Configuration Annee
         if( annee_elt ) {
             //Le modèle
-            var annee = new models.Annee(annee_data || {});
+            var annee = new models.Annee( annee_data || {} );
 
             //La vue attachée au modèle
-            var annee_view = new views.AnneeView({el : annee_elt, model : annee});
+            var annee_view = new views.AnneeView({el: annee_elt, 
+                model: annee});
         }
 
         //Configuration Module
         if( module_elt ) {
             //Le modèle
-            var module = new models.Module(module_data || {});
+            var module = new models.Module( module_data || {} );
 
             //La collection
-            var modules = new models.Modules([], {annee : annee});
+            var modules = new models.Modules( [], {annee: annee} );
             
             //La vue attachée au modèle
-            var module_view = new views.ModuleView({el : module_elt, model : module});
+            var module_view = new views.ModuleView({el: module_elt, 
+                model: module});
 
             //La vue attachée à la collection 
-            var modules_view = new views.ModulesView({el : module_elt, annee : annee, collection : modules});
+            var modules_view = new views.ModulesView({el: module_elt, 
+                annee: annee, collection : modules});
         }
 
         //Configuration Chapitre
         if( chapitre_elt ) {
-            var chapitres = new models.Chapitres([], {module : module});
-            var chapitres_view = new views.ChapitresView({el : chapitre_elt, module : module, collection : chapitres});
+            var chapitres = new models.Chapitres([], {module: module});
+            var chapitres_view = new views.ChapitresView({el: chapitre_elt, module: module, collection: chapitres});
         }
     };
 
