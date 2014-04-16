@@ -15,7 +15,7 @@ app.ErrReqView = Marionette.ItemView.extend({
     template: req_error_template,
 
     //Un wrapper autour du template d'erreur
-    wrapper: $("<tr class='error'></tr>"),
+    wrapper: $( '<tr class="error"></tr>'),
         
     events: {
         "click a": "renvoyer"
@@ -40,7 +40,7 @@ app.loaderImg = {
     //Initialiser la récupération de l'icone
     init: function () {
         var _this = this;
-        require(["image!" + this.loaderImgUrl], function ( img ) {
+        require([ 'image!' + this.loaderImgUrl ], function ( img ) {
             _this.loaded = true;
             _this.img = img;
         });
@@ -54,7 +54,7 @@ app.loaderImg = {
         /*Créer un clone de l'objet img,
           avec les paramètres appropriés*/
         var clone = $( img  ).clone();
-        clone.addClass( "loader" );
+        clone.addClass( 'loader' );
         return clone;
     },
     
