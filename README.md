@@ -13,6 +13,14 @@ Veuillez télécharger Codeigniter à partir de [ce lien](http://ellislab.com/as
 
 2. Configuration du Projet :
 
-3. Mise en place de la base de donnée :
+TODO
+
+3. Mise en place de la base de données :
+
+Le fichier db.sql, contient les requêtes SQL pour la création des tables de la base de données.
+
+Utilisez la ligne de commande mysql ou des utilitaires tels que phpMyAdmin, pour créer les différentes tables à partir de db.sql.
 
 4. Mise en place d'un compte admin :
+
+TODO
