@@ -1,8 +1,8 @@
 //Le module principal de VirtUAPI-DZ 
 
-define(["marionette",
-        "config",
-        "tpl!templates/req_error.html"        
+define(['marionette',
+        'config',
+        'tpl!templates/req_error.html'        
 ], function ( Marionette, config, req_error_template ) {
 
 //Créer l'application

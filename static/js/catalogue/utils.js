@@ -1,11 +1,11 @@
 //Les outils de la partie catalogue
 
 define(['marionette',
-         'catalogue/views',
-         'catalogue/models'
+        'catalogue/views',
+        'catalogue/models'
 ], function ( Marionette, views, models ) {
 
-    //Configuration des select Annee / Module / Chapitre
+    //Configuration des selects Annee / Module / Chapitre
     var setUpAMCSelect = function ( options ) {
         var annee_elt = options.annee_elt,
             annee_data = options.annee_data,
@@ -45,5 +45,5 @@ define(['marionette',
         }
     };
 
-    return {"setUpAMCSelect" : setUpAMCSelect};
+    return {setUpAMCSelect: setUpAMCSelect};
 });
