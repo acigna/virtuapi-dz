@@ -73,9 +73,8 @@ class Cours extends Controller {
 	    if( $idchapitre ) { 
             $default = $this->chapitre->getCMA($idchapitre);
 	    } else {
-            $default['chapitre'] = "";
-            $default['module'] = "";
-            $default['annee'] = "";	   
+            $default = array('chapitre' => '', 
+                'module' => '', 'annee' => '');
 	    }
 	  
 	    //Récupérer les années avec leurs spécialités associées, ainsi que l'année à afficher (Par défaut ou le premier)
